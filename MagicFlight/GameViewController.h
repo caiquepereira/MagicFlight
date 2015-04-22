@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import <Foundation/Foundation.h>
+#import <GameKit/GameKit.h>
 
 @interface GameViewController : UIViewController
+
+@property (nonatomic) BOOL gameCenterEnabled;
+@property (nonatomic) NSString* leaderboardIdentifier;
+
+-(void)authenticateLocalPlayer;
+-(void)reportScore: (int) scoreValue;
 
 @end

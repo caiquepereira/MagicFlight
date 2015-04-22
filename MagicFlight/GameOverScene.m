@@ -102,7 +102,6 @@
     
     scoreLabelNode.text = [[NSString alloc]initWithFormat:@"Best %d",_scoreLbl];
     
-    NSLog(@"Score no game over scene %d", _scoreLbl);
     return scoreLabelNode;
 }
 
@@ -117,7 +116,6 @@
     
     lastScoreLabelNode.text = [[NSString alloc]initWithFormat:@"Score %d",_lastScoreLbl];
     
-    NSLog(@" Current score %d", _lastScoreLbl);
     return lastScoreLabelNode;
 }
 

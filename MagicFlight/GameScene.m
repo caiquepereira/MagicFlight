@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
+#import "GameViewController.h"
 #import "GameScene.h"
 #import "GameOverScene.h"
 #import "HorizontalSwipeGestureToRight.h"
@@ -38,6 +39,9 @@
     int _newHighestScore;
     float spawnEnemiesQuatity;
     float increasingEnemySpeed;
+    
+    GameViewController *viewController;
+
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -63,6 +67,8 @@
         _score = 0;
         _scoreTemporary = 0;
         auxiliarIncrementGestureNumberInEnemy = 0;
+        
+        viewController = [[GameViewController alloc]init];
         
         [self readHighestScoreFromPlist];
         
@@ -356,6 +362,7 @@
     
     if(_score > _newHighestScore) {
         [self saveNewHighestScoreInPlist];
+        [viewController reportScore:_newHighestScore];    //metodo que usa o game center pra colocar o novo high score
     }
     
     [self runAction:gameOverAction];
@@ -401,6 +408,7 @@
     
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.plist"];
     [dataToSaveInPlist writeToFile:path atomically:YES];
+    
 }
 
 - (void)readHighestScoreFromPlist {
@@ -421,5 +429,9 @@
         }
     }
 }
+
+
+
+
 
 @end
