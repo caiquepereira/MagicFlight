@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29B86BAC1AE81DE7000C415B /* EnglishTowne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29B86BAB1AE81DE7000C415B /* EnglishTowne.ttf */; };
 		56158A001AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 561589FF1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m */; };
 		56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */; };
 		56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29B86BAB1AE81DE7000C415B /* EnglishTowne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnglishTowne.ttf; sourceTree = "<group>"; };
 		561589FE1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalSwipeGestureToLeft.h; sourceTree = "<group>"; };
 		561589FF1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalSwipeGestureToLeft.m; sourceTree = "<group>"; };
 		56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuScene.h; sourceTree = "<group>"; };
@@ -88,6 +90,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29B86BA71AE819F0000C415B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29B86BA91AE81BB5000C415B /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B86BA91AE81BB5000C415B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				29B86BAB1AE81DE7000C415B /* EnglishTowne.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		56158A021AE19EDC00CAF1A6 /* Gestures */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +124,7 @@
 		56D67B441AD6EAF90032CAA3 = {
 			isa = PBXGroup;
 			children = (
+				29B86BA71AE819F0000C415B /* Resources */,
 				8FE719FC1AE29E2500B239C3 /* Model */,
 				56D67B4F1AD6EAF90032CAA3 /* MagicFlight */,
 				56D67B6E1AD6EAF90032CAA3 /* MagicFlightTests */,
@@ -264,6 +283,7 @@
 				56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */,
 				56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */,
 				56EFFE131AE599F60096411D /* pause.png in Resources */,
+				29B86BAC1AE81DE7000C415B /* EnglishTowne.ttf in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 			);

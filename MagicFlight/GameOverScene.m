@@ -20,7 +20,7 @@
 }
 
 - (instancetype)initWithSize:(CGSize)size
-            WithHighestScore: (int) score{
+            andHighestScore: (int) score{
     if(self = [super initWithSize:size]){
         
         _scoreLbl=score;

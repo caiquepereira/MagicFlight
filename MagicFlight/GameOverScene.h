@@ -13,6 +13,6 @@
 @property (nonatomic) int scoreLbl;
 
 - (instancetype)initWithSize:(CGSize)size
-            WithHighestScore: (int) score;
+            andHighestScore: (int) score;
 
 @end
