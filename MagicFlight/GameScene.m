@@ -349,7 +349,7 @@
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size WithHighestScore: _newHighestScore];        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size WithHighestScore: _newHighestScore WithLastScore: _score];        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
         [self.view presentScene:gameOver transition: reveal];
     }];

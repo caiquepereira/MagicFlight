@@ -16,15 +16,17 @@
     SKSpriteNode* retryButton;
     SKSpriteNode* menuButton;
     SKLabelNode* scoreLabel;
+    SKLabelNode* lastScoreLabel;
 
 }
 
 - (instancetype)initWithSize:(CGSize)size
-            WithHighestScore: (int) score{
+            WithHighestScore: (int) score
+            WithLastScore: (int) lastScore{
     if(self = [super initWithSize:size]){
         
         _scoreLbl=score;
-        
+        _lastScoreLbl = lastScore;
         
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
@@ -32,6 +34,7 @@
         menuButton = [self makeMenuButton];
         [self addChild:menuButton];
         [self addChild: [self makeScoreLabel]];
+        [self addChild: [self makeLastScoreLabel]];
         
     }
     return self;
@@ -92,17 +95,30 @@
     
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
     
-    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 100);
     scoreLabelNode.zPosition = 15;
     scoreLabelNode.fontColor = [UIColor whiteColor];
     scoreLabelNode.fontSize = 30;
     
-    scoreLabelNode.text = [[NSString alloc]initWithFormat:@"%d",_scoreLbl];
+    scoreLabelNode.text = [[NSString alloc]initWithFormat:@"Best %d",_scoreLbl];
     
     NSLog(@"Score no game over scene %d", _scoreLbl);
     return scoreLabelNode;
 }
 
-
+- (SKLabelNode*) makeLastScoreLabel{
+    
+    SKLabelNode* lastScoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    
+    lastScoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+200);
+    lastScoreLabelNode.zPosition = 15;
+    lastScoreLabelNode.fontColor = [UIColor whiteColor];
+    lastScoreLabelNode.fontSize = 30;
+    
+    lastScoreLabelNode.text = [[NSString alloc]initWithFormat:@"Score %d",_lastScoreLbl];
+    
+    NSLog(@" Current score %d", _lastScoreLbl);
+    return lastScoreLabelNode;
+}
 
 @end

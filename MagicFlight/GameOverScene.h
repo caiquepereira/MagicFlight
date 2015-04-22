@@ -11,8 +11,10 @@
 @interface GameOverScene : SKScene
 
 @property (nonatomic) int scoreLbl;
+@property (nonatomic) int lastScoreLbl;
 
 - (instancetype)initWithSize:(CGSize)size
-            WithHighestScore: (int) score;
+            WithHighestScore: (int) score
+               WithLastScore: (int) lastScore;
 
 @end
