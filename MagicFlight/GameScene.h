@@ -11,6 +11,4 @@
 
 @interface GameScene : SKScene
 
--(int)generateGesturesQuantity;
-
 @end

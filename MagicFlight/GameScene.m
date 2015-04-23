@@ -8,11 +8,12 @@
 
 #import "GameScene.h"
 #import "GameOverScene.h"
-#import "HorizontalSwipeGestureToRight.h"
-#import "HorizontalSwipeGestureToLeft.h"
-#import "VerticalSwipeGestureDown.h"
-#import "VerticalSwipeGestureUp.h"
 #import "GamePausedScene.h"
+
+#define HORIZ_SWIPE_DRAG_MIN_H  12
+#define VERT_SWIPE_DRAG_MAX_H   20
+#define HORIZ_SWIPE_DRAG_MIN_V  20
+#define VERT_SWIPE_DRAG_MAX_V   15
 
 @implementation GameScene {
     
@@ -29,6 +30,7 @@
     NSArray *gestureColors;
     NSArray* enemies;
     NSTimer *timer;
+    CGPoint startPositionInScene;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -82,62 +84,34 @@
         [self addChild:pauseButton];
         
         [self.view setMultipleTouchEnabled:NO];
-        
-        // Setting the timer to spawn clouds
-        SKAction *waitCloud = [SKAction waitForDuration:1.2];
-        SKAction *spawnCloud = [SKAction runBlock:^{
-            [self spawnCloud];
-        }];
-        [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[spawnCloud, waitCloud]]]];
-        
-        // Setting the timer to spawn enemies
-        SKAction *waitEnemy = [SKAction waitForDuration:spawnEnemiesQuatity];
-        SKAction *spawnEnemy = [SKAction runBlock:^{
-            [self spawnEnemy];
-        }];
-        
-        //Increasing quantity enemies on screen
-        SKAction *increaseEnemyQuantity = [SKAction waitForDuration:2];
-        SKAction *increaseEnemy = [SKAction runBlock:^{
-            [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[waitEnemy, spawnEnemy]]]];
-            if (spawnEnemiesQuatity > 0 && increasingEnemySpeed > 0) {
-                spawnEnemiesQuatity -= 0.01;
-                increasingEnemySpeed -= 0.05;
-            }
-            
-            if (auxiliarIncrementGestureNumberInEnemy%12 == 0)
-            {
-                [self increaseGesturesQuantity];
-            }
-        }];
-        [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
     }
     
     return self;
 }
 
-- (void)rightSwipe:(HorizontalSwipeGestureToRight *)rightSwipeGestureSender {
+- (void)rightSwipe {
     [self attack: @"swipeToRight"];
 }
 
-- (void)leftSwipe:(HorizontalSwipeGestureToLeft *)leftSwipeGestureSender {
+- (void)leftSwipe {
     [self attack: @"swipeToLeft"];
 }
 
-- (void)downSwipe:(VerticalSwipeGestureDown *)swipeDownGestureSender {
+- (void)downSwipe {
     [self attack: @"swipeDown"];
 }
 
-- (void)upSwipe:(VerticalSwipeGestureUp *)swipeUpGestureSender {
+- (void)upSwipe {
     [self attack: @"swipeUp"];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch* touch = [touches anyObject];
-    CGPoint startPositionInScene = [touch locationInNode:self];
+    startPositionInScene = [touch locationInNode:self];
     
     SKNode* node = [self nodeAtPoint:startPositionInScene];
+    
     if ([node.name isEqualToString:@"pauseButton"]) {
         SKAction * pauseGame = [SKAction runBlock:^{
             [self pauseGame];
@@ -157,17 +131,18 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch* touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInNode:self];
     
-    CGPathAddLineToPoint(pathToDraw, NULL, positionInScene.x, positionInScene.y);
+    CGPathAddLineToPoint(pathToDraw, NULL, currentTouchPosition.x, currentTouchPosition.y);
     lineNode.path = pathToDraw;
+    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
-    SKNode *node = [self nodeAtPoint:positionInScene];
+    CGPoint currentTouchPosition = [touch locationInNode:self];
+    SKNode *node = [self nodeAtPoint:currentTouchPosition];
     
     [lineNode removeFromParent];
     CGPathRelease(pathToDraw);
@@ -175,16 +150,49 @@
     if ([node.name isEqualToString:@"powerUp"]) {
         SKAction *run = [SKAction runBlock:^{
             NSLog(@"EU");
-            
         }];
         
         [node runAction:run];
     }
     
-    [self.view addGestureRecognizer:[[HorizontalSwipeGestureToRight alloc]initWithTarget:self action:@selector(rightSwipe:)]];
-    [self.view addGestureRecognizer:[[HorizontalSwipeGestureToLeft alloc]initWithTarget:self action:@selector(leftSwipe:)]];
-    [self.view addGestureRecognizer:[[VerticalSwipeGestureDown alloc]initWithTarget:self action:@selector(downSwipe:)]];
-    [self.view addGestureRecognizer:[[VerticalSwipeGestureUp alloc]initWithTarget:self action:@selector(upSwipe:)]];
+    if (fabs(startPositionInScene.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN_H &&
+        fabs(startPositionInScene.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX_H) {
+        
+        // If touch appears to be a swipe
+        if (startPositionInScene.x < currentTouchPosition.x) {
+            [self rightSwipe];
+        }
+    }
+    
+    //  Check if direction of touch is horizontal and long enough
+    if (fabs(startPositionInScene.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN_H &&
+        fabs(startPositionInScene.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX_H) {
+        
+        // If touch appears to be a swipe
+        if (startPositionInScene.x > currentTouchPosition.x) {
+            [self leftSwipe];
+        }
+    }
+    
+    //  Check if direction of touch is horizontal and long enough
+    if (fabs(startPositionInScene.y - currentTouchPosition.y) >= HORIZ_SWIPE_DRAG_MIN_V &&
+        fabs(startPositionInScene.x - currentTouchPosition.x) <= VERT_SWIPE_DRAG_MAX_V) {
+        
+        if (startPositionInScene.y < currentTouchPosition.y) {
+            [self upSwipe];
+        }
+    }
+    
+    //  Check if direction of touch is horizontal and long enough
+    if (fabs(startPositionInScene.y - currentTouchPosition.y) >= HORIZ_SWIPE_DRAG_MIN_V &&
+        fabs(startPositionInScene.x - currentTouchPosition.x) <= VERT_SWIPE_DRAG_MAX_V) {
+        // If touch appears to be a swipe
+        if (startPositionInScene.y > currentTouchPosition.y) {
+            [self downSwipe];
+        }
+    }
+    
+    startPositionInScene = CGPointZero;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {

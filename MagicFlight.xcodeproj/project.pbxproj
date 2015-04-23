@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56158A001AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 561589FF1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m */; };
 		56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */; };
 		56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */; };
 		56D67B531AD6EAF90032CAA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B521AD6EAF90032CAA3 /* main.m */; };
@@ -19,11 +18,7 @@
 		56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B621AD6EAF90032CAA3 /* Images.xcassets */; };
 		56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B641AD6EAF90032CAA3 /* LaunchScreen.xib */; };
 		56D67B721AD6EAF90032CAA3 /* MagicFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */; };
-		56EB39831AE04FC600865DC7 /* HorizontalSwipeGestureToRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB39821AE04FC600865DC7 /* HorizontalSwipeGestureToRight.m */; };
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
-		56EFFE131AE599F60096411D /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EFFE121AE599F60096411D /* pause.png */; };
-		8FE719F31AE299E900B239C3 /* VerticalSwipeGestureDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE719F21AE299E900B239C3 /* VerticalSwipeGestureDown.m */; };
-		8FE719F61AE29A6A00B239C3 /* VerticalSwipeGestureUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE719F51AE29A6A00B239C3 /* VerticalSwipeGestureUp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		561589FE1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalSwipeGestureToLeft.h; sourceTree = "<group>"; };
-		561589FF1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalSwipeGestureToLeft.m; sourceTree = "<group>"; };
 		56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuScene.h; sourceTree = "<group>"; };
 		56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuScene.m; sourceTree = "<group>"; };
 		56B3D87F1AE1ABBE00DB9715 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
@@ -59,15 +52,8 @@
 		56D67B6B1AD6EAF90032CAA3 /* MagicFlightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicFlightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D67B701AD6EAF90032CAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicFlightTests.m; sourceTree = "<group>"; };
-		56EB39811AE04FC600865DC7 /* HorizontalSwipeGestureToRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalSwipeGestureToRight.h; sourceTree = "<group>"; };
-		56EB39821AE04FC600865DC7 /* HorizontalSwipeGestureToRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalSwipeGestureToRight.m; sourceTree = "<group>"; };
 		56EFFE0F1AE598DC0096411D /* GamePausedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePausedScene.h; sourceTree = "<group>"; };
 		56EFFE101AE598DC0096411D /* GamePausedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausedScene.m; sourceTree = "<group>"; };
-		56EFFE121AE599F60096411D /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
-		8FE719F11AE299E900B239C3 /* VerticalSwipeGestureDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalSwipeGestureDown.h; sourceTree = "<group>"; };
-		8FE719F21AE299E900B239C3 /* VerticalSwipeGestureDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalSwipeGestureDown.m; sourceTree = "<group>"; };
-		8FE719F41AE29A6A00B239C3 /* VerticalSwipeGestureUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalSwipeGestureUp.h; sourceTree = "<group>"; };
-		8FE719F51AE29A6A00B239C3 /* VerticalSwipeGestureUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalSwipeGestureUp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,25 +74,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56158A021AE19EDC00CAF1A6 /* Gestures */ = {
-			isa = PBXGroup;
-			children = (
-				56EB39811AE04FC600865DC7 /* HorizontalSwipeGestureToRight.h */,
-				56EB39821AE04FC600865DC7 /* HorizontalSwipeGestureToRight.m */,
-				561589FE1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.h */,
-				561589FF1AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m */,
-				8FE719F11AE299E900B239C3 /* VerticalSwipeGestureDown.h */,
-				8FE719F21AE299E900B239C3 /* VerticalSwipeGestureDown.m */,
-				8FE719F41AE29A6A00B239C3 /* VerticalSwipeGestureUp.h */,
-				8FE719F51AE29A6A00B239C3 /* VerticalSwipeGestureUp.m */,
-			);
-			name = Gestures;
-			sourceTree = "<group>";
-		};
 		56D67B441AD6EAF90032CAA3 = {
 			isa = PBXGroup;
 			children = (
-				8FE719FC1AE29E2500B239C3 /* Model */,
 				56D67B4F1AD6EAF90032CAA3 /* MagicFlight */,
 				56D67B6E1AD6EAF90032CAA3 /* MagicFlightTests */,
 				56D67B4E1AD6EAF90032CAA3 /* Products */,
@@ -125,7 +95,6 @@
 		56D67B4F1AD6EAF90032CAA3 /* MagicFlight */ = {
 			isa = PBXGroup;
 			children = (
-				56158A021AE19EDC00CAF1A6 /* Gestures */,
 				56D67B541AD6EAF90032CAA3 /* AppDelegate.h */,
 				56D67B551AD6EAF90032CAA3 /* AppDelegate.m */,
 				56D67B571AD6EAF90032CAA3 /* GameScene.h */,
@@ -140,7 +109,6 @@
 				56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */,
 				56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */,
 				56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */,
-				56EFFE121AE599F60096411D /* pause.png */,
 				56D67B621AD6EAF90032CAA3 /* Images.xcassets */,
 				56D67B641AD6EAF90032CAA3 /* LaunchScreen.xib */,
 				56D67B501AD6EAF90032CAA3 /* Supporting Files */,
@@ -172,14 +140,6 @@
 				56D67B701AD6EAF90032CAA3 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8FE719FC1AE29E2500B239C3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			path = MagicFlight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +223,6 @@
 			files = (
 				56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */,
 				56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */,
-				56EFFE131AE599F60096411D /* pause.png in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 			);
@@ -285,13 +244,9 @@
 			files = (
 				56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */,
 				56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */,
-				8FE719F31AE299E900B239C3 /* VerticalSwipeGestureDown.m in Sources */,
 				56D67B561AD6EAF90032CAA3 /* AppDelegate.m in Sources */,
-				8FE719F61AE29A6A00B239C3 /* VerticalSwipeGestureUp.m in Sources */,
-				56EB39831AE04FC600865DC7 /* HorizontalSwipeGestureToRight.m in Sources */,
 				56D67B591AD6EAF90032CAA3 /* GameScene.m in Sources */,
 				56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */,
-				56158A001AE19C0B00CAF1A6 /* HorizontalSwipeGestureToLeft.m in Sources */,
 				56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */,
 				56D67B531AD6EAF90032CAA3 /* main.m in Sources */,
 			);
