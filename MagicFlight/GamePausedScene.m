@@ -68,6 +68,8 @@
             GameScene * myScene = gameScene;
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
+            
+            [gameScene resumeBackgroundMusic];
         }];
         
         [playButton runAction:resumeGame];

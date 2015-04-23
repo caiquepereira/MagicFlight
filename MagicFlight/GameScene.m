@@ -13,6 +13,7 @@
 #import "VerticalSwipeGestureDown.h"
 #import "VerticalSwipeGestureUp.h"
 #import "GamePausedScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation GameScene {
     
@@ -21,6 +22,7 @@
     SKSpriteNode *background;
     SKSpriteNode *powerUpButton;
     SKSpriteNode *powerUpBar;
+    SKSpriteNode *edge;
     SKShapeNode *lineNode;
     SKLabelNode *scoreLabel;
     NSMutableArray *dataToSaveInPlist;
@@ -29,6 +31,7 @@
     NSArray *gestureColors;
     NSArray* enemies;
     NSTimer *timer;
+    AVAudioPlayer *musicPlayer;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -84,6 +87,9 @@
         powerUpBar = [self makePowerUpBar: @"powerUp0"];
         [self addChild:powerUpBar];
         
+        edge = [self makeEdge];
+        [self addChild:edge];
+        
         [self.view setMultipleTouchEnabled:NO];
         
         // Setting the timer to spawn clouds
@@ -114,6 +120,8 @@
             }
         }];
         [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
+        
+        [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
     }
     
     return self;
@@ -193,6 +201,12 @@
 }
 
 - (void)update:(NSTimeInterval)currentTime {
+    
+    if(edge.position.y < self.size.height - edge.size.height){
+        edge = [self makeEdge];
+        [self addChild:edge];
+    }
+    
     [self updateScore];
     [self checkCollision];
 }
@@ -260,6 +274,16 @@
     powerUpBarNode.zPosition = 15;
     return powerUpBarNode;
 
+}
+
+- (SKSpriteNode*) makeEdge{
+    SKSpriteNode* edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
+    edgeNode.position = CGPointMake(30, self.size.height+200);
+    
+    SKAction *move = [SKAction moveToY: -200 duration:6];
+    [edgeNode runAction:move];
+    
+    return edgeNode;
 }
 
 - (void)spawnCloud {
@@ -378,6 +402,7 @@
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
+        [self stopBackgroundMusic];
         GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
@@ -395,7 +420,6 @@
     [powerUpBar removeFromParent];
     
     NSString* imageName = [NSString stringWithFormat:@"powerUp%d",_powerUpStage];
-    NSLog(@"%@",imageName);
     
     if(_powerUpStage == 4){
         powerUpButton = [self makePowerUpButton];
@@ -422,6 +446,7 @@
         GamePausedScene * myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:myScene transition: reveal];
+        [self pauseBackgroundMusic];
     }];
     
     [pauseButton runAction:pauseGame];
@@ -461,6 +486,28 @@
             }
         }
     }
+}
+
+-(void)stopBackgroundMusic {
+    [musicPlayer stop];
+}
+
+-(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *) type {
+    if ([musicPlayer isPlaying]) {
+        return;
+    }
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:type]];
+    musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    musicPlayer.numberOfLoops = -1;
+    [musicPlayer play];
+}
+
+-(void) pauseBackgroundMusic{
+    [musicPlayer pause];
+}
+
+- (void)resumeBackgroundMusic{
+    [musicPlayer play];
 }
 
 @end
