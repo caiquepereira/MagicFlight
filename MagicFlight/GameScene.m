@@ -84,6 +84,36 @@
         [self addChild:pauseButton];
         
         [self.view setMultipleTouchEnabled:NO];
+        
+        // Setting the timer to spawn clouds
+        SKAction *waitCloud = [SKAction waitForDuration:1.2];
+        SKAction *spawnCloud = [SKAction runBlock:^{
+            [self spawnCloud];
+        }];
+        [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[spawnCloud, waitCloud]]]];
+
+        // Setting the timer to spawn enemies
+        SKAction *waitEnemy = [SKAction waitForDuration:spawnEnemiesQuatity];
+        SKAction *spawnEnemy = [SKAction runBlock:^{
+            [self spawnEnemy];
+        }];
+
+        //Increasing quantity enemies on screen
+        SKAction *increaseEnemyQuantity = [SKAction waitForDuration:2];
+        SKAction *increaseEnemy = [SKAction runBlock:^{
+            [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[waitEnemy, spawnEnemy]]]];
+            if (spawnEnemiesQuatity > 0 && increasingEnemySpeed > 0) {
+                spawnEnemiesQuatity -= 0.02;
+                increasingEnemySpeed -= 0.01;
+            }
+
+            if (auxiliarIncrementGestureNumberInEnemy%12 == 0)
+            {
+                [self increaseGesturesQuantity];
+            }
+        }];
+        
+        [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
     }
     
     return self;
@@ -125,7 +155,7 @@
     
     lineNode = [SKShapeNode node];
     lineNode.path = pathToDraw;
-    lineNode.strokeColor = [SKColor redColor];
+    lineNode.strokeColor = [SKColor orangeColor];
     lineNode.lineWidth = 10;
     [self addChild:lineNode];
 }
@@ -149,7 +179,7 @@
     
     if ([node.name isEqualToString:@"powerUp"]) {
         SKAction *run = [SKAction runBlock:^{
-            NSLog(@"EU");
+
         }];
         
         [node runAction:run];
@@ -191,7 +221,7 @@
             [self downSwipe];
         }
     }
-    
+
     startPositionInScene = CGPointZero;
 }
 

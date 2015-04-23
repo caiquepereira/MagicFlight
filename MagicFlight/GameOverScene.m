@@ -99,7 +99,6 @@
     
     scoreLabelNode.text = [[NSString alloc]initWithFormat:@"%d",_scoreLbl];
     
-    NSLog(@"Score no game over scene %d", _scoreLbl);
     return scoreLabelNode;
 }
 
