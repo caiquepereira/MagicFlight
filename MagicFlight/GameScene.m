@@ -15,6 +15,14 @@
 #import "GamePausedScene.h"
 #import <AVFoundation/AVFoundation.h>
 
+#define HUD_POSITION 15
+#define ENEMY_POSITION 10
+#define CLOUDS_POSITION 5
+#define BACKGROUND_POSITION 0
+
+#define POWERUP_STAGE_MAX 5
+
+
 @implementation GameScene {
     
     CGMutablePathRef pathToDraw;
@@ -32,6 +40,7 @@
     NSArray* enemies;
     NSTimer *timer;
     AVAudioPlayer *musicPlayer;
+    NSArray* mageFlyingFrames;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -51,11 +60,6 @@
                                                  @"swipeToLeft",
                                                  @"swipeUp",
                                                  @"swipeDown", nil];
-        
-        gestureColors = [NSArray arrayWithObjects: [UIColor redColor],
-                                                   [UIColor blueColor],
-                                                   [UIColor greenColor],
-                                                   [UIColor yellowColor], nil];
         
         //colocar o fundo do gameplay aqui (arte)
         self.backgroundColor = [SKColor whiteColor];
@@ -78,6 +82,8 @@
         mage = [self makeMage];
         [self addChild:mage];
         
+        [self flyingMage];
+        
         background = [self makeBackground];
         [self addChild:background];
         
@@ -87,8 +93,8 @@
         powerUpBar = [self makePowerUpBar: @"powerUp0"];
         [self addChild:powerUpBar];
         
-        edge = [self makeEdge];
-        [self addChild:edge];
+//        edge = [self makeEdge];
+//        [self addChild:edge];
         
         [self.view setMultipleTouchEnabled:NO];
         
@@ -202,10 +208,10 @@
 
 - (void)update:(NSTimeInterval)currentTime {
     
-    if(edge.position.y < self.size.height - edge.size.height){
-        edge = [self makeEdge];
-        [self addChild:edge];
-    }
+//    if(edge.position.y < self.size.height - edge.size.height){
+//        edge = [self makeEdge];
+//        [self addChild:edge];
+//    }
     
     [self updateScore];
     [self checkCollision];
@@ -218,31 +224,54 @@
     
     scoreLabelNode.text = @"";
     scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
-    scoreLabelNode.zPosition = 15;
-    scoreLabelNode.fontColor = [UIColor grayColor];
+    scoreLabelNode.zPosition = HUD_POSITION;
+    scoreLabelNode.fontColor = [UIColor whiteColor];
     scoreLabelNode.fontSize = 50;
     
     return scoreLabelNode;
 }
 
 - (SKSpriteNode *)makeMage {
-    SKSpriteNode *mageNode = [SKSpriteNode spriteNodeWithImageNamed:@"mage"];
-    mageNode.zPosition = 15;
-    mageNode.name = @"mage";
+    NSMutableArray *mageDragon = [NSMutableArray array];
+    SKTextureAtlas *mageDragonAtlas = [SKTextureAtlas atlasNamed:@"mageImages"];
     
-    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 20) duration:2];
+    long numImages = mageDragonAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"mage%d", i];
+        SKTexture *temp = [mageDragonAtlas textureNamed:textureName];
+        [mageDragon addObject:temp];
+    }
+    mageFlyingFrames = mageDragon;
+    
+    SKTexture *temp = mageFlyingFrames[0];
+    SKSpriteNode *mageNode = [SKSpriteNode spriteNodeWithTexture:temp];
+    mageNode.zPosition = HUD_POSITION;
+    mageNode.name = @"mage";
+    mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+    [mageNode setScale:0.4];
+    
+    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 70) duration:2];
     [mageNode runAction:entry];
     
     return mageNode;
 }
 
+- (void) flyingMage {
+    [mage runAction:[SKAction repeatActionForever:
+                      [SKAction animateWithTextures:mageFlyingFrames
+                                       timePerFrame:0.1
+                                             resize:NO
+                                            restore:YES]] withKey:@"flyingInPlaceMage"];
+    return;
+}
+
 - (SKSpriteNode*) makePauseButton{
     SKSpriteNode* pauseNode = [SKSpriteNode spriteNodeWithImageNamed:@"pauseButton"];
     
-    pauseNode.position = CGPointMake(self.frame.size.width - 50, self.frame.size.height - 50);
-    pauseNode.zPosition = 15;
+    pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+    pauseNode.zPosition = HUD_POSITION;
     pauseNode.name = @"pauseButton";
-    [pauseNode setScale: 0.15];
+    [pauseNode setScale: 0.35];
     
     return pauseNode;
 }
@@ -252,17 +281,16 @@
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
     
     backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
-    [backgroundNode setScale:2.0];
+//    [backgroundNode setScale:2.0];
     return backgroundNode;
 }
 
 - (SKSpriteNode *)makePowerUpButton {
     SKSpriteNode *powerUpNode = [SKSpriteNode spriteNodeWithImageNamed:@"powerUpIcon"];
     
-    powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 80);
-    powerUpNode.zPosition = 15;
-    powerUpNode.xScale = 0.2;
-    powerUpNode.yScale = 0.2;
+    powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+    powerUpNode.zPosition = HUD_POSITION;
+    [powerUpNode setScale:0.6];
     powerUpNode.name = @"powerUpButton";
     
     return powerUpNode;
@@ -271,7 +299,8 @@
 - (SKSpriteNode *)makePowerUpBar: (NSString*) imageName{
     SKSpriteNode *powerUpBarNode = [SKSpriteNode spriteNodeWithImageNamed:imageName];
     powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
-    powerUpBarNode.zPosition = 15;
+    powerUpBarNode.zPosition = HUD_POSITION;
+    [powerUpBarNode setScale:0.6];
     return powerUpBarNode;
 
 }
@@ -287,10 +316,13 @@
 }
 
 - (void)spawnCloud {
-    SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithImageNamed:@"cloud"];
     
-    [cloud setScale:0.2];
-    cloud.zPosition = 0;
+    NSString* imageName = [NSString stringWithFormat:@"cloud%d",arc4random_uniform(2)];
+    
+    SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithImageNamed:imageName];
+    
+    [cloud setScale:0.4];
+    cloud.zPosition = CLOUDS_POSITION;
     
     CGPoint position = CGPointMake(arc4random_uniform(self.frame.size.width), self.frame.size.height);
     
@@ -306,7 +338,7 @@
     SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithImageNamed:@"enemyBat"];
     
     [enemy setScale:0.1];
-    enemy.zPosition = 5;
+    enemy.zPosition = ENEMY_POSITION;
     enemy.name = @"bat";
     
     CGPoint position = CGPointMake(arc4random_uniform(self.frame.size.width), self.frame.size.height);
@@ -327,7 +359,8 @@
     
     SKSpriteNode* gesture = [self randomGestureNode: [self generateGesturesQuantity]];
     gesture.position = CGPointMake(gesture.position.x, gesture.position.y + 300);
-    gesture.zPosition = 5;
+    [gesture setScale:3];
+    gesture.zPosition = ENEMY_POSITION;
     
     return gesture;
 }
@@ -338,7 +371,7 @@
     rect.size.height = 200;
     rect.size.width = 200;
     
-    SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:gestureColors[number] size:rect.size];
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:gestureNames[number]];
     node.name = gestureNames[number];
     
     return node;
@@ -390,7 +423,7 @@
             [enemy removeFromParent];
             _destroyedEnemies++;
             
-            if(_destroyedEnemies >= 3 && _powerUpStage < 4){
+            if(_destroyedEnemies >= 3 && _powerUpStage < POWERUP_STAGE_MAX){
                     _powerUpStage++;
                     _destroyedEnemies = 0;
                 
@@ -421,7 +454,7 @@
     
     NSString* imageName = [NSString stringWithFormat:@"powerUp%d",_powerUpStage];
     
-    if(_powerUpStage == 4){
+    if(_powerUpStage == POWERUP_STAGE_MAX){
         powerUpButton = [self makePowerUpButton];
         [self addChild: powerUpButton];
     }
