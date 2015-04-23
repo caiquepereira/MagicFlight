@@ -16,7 +16,6 @@
 {
     [self authenticateLocalPlayer];
     _leaderboardIdentifier=@"Best_Score_Of_The_App";
-    NSLog(@"Na gameviewcontroller");
 }
 
 
