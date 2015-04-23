@@ -7,7 +7,15 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+#import <Foundation/Foundation.h>
+#import "GameMenuSceneViewController.h"
+
 
 @interface GameMenuScene : SKScene
+
+
+
 
 @end

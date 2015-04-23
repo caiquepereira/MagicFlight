@@ -11,12 +11,13 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController 
 
 @property (nonatomic) BOOL gameCenterEnabled;
 @property (nonatomic) NSString* leaderboardIdentifier;
 
 -(void)authenticateLocalPlayer;
 -(void)reportScore: (int) scoreValue;
+
 
 @end

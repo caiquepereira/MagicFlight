@@ -8,10 +8,15 @@
 
 #import "GameMenuScene.h"
 #import "GameScene.h"
+#import "GameMenuSceneViewController.h"
 
 @implementation GameMenuScene
 {
     SKSpriteNode* playButton;
+    SKSpriteNode* gameCenterButton;
+    NSString *leaderboardIdentifier;
+
+    GameMenuSceneViewController *menuViewController;
 }
 
 - (instancetype)initWithSize:(CGSize)size{
@@ -22,6 +27,11 @@
         playButton = [self makeMenuButton];
         [self addChild:playButton];
         
+        gameCenterButton = [self makeGameCenterButton];
+        [self addChild:gameCenterButton];
+        
+        
+        leaderboardIdentifier=@"Best_Score_Of_The_App";
     }
     return self;
 }
@@ -52,5 +62,31 @@
         
         [playButton runAction:startGame];
     }
+    
+    if ([node.name isEqualToString:@"gameCenterButton"]) {
+        menuViewController = [[GameMenuSceneViewController alloc]init];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:menuViewController
+                                                                                                 animated:YES completion:nil];
+    }
 }
+    
+    
+    
+    - (SKSpriteNode*) makeGameCenterButton{
+        
+        SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+        
+        menuNode.name = @"gameCenterButton";
+        
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width*4/5,self.size.height/5);
+        
+        return menuNode;
+    }
+    
+
+
+
+
+
 @end

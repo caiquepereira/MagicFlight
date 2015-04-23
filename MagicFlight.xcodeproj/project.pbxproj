@@ -23,6 +23,7 @@
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
 		56EFFE131AE599F60096411D /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EFFE121AE599F60096411D /* pause.png */; };
 		8F7012741AE823DE009AF3DF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7012731AE823DE009AF3DF /* GameKit.framework */; };
+		8FB3F00C1AE97D700022AE41 /* GameMenuSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3F00B1AE97D700022AE41 /* GameMenuSceneViewController.m */; };
 		8FE719F31AE299E900B239C3 /* VerticalSwipeGestureDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE719F21AE299E900B239C3 /* VerticalSwipeGestureDown.m */; };
 		8FE719F61AE29A6A00B239C3 /* VerticalSwipeGestureUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE719F51AE29A6A00B239C3 /* VerticalSwipeGestureUp.m */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		56EFFE101AE598DC0096411D /* GamePausedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausedScene.m; sourceTree = "<group>"; };
 		56EFFE121AE599F60096411D /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		8F7012731AE823DE009AF3DF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		8FB3F00A1AE97D700022AE41 /* GameMenuSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuSceneViewController.h; sourceTree = "<group>"; };
+		8FB3F00B1AE97D700022AE41 /* GameMenuSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuSceneViewController.m; sourceTree = "<group>"; };
 		8FE719F11AE299E900B239C3 /* VerticalSwipeGestureDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalSwipeGestureDown.h; sourceTree = "<group>"; };
 		8FE719F21AE299E900B239C3 /* VerticalSwipeGestureDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalSwipeGestureDown.m; sourceTree = "<group>"; };
 		8FE719F41AE29A6A00B239C3 /* VerticalSwipeGestureUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalSwipeGestureUp.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				56EFFE101AE598DC0096411D /* GamePausedScene.m */,
 				56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */,
 				56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */,
+				8FB3F00A1AE97D700022AE41 /* GameMenuSceneViewController.h */,
+				8FB3F00B1AE97D700022AE41 /* GameMenuSceneViewController.m */,
 				56B3D87F1AE1ABBE00DB9715 /* GameOverScene.h */,
 				56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */,
 				56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */,
@@ -293,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB3F00C1AE97D700022AE41 /* GameMenuSceneViewController.m in Sources */,
 				56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */,
 				56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */,
 				8FE719F31AE299E900B239C3 /* VerticalSwipeGestureDown.m in Sources */,
