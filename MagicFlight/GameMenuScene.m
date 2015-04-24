@@ -15,7 +15,7 @@
 @implementation GameMenuScene
 {
     SKSpriteNode* playButton;
-    SKSpriteNode* appName;
+    SKSpriteNode* logo;
     AVAudioPlayer *musicPlayer;
     SKSpriteNode* gameCenterButton;
     NSString *leaderboardIdentifier;
@@ -34,6 +34,9 @@
         
         playButton = [self makeMenuButton];
         [self addChild:playButton];
+        
+        logo = [self makeLogo];
+        [self addChild:logo];
         
         [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
         
@@ -54,9 +57,21 @@
     menuNode.name = @"startButton";
     
     [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    menuNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
     
     return menuNode;
+}
+
+- (SKSpriteNode*) makeLogo{
+    
+    SKSpriteNode* logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"logo"];
+    
+    logoNode.name = @"logo";
+    
+    [logoNode setScale:0.5];
+    logoNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 80);
+    
+    return logoNode;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -108,7 +123,6 @@
     musicPlayer.numberOfLoops = -1;
     [musicPlayer play];
 }
-
 
 - (SKSpriteNode*) makeGameCenterButton{
     
