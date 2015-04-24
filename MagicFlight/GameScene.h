@@ -11,4 +11,10 @@
 
 @interface GameScene : SKScene
 
+-(int)generateGesturesQuantity;
+
+-(void) pauseBackgroundMusic;
+
+-(void) resumeBackgroundMusic;
+
 @end

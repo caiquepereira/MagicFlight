@@ -9,6 +9,15 @@
 #import "GameScene.h"
 #import "GameOverScene.h"
 #import "GamePausedScene.h"
+#import <AVFoundation/AVFoundation.h>
+
+#define HUD_POSITION 15
+#define ENEMY_POSITION 10
+#define CLOUDS_POSITION 5
+#define BACKGROUND_POSITION 0
+
+#define POWERUP_STAGE_MAX 5
+
 
 #define HORIZ_SWIPE_DRAG_MIN_H  12
 #define VERT_SWIPE_DRAG_MAX_H   20
@@ -20,17 +29,20 @@
     CGMutablePathRef pathToDraw;
     SKSpriteNode *mage;
     SKSpriteNode *background;
-    SKSpriteNode *powerUp;
+    SKSpriteNode *powerUpButton;
+    SKSpriteNode *powerUpBar;
+    SKSpriteNode *edge;
     SKShapeNode *lineNode;
     SKLabelNode *scoreLabel;
     NSMutableArray *dataToSaveInPlist;
-    GamePausedScene *pauseScene;
     SKSpriteNode *pauseButton;
     NSArray *gestureNames;
     NSArray *gestureColors;
     NSArray* enemies;
     NSTimer *timer;
     CGPoint startPositionInScene;
+    AVAudioPlayer *musicPlayer;
+    NSArray* mageFlyingFrames;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -40,6 +52,8 @@
     int _newHighestScore;
     float spawnEnemiesQuatity;
     float increasingEnemySpeed;
+    int _powerUpStage;
+    int _destroyedEnemies;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -48,11 +62,6 @@
                                                  @"swipeToLeft",
                                                  @"swipeUp",
                                                  @"swipeDown", nil];
-        
-        gestureColors = [NSArray arrayWithObjects: [UIColor redColor],
-                                                   [UIColor blueColor],
-                                                   [UIColor greenColor],
-                                                   [UIColor yellowColor], nil];
         
         //colocar o fundo do gameplay aqui (arte)
         self.backgroundColor = [SKColor whiteColor];
@@ -65,6 +74,7 @@
         _score = 0;
         _scoreTemporary = 0;
         auxiliarIncrementGestureNumberInEnemy = 0;
+        _powerUpStage = 0;
         
         [self readHighestScoreFromPlist];
         
@@ -74,14 +84,19 @@
         mage = [self makeMage];
         [self addChild:mage];
         
-        powerUp = [self makePowerUp];
-        [self addChild:powerUp];
+        [self flyingMage];
         
         background = [self makeBackground];
         [self addChild:background];
         
         pauseButton = [self makePauseButton];
         [self addChild:pauseButton];
+        
+        powerUpBar = [self makePowerUpBar: @"powerUp0"];
+        [self addChild:powerUpBar];
+        
+//        edge = [self makeEdge];
+//        [self addChild:edge];
         
         [self.view setMultipleTouchEnabled:NO];
         
@@ -114,6 +129,8 @@
         }];
         
         [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
+        
+        [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
     }
     
     return self;
@@ -143,11 +160,20 @@
     SKNode* node = [self nodeAtPoint:startPositionInScene];
     
     if ([node.name isEqualToString:@"pauseButton"]) {
-        SKAction * pauseGame = [SKAction runBlock:^{
+        SKAction *pauseGame = [SKAction runBlock:^{
             [self pauseGame];
         }];
         
         [pauseButton runAction:pauseGame];
+    }
+    
+    if ([node.name isEqualToString:@"powerUpButton"]) {
+        SKAction *usePowerUp = [SKAction runBlock:^{
+            [self attack:@"destroyAll"];
+            
+        }];
+        
+        [powerUpButton runAction:usePowerUp];
     }
     
     pathToDraw = CGPathCreateMutable();
@@ -176,14 +202,6 @@
     
     [lineNode removeFromParent];
     CGPathRelease(pathToDraw);
-    
-    if ([node.name isEqualToString:@"powerUp"]) {
-        SKAction *run = [SKAction runBlock:^{
-
-        }];
-        
-        [node runAction:run];
-    }
     
     if (fabs(startPositionInScene.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN_H &&
         fabs(startPositionInScene.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX_H) {
@@ -230,40 +248,69 @@
 }
 
 - (void)update:(NSTimeInterval)currentTime {
+    
+//    if(edge.position.y < self.size.height - edge.size.height){
+//        edge = [self makeEdge];
+//        [self addChild:edge];
+//    }
+    
     [self updateScore];
     [self checkCollision];
 }
 
 - (SKLabelNode *)makeScoreLabel {
     
-    SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
+    scoreLabelNode.text = @"";
     scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
-    scoreLabelNode.zPosition = 15;
-    scoreLabelNode.fontColor = [UIColor blackColor];
-    scoreLabelNode.fontSize = 30;
+    scoreLabelNode.zPosition = HUD_POSITION;
+    scoreLabelNode.fontColor = [UIColor whiteColor];
+    scoreLabelNode.fontSize = 50;
     
     return scoreLabelNode;
 }
 
 - (SKSpriteNode *)makeMage {
-    SKSpriteNode *mageNode = [SKSpriteNode spriteNodeWithImageNamed:@"mage"];
-    mageNode.zPosition = 15;
-    mageNode.name = @"mage";
+    NSMutableArray *mageDragon = [NSMutableArray array];
+    SKTextureAtlas *mageDragonAtlas = [SKTextureAtlas atlasNamed:@"mageImages"];
     
-    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 20) duration:2];
+    long numImages = mageDragonAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"mage%d", i];
+        SKTexture *temp = [mageDragonAtlas textureNamed:textureName];
+        [mageDragon addObject:temp];
+    }
+    mageFlyingFrames = mageDragon;
+    
+    SKTexture *temp = mageFlyingFrames[0];
+    SKSpriteNode *mageNode = [SKSpriteNode spriteNodeWithTexture:temp];
+    mageNode.zPosition = HUD_POSITION;
+    mageNode.name = @"mage";
+    mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+    [mageNode setScale:0.4];
+    
+    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 70) duration:2];
     [mageNode runAction:entry];
     
     return mageNode;
 }
 
+- (void) flyingMage {
+    [mage runAction:[SKAction repeatActionForever:
+                      [SKAction animateWithTextures:mageFlyingFrames
+                                       timePerFrame:0.1
+                                             resize:NO
+                                            restore:YES]] withKey:@"flyingInPlaceMage"];
+}
+
 - (SKSpriteNode*) makePauseButton{
     SKSpriteNode* pauseNode = [SKSpriteNode spriteNodeWithImageNamed:@"pauseButton"];
     
-    pauseNode.position = CGPointMake(self.frame.size.width - 50, self.frame.size.height - 50);
-    pauseNode.zPosition = 10;
+    pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+    pauseNode.zPosition = HUD_POSITION;
     pauseNode.name = @"pauseButton";
-    [pauseNode setScale: 0.15];
+    [pauseNode setScale: 0.35];
     
     return pauseNode;
 }
@@ -273,27 +320,47 @@
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
     
     backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
-    [backgroundNode setScale:2.0];
     return backgroundNode;
 }
 
-- (SKSpriteNode *)makePowerUp {
+- (SKSpriteNode *)makePowerUpButton {
     SKSpriteNode *powerUpNode = [SKSpriteNode spriteNodeWithImageNamed:@"powerUpIcon"];
     
-    powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 50);
-    powerUpNode.zPosition = 17;
-    powerUpNode.xScale = 0.2;
-    powerUpNode.yScale = 0.2;
-    powerUpNode.name = @"powerUp";
+    powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+    powerUpNode.zPosition = HUD_POSITION;
+    [powerUpNode setScale:0.6];
+    powerUpNode.name = @"powerUpButton";
     
     return powerUpNode;
 }
 
-- (void)spawnCloud {
-    SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithImageNamed:@"cloud"];
+- (SKSpriteNode *)makePowerUpBar: (NSString*) imageName{
+    SKSpriteNode *powerUpBarNode = [SKSpriteNode spriteNodeWithImageNamed:imageName];
+    powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+    powerUpBarNode.zPosition = HUD_POSITION;
+    [powerUpBarNode setScale:0.6];
+    return powerUpBarNode;
+
+}
+
+- (SKSpriteNode*) makeEdge{
+    SKSpriteNode* edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
+    edgeNode.position = CGPointMake(30, self.size.height+200);
     
-    [cloud setScale:0.2];
-    cloud.zPosition = 0;
+    SKAction *move = [SKAction moveToY: -200 duration:6];
+    [edgeNode runAction:move];
+    
+    return edgeNode;
+}
+
+- (void)spawnCloud {
+    
+    NSString* imageName = [NSString stringWithFormat:@"cloud%d",arc4random_uniform(2)];
+    
+    SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithImageNamed:imageName];
+    
+    [cloud setScale:0.4];
+    cloud.zPosition = CLOUDS_POSITION;
     
     CGPoint position = CGPointMake(arc4random_uniform(self.frame.size.width), self.frame.size.height);
     
@@ -306,21 +373,39 @@
 
 - (void)spawnEnemy {
     
-    SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithImageNamed:@"enemyBat"];
+    NSMutableArray *batFrames = [NSMutableArray array];
+    SKTextureAtlas *batAtlas = [SKTextureAtlas atlasNamed:@"batImages"];
     
-    [enemy setScale:0.1];
-    enemy.zPosition = 5;
+    long numImages = batAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"bat%d", i];
+        SKTexture *temp = [batAtlas textureNamed:textureName];
+        [batFrames addObject:temp];
+    }
+    
+    SKTexture *temp = batFrames[0];
+    SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithTexture:temp];
+    
+    [enemy setScale:0.5];
+    enemy.zPosition = ENEMY_POSITION;
     enemy.name = @"bat";
     
     CGPoint position = CGPointMake(arc4random_uniform(self.frame.size.width), self.frame.size.height);
     
     enemy.position = position;
+    
     SKAction *move = [SKAction moveTo: mage.position duration:increasingEnemySpeed];
     [enemy runAction:move];
 
     for(int cont = 0; cont < _maxGestureQtd; cont++){
         [enemy addChild:[self makeGesture:enemy.frame]];
     }
+    
+    [enemy runAction:[SKAction repeatActionForever:
+                     [SKAction animateWithTextures:batFrames
+                                      timePerFrame:0.1
+                                            resize:NO
+                                           restore:YES]] withKey:@"flyingInPlaceBat"];
     
     [self addChild:enemy];
     auxiliarIncrement++;
@@ -329,8 +414,9 @@
 - (SKSpriteNode *)makeGesture: (CGRect)enemySize {
     
     SKSpriteNode* gesture = [self randomGestureNode: [self generateGesturesQuantity]];
-    gesture.position = CGPointMake(gesture.position.x, gesture.position.y + 300);
-    gesture.zPosition = 5;
+    gesture.position = CGPointMake(gesture.position.x, gesture.position.y + enemySize.size.height + 40);
+    [gesture setScale:1];
+    gesture.zPosition = ENEMY_POSITION;
     
     return gesture;
 }
@@ -341,7 +427,7 @@
     rect.size.height = 200;
     rect.size.width = 200;
     
-    SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:gestureColors[number] size:rect.size];
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:gestureNames[number]];
     node.name = gestureNames[number];
     
     return node;
@@ -367,27 +453,47 @@
     enemies = [[NSArray alloc]initWithArray:[self objectForKeyedSubscript:@"bat"]];
     
     for (SKSpriteNode* enemy in enemies) {
-        [enemy removeChildrenInArray:[enemy objectForKeyedSubscript:gestureType]];
-        
         
         for (int i=1; i<=4; i++) {
             if ([[enemy children]count] == i) {
                 _scoreTemporary+=10;
             }
         }
+        
+        if([gestureType isEqualToString:@"destroyAll"]){
+            [enemy removeAllChildren];
+            [powerUpButton removeFromParent];
+            _powerUpStage = 0;
+            _destroyedEnemies = 0;
+            [self updatePowerUpBar];
             
+        } else {
+            [enemy removeChildrenInArray:[enemy objectForKeyedSubscript:gestureType]];
+            
+        }
+        
         if ([[enemy children]count] == 0) {
             _scoreTemporary+=10;
             _score+=_scoreTemporary;
             _scoreTemporary=0;
             [enemy removeFromParent];
+            _destroyedEnemies++;
+            
+            if(_destroyedEnemies >= 3 && _powerUpStage < POWERUP_STAGE_MAX){
+                    _powerUpStage++;
+                    _destroyedEnemies = 0;
+                
+                    [self updatePowerUpBar];
+            }
         }
     }
 }
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size WithHighestScore: _newHighestScore];        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        [self stopBackgroundMusic];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
         [self.view presentScene:gameOver transition: reveal];
     }];
@@ -397,6 +503,20 @@
     }
     
     [self runAction:gameOverAction];
+}
+
+- (void) updatePowerUpBar{
+    [powerUpBar removeFromParent];
+    
+    NSString* imageName = [NSString stringWithFormat:@"powerUp%d",_powerUpStage];
+    
+    if(_powerUpStage == POWERUP_STAGE_MAX){
+        powerUpButton = [self makePowerUpButton];
+        [self addChild: powerUpButton];
+    }
+    
+    [self addChild: [self makePowerUpBar:imageName]];
+    
 }
 
 - (void)increaseGesturesQuantity {
@@ -411,14 +531,11 @@
 
 - (void)pauseGame {
     
-    CGSize size = CGSizeMake(self.size.width/2, self.size.height/3);
-    
-    pauseScene = [[GamePausedScene alloc]initWithSize: size];
-    
     SKAction * pauseGame = [SKAction runBlock:^{
         GamePausedScene * myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:myScene transition: reveal];
+        [self pauseBackgroundMusic];
     }];
     
     [pauseButton runAction:pauseGame];
@@ -458,6 +575,28 @@
             }
         }
     }
+}
+
+-(void)stopBackgroundMusic {
+    [musicPlayer stop];
+}
+
+-(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *) type {
+    if ([musicPlayer isPlaying]) {
+        return;
+    }
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:type]];
+    musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    musicPlayer.numberOfLoops = -1;
+    [musicPlayer play];
+}
+
+-(void) pauseBackgroundMusic{
+    [musicPlayer pause];
+}
+
+- (void)resumeBackgroundMusic{
+    [musicPlayer play];
 }
 
 @end

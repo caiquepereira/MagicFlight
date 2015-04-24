@@ -8,10 +8,12 @@
 
 #import "GameMenuScene.h"
 #import "GameScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation GameMenuScene
 {
     SKSpriteNode* playButton;
+    AVAudioPlayer *musicPlayer;
 }
 
 - (instancetype)initWithSize:(CGSize)size{
@@ -21,6 +23,8 @@
         
         playButton = [self makeMenuButton];
         [self addChild:playButton];
+        
+        [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
         
     }
     return self;
@@ -44,13 +48,28 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"playButton"]) {
-        SKAction * startGame =
-        [SKAction runBlock:^{ GameScene * myScene =
-            [[GameScene alloc] initWithSize:self.size]; SKTransition *reveal =
-            [SKTransition flipHorizontalWithDuration:0.5];
-            [self.view presentScene:myScene transition: reveal]; }];
+        SKAction * startGame = [SKAction runBlock:^{
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size];
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            [self stopBackgroundMusic];
+            [self.view presentScene:myScene transition: reveal];
+        }];
         
         [playButton runAction:startGame];
     }
+}
+
+-(void)stopBackgroundMusic {
+    [musicPlayer stop];
+}
+
+-(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *) type {
+    if ([musicPlayer isPlaying]) {
+        return;
+    }
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:type]];
+    musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    musicPlayer.numberOfLoops = -1;
+    [musicPlayer play];
 }
 @end
