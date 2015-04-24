@@ -219,8 +219,8 @@
 
 - (SKLabelNode *)makeScoreLabel {
     
-    //SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithText:@""];
+    SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
+//    SKLabelNode *scoreLabelNode = [SKLabelNode labelNodeWithText:@""];
     
     scoreLabelNode.text = @"";
     scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
@@ -262,7 +262,6 @@
                                        timePerFrame:0.1
                                              resize:NO
                                             restore:YES]] withKey:@"flyingInPlaceMage"];
-    return;
 }
 
 - (SKSpriteNode*) makePauseButton{
@@ -335,21 +334,39 @@
 
 - (void)spawnEnemy {
     
-    SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithImageNamed:@"enemyBat"];
+    NSMutableArray *batFrames = [NSMutableArray array];
+    SKTextureAtlas *batAtlas = [SKTextureAtlas atlasNamed:@"batImages"];
     
-    [enemy setScale:0.1];
+    long numImages = batAtlas.textureNames.count;
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"bat%d", i];
+        SKTexture *temp = [batAtlas textureNamed:textureName];
+        [batFrames addObject:temp];
+    }
+    
+    SKTexture *temp = batFrames[0];
+    SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithTexture:temp];
+    
+    [enemy setScale:0.5];
     enemy.zPosition = ENEMY_POSITION;
     enemy.name = @"bat";
     
     CGPoint position = CGPointMake(arc4random_uniform(self.frame.size.width), self.frame.size.height);
     
     enemy.position = position;
+    
     SKAction *move = [SKAction moveTo: mage.position duration:increasingEnemySpeed];
     [enemy runAction:move];
 
     for(int cont = 0; cont < _maxGestureQtd; cont++){
         [enemy addChild:[self makeGesture:enemy.frame]];
     }
+    
+    [enemy runAction:[SKAction repeatActionForever:
+                     [SKAction animateWithTextures:batFrames
+                                      timePerFrame:0.1
+                                            resize:NO
+                                           restore:YES]] withKey:@"flyingInPlaceBat"];
     
     [self addChild:enemy];
     auxiliarIncrement++;
@@ -358,8 +375,8 @@
 - (SKSpriteNode *)makeGesture: (CGRect)enemySize {
     
     SKSpriteNode* gesture = [self randomGestureNode: [self generateGesturesQuantity]];
-    gesture.position = CGPointMake(gesture.position.x, gesture.position.y + 300);
-    [gesture setScale:3];
+    gesture.position = CGPointMake(gesture.position.x, gesture.position.y + enemySize.size.height + 40);
+    [gesture setScale:1];
     gesture.zPosition = ENEMY_POSITION;
     
     return gesture;

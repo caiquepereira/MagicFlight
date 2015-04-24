@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2958B3B21AEAAD5D00FA726C /* batImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2958B3B11AEAAD5D00FA726C /* batImages.atlas */; };
 		296126E41AE97F1700915CEB /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 296126E31AE97F1700915CEB /* gameMusic.mp3 */; };
 		296126E71AE981FA00915CEB /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 296126E61AE981FA00915CEB /* menuMusic.mp3 */; };
 		29B86BAC1AE81DE7000C415B /* EnglishTowne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29B86BAB1AE81DE7000C415B /* EnglishTowne.ttf */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2958B3B11AEAAD5D00FA726C /* batImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = batImages.atlas; sourceTree = "<group>"; };
 		296126E31AE97F1700915CEB /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameMusic.mp3; path = ../gameMusic.mp3; sourceTree = "<group>"; };
 		296126E61AE981FA00915CEB /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
 		29B86BAB1AE81DE7000C415B /* EnglishTowne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnglishTowne.ttf; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		56D67B4F1AD6EAF90032CAA3 /* MagicFlight */ = {
 			isa = PBXGroup;
 			children = (
+				2958B3B11AEAAD5D00FA726C /* batImages.atlas */,
 				29CC22B61AE99D5C00BAC5AC /* mageImages.atlas */,
 				296126E51AE981E700915CEB /* Music */,
 				56158A021AE19EDC00CAF1A6 /* Gestures */,
@@ -298,6 +301,7 @@
 				56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */,
 				29B86BAC1AE81DE7000C415B /* EnglishTowne.ttf in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
+				2958B3B21AEAAD5D00FA726C /* batImages.atlas in Resources */,
 				296126E71AE981FA00915CEB /* menuMusic.mp3 in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 				296126E41AE97F1700915CEB /* gameMusic.mp3 in Resources */,

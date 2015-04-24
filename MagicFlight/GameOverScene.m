@@ -90,7 +90,8 @@
 
 - (SKLabelNode*) makeScoreLabel{
     
-    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+//    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
     scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
     scoreLabelNode.zPosition = 15;
