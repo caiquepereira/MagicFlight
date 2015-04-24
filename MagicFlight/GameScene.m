@@ -16,8 +16,9 @@
 #define CLOUDS_POSITION 5
 #define BACKGROUND_POSITION 0
 
-#define POWERUP_STAGE_MAX 5
+#define ENEMY_NUMBER_TO_POWER_UP 20
 
+#define POWERUP_STAGE_MAX 5
 
 #define HORIZ_SWIPE_DRAG_MIN_H  12
 #define VERT_SWIPE_DRAG_MAX_H   20
@@ -65,11 +66,12 @@
         
         //colocar o fundo do gameplay aqui (arte)
         self.backgroundColor = [SKColor whiteColor];
+        self.view.ignoresSiblingOrder = YES;
         
         _maxGestureQtd = 1;
         _score = 0;
         enemyNumber = 0;
-        spawnEnemiesQuatity = 4.5;
+        spawnEnemiesQuatity = 4;
         increasingEnemySpeed = 6;
         _score = 0;
         _scoreTemporary = 0;
@@ -114,12 +116,13 @@
         }];
         
         //Increasing quantity enemies on screen
-        SKAction *increaseEnemyQuantity = [SKAction waitForDuration:2];
+        SKAction *increaseEnemyQuantity = [SKAction waitForDuration:5];
         SKAction *increaseEnemy = [SKAction runBlock:^{
+            
             [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[waitEnemy, spawnEnemy]]]];
-            if (spawnEnemiesQuatity > 0 && increasingEnemySpeed > 0) {
+            if (spawnEnemiesQuatity > 0 && increasingEnemySpeed > 1) {
                 spawnEnemiesQuatity -= 0.02;
-                increasingEnemySpeed -= 0.01;
+                increasingEnemySpeed -= 0.1;
             }
             
             if (auxiliarIncrementGestureNumberInEnemy%12 == 0)
@@ -183,6 +186,8 @@
     lineNode.path = pathToDraw;
     lineNode.strokeColor = [SKColor orangeColor];
     lineNode.lineWidth = 10;
+    lineNode.zPosition = HUD_POSITION;
+    
     [self addChild:lineNode];
 }
 
@@ -289,7 +294,7 @@
     mageNode.position = CGPointMake(self.frame.size.width/2, -300);
     [mageNode setScale:0.4];
     
-    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 70) duration:2];
+    SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 70) duration:4];
     [mageNode runAction:entry];
     
     return mageNode;
@@ -478,7 +483,7 @@
             [enemy removeFromParent];
             _destroyedEnemies++;
             
-            if(_destroyedEnemies >= 3 && _powerUpStage < POWERUP_STAGE_MAX){
+            if(_destroyedEnemies >= ENEMY_NUMBER_TO_POWER_UP && _powerUpStage < POWERUP_STAGE_MAX){
                 _powerUpStage++;
                 _destroyedEnemies = 0;
                 
