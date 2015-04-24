@@ -23,6 +23,8 @@
 		56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B641AD6EAF90032CAA3 /* LaunchScreen.xib */; };
 		56D67B721AD6EAF90032CAA3 /* MagicFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */; };
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
+		8FC896511AEAE0C900832C7D /* GameMenuSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC896501AEAE0C900832C7D /* GameMenuSceneViewController.m */; };
+		8FC896531AEAE24700832C7D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC896521AEAE24700832C7D /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,9 @@
 		56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicFlightTests.m; sourceTree = "<group>"; };
 		56EFFE0F1AE598DC0096411D /* GamePausedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePausedScene.h; sourceTree = "<group>"; };
 		56EFFE101AE598DC0096411D /* GamePausedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausedScene.m; sourceTree = "<group>"; };
+		8FC8964F1AEAE0C900832C7D /* GameMenuSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuSceneViewController.h; sourceTree = "<group>"; };
+		8FC896501AEAE0C900832C7D /* GameMenuSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuSceneViewController.m; sourceTree = "<group>"; };
+		8FC896521AEAE24700832C7D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC896531AEAE24700832C7D /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +118,7 @@
 		56D67B441AD6EAF90032CAA3 = {
 			isa = PBXGroup;
 			children = (
+				8FC896521AEAE24700832C7D /* GameKit.framework */,
 				294354F61AEAC4070094BAD5 /* Resources */,
 				56D67B4F1AD6EAF90032CAA3 /* MagicFlight */,
 				56D67B6E1AD6EAF90032CAA3 /* MagicFlightTests */,
@@ -143,6 +150,8 @@
 				56EFFE101AE598DC0096411D /* GamePausedScene.m */,
 				56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */,
 				56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */,
+				8FC8964F1AEAE0C900832C7D /* GameMenuSceneViewController.h */,
+				8FC896501AEAE0C900832C7D /* GameMenuSceneViewController.m */,
 				56B3D87F1AE1ABBE00DB9715 /* GameOverScene.h */,
 				56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */,
 				56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */,
@@ -229,6 +238,12 @@
 				TargetAttributes = {
 					56D67B4C1AD6EAF90032CAA3 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 259HA4RXT4;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					56D67B6A1AD6EAF90032CAA3 = {
 						CreatedOnToolsVersion = 6.2;
@@ -289,6 +304,7 @@
 				56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */,
 				56D67B561AD6EAF90032CAA3 /* AppDelegate.m in Sources */,
 				56D67B591AD6EAF90032CAA3 /* GameScene.m in Sources */,
+				8FC896511AEAE0C900832C7D /* GameMenuSceneViewController.m in Sources */,
 				56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */,
 				56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */,
 				56D67B531AD6EAF90032CAA3 /* main.m in Sources */,
@@ -413,10 +429,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MagicFlight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -425,10 +444,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MagicFlight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

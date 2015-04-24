@@ -6,14 +6,20 @@
 //
 //
 
+
+#import <AVFoundation/AVFoundation.h>
 #import "GameMenuScene.h"
 #import "GameScene.h"
-#import <AVFoundation/AVFoundation.h>
+#import "GameMenuSceneViewController.h"
 
 @implementation GameMenuScene
 {
     SKSpriteNode* playButton;
     AVAudioPlayer *musicPlayer;
+    SKSpriteNode* gameCenterButton;
+    NSString *leaderboardIdentifier;
+    
+    GameMenuSceneViewController *menuViewController;
 }
 
 - (instancetype)initWithSize:(CGSize)size{
@@ -25,6 +31,12 @@
         [self addChild:playButton];
         
         [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        
+        gameCenterButton = [self makeGameCenterButton];
+        [self addChild:gameCenterButton];
+        
+        
+        leaderboardIdentifier=@"Best_Score_Of_The_App";
         
     }
     return self;
@@ -57,6 +69,25 @@
         
         [playButton runAction:startGame];
     }
+    
+    
+    
+    if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
+        menuViewController = [[GameMenuSceneViewController alloc]init];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:menuViewController
+                                                                                                 animated:YES completion:nil];
+    }else if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated == NO){
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                          message:@"You are not logged in Game Center."
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+    }
+
+    
+    
 }
 
 -(void)stopBackgroundMusic {
@@ -72,4 +103,21 @@
     musicPlayer.numberOfLoops = -1;
     [musicPlayer play];
 }
+
+
+- (SKSpriteNode*) makeGameCenterButton{
+    
+    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+    
+    menuNode.name = @"gameCenterButton";
+    
+    [menuNode setScale:0.2];
+    menuNode.position = CGPointMake(self.size.width*4/5,self.size.height/5);
+    
+    return menuNode;
+}
+
+
+
+
 @end
