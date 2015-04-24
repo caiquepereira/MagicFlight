@@ -20,8 +20,12 @@
 - (instancetype)initWithSize:(CGSize)size andGameScene: (GameScene*) previousGameScene{
     if(self = [super initWithSize:size]){
         gameScene = previousGameScene;
-        self.backgroundColor = [UIColor whiteColor];
-        //        self.position = self;
+        
+        SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"windowBackground"];
+        [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
+        backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [self addChild:backgroundImage];
+        
         
         playButton = [self makePlayButton];
         [self addChild:playButton];

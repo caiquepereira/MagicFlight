@@ -12,6 +12,7 @@
 		294354F51AEAC3C30094BAD5 /* mageImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 294354F21AEAC3C30094BAD5 /* mageImages.atlas */; };
 		294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */; };
 		294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */; };
+		2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 294354F81AEAC4480094BAD5 /* EnglishTowne.ttf */; };
 		56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */; };
 		56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */; };
 		56D67B531AD6EAF90032CAA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B521AD6EAF90032CAA3 /* main.m */; };
@@ -277,6 +278,7 @@
 				56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */,
 				294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */,
 				294354F41AEAC3C30094BAD5 /* Images.xcassets in Resources */,
+				2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 				294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */,

@@ -15,6 +15,7 @@
 @implementation GameMenuScene
 {
     SKSpriteNode* playButton;
+    SKSpriteNode* appName;
     AVAudioPlayer *musicPlayer;
     SKSpriteNode* gameCenterButton;
     NSString *leaderboardIdentifier;
@@ -25,7 +26,11 @@
 - (instancetype)initWithSize:(CGSize)size{
     if(self = [super initWithSize:size]){
         
-        self.backgroundColor = [UIColor whiteColor];
+        SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
+        [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
+        backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        
+        [self addChild:backgroundImage];
         
         playButton = [self makeMenuButton];
         [self addChild:playButton];
@@ -44,9 +49,9 @@
 
 - (SKSpriteNode*) makeMenuButton{
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"startButton"];
     
-    menuNode.name = @"playButton";
+    menuNode.name = @"startButton";
     
     [menuNode setScale:0.5];
     menuNode.position = CGPointMake(self.size.width/2,self.size.height/2);
@@ -59,7 +64,7 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
-    if ([node.name isEqualToString:@"playButton"]) {
+    if ([node.name isEqualToString:@"startButton"]) {
         SKAction * startGame = [SKAction runBlock:^{
             GameScene * myScene = [[GameScene alloc] initWithSize:self.size];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];

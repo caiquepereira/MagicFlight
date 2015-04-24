@@ -322,7 +322,7 @@
 
 - (SKSpriteNode *)makeBackground {
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
-    
+    [backgroundNode setScale:2];
     backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     return backgroundNode;
 }
