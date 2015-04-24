@@ -16,11 +16,11 @@
     SKSpriteNode* retryButton;
     SKSpriteNode* menuButton;
     SKLabelNode* scoreLabel;
-
+    
 }
 
 - (instancetype)initWithSize:(CGSize)size
-            WithHighestScore: (int) score{
+             andHighestScore: (int) score{
     if(self = [super initWithSize:size]){
         
         _scoreLbl=score;
@@ -90,7 +90,8 @@
 
 - (SKLabelNode*) makeScoreLabel{
     
-    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    //    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
     scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
     scoreLabelNode.zPosition = 15;
@@ -101,7 +102,5 @@
     
     return scoreLabelNode;
 }
-
-
 
 @end

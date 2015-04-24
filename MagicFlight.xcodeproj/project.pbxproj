@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294354F31AEAC3C30094BAD5 /* batImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 294354F01AEAC3C30094BAD5 /* batImages.atlas */; };
+		294354F41AEAC3C30094BAD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294354F11AEAC3C30094BAD5 /* Images.xcassets */; };
+		294354F51AEAC3C30094BAD5 /* mageImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 294354F21AEAC3C30094BAD5 /* mageImages.atlas */; };
+		294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */; };
+		294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */; };
 		56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */; };
 		56B3D8821AE1ABBE00DB9715 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */; };
 		56D67B531AD6EAF90032CAA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B521AD6EAF90032CAA3 /* main.m */; };
@@ -15,7 +20,6 @@
 		56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */; };
 		56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */; };
 		56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */; };
-		56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B621AD6EAF90032CAA3 /* Images.xcassets */; };
 		56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B641AD6EAF90032CAA3 /* LaunchScreen.xib */; };
 		56D67B721AD6EAF90032CAA3 /* MagicFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */; };
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
@@ -32,6 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		294354F01AEAC3C30094BAD5 /* batImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = batImages.atlas; sourceTree = "<group>"; };
+		294354F11AEAC3C30094BAD5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		294354F21AEAC3C30094BAD5 /* mageImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mageImages.atlas; sourceTree = "<group>"; };
+		294354F81AEAC4480094BAD5 /* EnglishTowne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnglishTowne.ttf; sourceTree = "<group>"; };
+		294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
+		294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
 		56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuScene.h; sourceTree = "<group>"; };
 		56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuScene.m; sourceTree = "<group>"; };
 		56B3D87F1AE1ABBE00DB9715 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
@@ -47,7 +57,6 @@
 		56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		56D67B601AD6EAF90032CAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		56D67B621AD6EAF90032CAA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		56D67B651AD6EAF90032CAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		56D67B6B1AD6EAF90032CAA3 /* MagicFlightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicFlightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D67B701AD6EAF90032CAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,9 +83,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		294354F61AEAC4070094BAD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				294354F71AEAC43C0094BAD5 /* Fonts */,
+			);
+			name = Resources;
+			path = MagicFlight;
+			sourceTree = "<group>";
+		};
+		294354F71AEAC43C0094BAD5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				294354F81AEAC4480094BAD5 /* EnglishTowne.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		294354F91AEAC48C0094BAD5 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */,
+				294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
 		56D67B441AD6EAF90032CAA3 = {
 			isa = PBXGroup;
 			children = (
+				294354F61AEAC4070094BAD5 /* Resources */,
 				56D67B4F1AD6EAF90032CAA3 /* MagicFlight */,
 				56D67B6E1AD6EAF90032CAA3 /* MagicFlightTests */,
 				56D67B4E1AD6EAF90032CAA3 /* Products */,
@@ -95,6 +131,10 @@
 		56D67B4F1AD6EAF90032CAA3 /* MagicFlight */ = {
 			isa = PBXGroup;
 			children = (
+				294354F91AEAC48C0094BAD5 /* Music */,
+				294354F01AEAC3C30094BAD5 /* batImages.atlas */,
+				294354F11AEAC3C30094BAD5 /* Images.xcassets */,
+				294354F21AEAC3C30094BAD5 /* mageImages.atlas */,
 				56D67B541AD6EAF90032CAA3 /* AppDelegate.h */,
 				56D67B551AD6EAF90032CAA3 /* AppDelegate.m */,
 				56D67B571AD6EAF90032CAA3 /* GameScene.h */,
@@ -109,7 +149,6 @@
 				56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */,
 				56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */,
 				56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */,
-				56D67B621AD6EAF90032CAA3 /* Images.xcassets */,
 				56D67B641AD6EAF90032CAA3 /* LaunchScreen.xib */,
 				56D67B501AD6EAF90032CAA3 /* Supporting Files */,
 			);
@@ -222,9 +261,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D67B661AD6EAF90032CAA3 /* LaunchScreen.xib in Resources */,
-				56D67B631AD6EAF90032CAA3 /* Images.xcassets in Resources */,
+				294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */,
+				294354F41AEAC3C30094BAD5 /* Images.xcassets in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
+				294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */,
+				294354F31AEAC3C30094BAD5 /* batImages.atlas in Resources */,
+				294354F51AEAC3C30094BAD5 /* mageImages.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
