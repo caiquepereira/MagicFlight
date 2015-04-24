@@ -63,10 +63,18 @@
         [playButton runAction:startGame];
     }
     
-    if ([node.name isEqualToString:@"gameCenterButton"]) {
+    if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
         menuViewController = [[GameMenuSceneViewController alloc]init];
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:menuViewController
                                                                                                  animated:YES completion:nil];
+    }else if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated == NO){
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                          message:@"You are not logged in Game Center."
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
     }
 }
     
