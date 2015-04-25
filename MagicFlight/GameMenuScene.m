@@ -97,8 +97,8 @@
     
     SKSpriteNode *audioActiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioActive"];
     
-    audioActive.name = @"audioActive";
-    audioActive.zPosition = 2;
+    audioActiveNode.name = @"audioActive";
+    //audioActiveNode.zPosition = 2;
     
     [audioActiveNode setScale:1];
     audioActiveNode.position = CGPointMake(playButton.size.width - 140, playButton.size.height + 20);
@@ -110,7 +110,7 @@
     
     SKSpriteNode *audioInactiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioInactive"];
     
-    audioInactive.name = @"audioInactive";
+    audioInactiveNode.name = @"audioInactive";
     
     [audioInactiveNode setScale:1.6];
     audioInactiveNode.position = CGPointMake(playButton.size.width - 150, playButton.size.height + 20);
@@ -135,7 +135,7 @@
     }
     
     if ([node.name isEqualToString:@"audioInactive"]) {
-        NSLog(@"EU");
+        NSLog(@"Botao clicado");
     }
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
