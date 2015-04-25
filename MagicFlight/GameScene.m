@@ -56,6 +56,7 @@
     float increasingEnemySpeed;
     int _powerUpStage;
     int _destroyedEnemies;
+    BOOL playerBrokeScore;
     GameViewController * viewController;
 }
 
@@ -499,18 +500,27 @@
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
+        playerBrokeScore=NO;
+        
+        if(_score > _newHighestScore) {
+            _newHighestScore=_score;
+            [self saveNewHighestScoreInPlist];
+            viewController = [[GameViewController alloc]init];
+            [viewController reportScore:_score];
+            playerBrokeScore=YES;
+        }
+
+        
         [self stopBackgroundMusic];
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore andScore:_score];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore andScore:_score andBrokeScore: playerBrokeScore];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        
+
         
         [self.view presentScene:gameOver transition: reveal];
     }];
     
-    if(_score > _newHighestScore) {
-        [self saveNewHighestScoreInPlist];
-        viewController = [[GameViewController alloc]init];
-        [viewController reportScore:_score];
-    }
+    
     
     [self runAction:gameOverAction];
 }
@@ -562,7 +572,7 @@
         [dataToSaveInPlist removeAllObjects];
     }
     
-    _newHighestScore=_score;
+    
     [dataToSaveInPlist addObject: [NSString stringWithFormat:@"%d", _newHighestScore]];
     
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.plist"];
