@@ -13,16 +13,17 @@
 #import "GameMenuSceneViewController.h"
 
 @implementation GameMenuScene {
-    SKSpriteNode *playButton;
+    SKSpriteNode *startButton;
     SKSpriteNode *logo;
-    SKSpriteNode *audioActive;
-    SKSpriteNode *audioInactive;
+    SKSpriteNode *audioControl;
     AVAudioPlayer *musicPlayer;
     SKSpriteNode *gameCenterButton;
     NSString *leaderboardIdentifier;
     GameScene *gameScene;
     
     GameMenuSceneViewController *menuViewController;
+    
+    BOOL soundEnabled;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -34,17 +35,16 @@
         
         [self addChild:backgroundImage];
         
-        playButton = [self makeMenuButton];
-        [self addChild:playButton];
+        startButton = [self makeStartButton];
+        [self addChild:startButton];
         
         logo = [self makeLogo];
         [self addChild:logo];
         
-//        audioActive = [self makeAudioIconActived];
-//        [self addChild:audioActive];
+        audioControl = [self makeAudioIconActived];
+        [self addChild:audioControl];
         
-        audioInactive = [self makeAudioIconInactive];
-        [self addChild:audioInactive];
+        soundEnabled = YES;
         
         [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
         
@@ -59,17 +59,17 @@
     return self;
 }
 
-- (SKSpriteNode *) makeMenuButton {
+- (SKSpriteNode *) makeStartButton {
     
-    SKSpriteNode *menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"startButton"];
+    SKSpriteNode *startNode = [SKSpriteNode spriteNodeWithImageNamed:@"startButton"];
     
-    menuNode.name = @"startButton";
-    menuNode.zPosition = 2;
+    startNode.name = @"startButton";
+    startNode.zPosition = 2;
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    [startNode setScale:0.5];
+    startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
     
-    return menuNode;
+    return startNode;
 }
 
 - (SKSpriteNode *) makeLogo {
@@ -91,7 +91,7 @@
     gameCenterNode.name = @"gameCenterButton";
     
     [gameCenterNode setScale:0.28];
-    gameCenterNode.position = CGPointMake(playButton.size.width + logo.size.height/2, playButton.size.height + 20);
+    gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2, startButton.size.height + 20);
     
     return gameCenterNode;
 }
@@ -100,11 +100,11 @@
     
     SKSpriteNode *audioActiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioActive"];
     
-    audioActive.name = @"audioActive";
-    audioActive.zPosition = 2;
+    audioActiveNode.name = @"audioActive";
+    audioActiveNode.zPosition = 2;
     
     [audioActiveNode setScale:1];
-    audioActiveNode.position = CGPointMake(playButton.size.width - 140, playButton.size.height + 20);
+    audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
     
     return audioActiveNode;
 }
@@ -113,10 +113,10 @@
     
     SKSpriteNode *audioInactiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioInactive"];
     
-    audioInactive.name = @"audioInactive";
+    audioInactiveNode.name = @"audioInactive";
     
     [audioInactiveNode setScale:1.6];
-    audioInactiveNode.position = CGPointMake(playButton.size.width - 150, playButton.size.height + 20);
+    audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
     
     return audioInactiveNode;
 }
@@ -134,7 +134,7 @@
             [self.view presentScene:myScene transition: reveal];
         }];
         
-        [playButton runAction:startGame];
+        [startButton runAction:startGame];
     }
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
@@ -149,6 +149,32 @@
                                                 otherButtonTitles:nil];
         
         [message show];
+    }
+    
+    if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
+        SKAction *soundControl = [SKAction runBlock:^{
+            [self soundControl];
+        }];
+        
+        [self runAction:soundControl];
+    }
+}
+
+- (void) soundControl{
+    if(soundEnabled){
+        [audioControl removeFromParent];
+        audioControl = [self makeAudioIconInactive];
+        [self addChild: audioControl];
+        [self stopBackgroundMusic];
+        soundEnabled = NO;
+        
+    } else {
+        [audioControl removeFromParent];
+        audioControl = [self makeAudioIconActived];
+        [self addChild: audioControl];        
+        [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        soundEnabled = YES;
+    
     }
 }
 

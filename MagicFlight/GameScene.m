@@ -509,13 +509,14 @@
             [viewController reportScore:_score];
             playerBrokeScore=YES;
         }
-
         
         [self stopBackgroundMusic];
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore andScore:_score andBrokeScore: playerBrokeScore];
-        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize: self.size
+                                                      andHighestScore: _newHighestScore
+                                                             andScore: _score
+                                                        andBrokeScore: playerBrokeScore];
         
-
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
         [self.view presentScene:gameOver transition: reveal];
     }];
