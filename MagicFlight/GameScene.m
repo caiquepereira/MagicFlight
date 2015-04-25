@@ -57,19 +57,23 @@
     int _powerUpStage;
     int _destroyedEnemies;
     BOOL playerBrokeScore;
+    BOOL playSounds;
     GameViewController * viewController;
 }
 
--(id)initWithSize:(CGSize)size {
+-(id)initWithSize:(CGSize)size
+         andSound:(BOOL)soundEnabled{
     
     
     if (self = [super initWithSize:size]) {
+        
+        playSounds = soundEnabled;
+        
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
                         @"swipeUp",
                         @"swipeDown", nil];
         
-        //colocar o fundo do gameplay aqui (arte)
         self.backgroundColor = [SKColor whiteColor];
         self.view.ignoresSiblingOrder = YES;
         
@@ -138,7 +142,9 @@
         
         [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
         
-        [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
+        if(playSounds){
+            [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
+        }
     }
     
     return self;
@@ -514,7 +520,8 @@
         GameOverScene* gameOver = [[GameOverScene alloc] initWithSize: self.size
                                                       andHighestScore: _newHighestScore
                                                              andScore: _score
-                                                        andBrokeScore: playerBrokeScore];
+                                                        andBrokeScore: playerBrokeScore
+                                                      andSoundEnabled: playSounds];
         
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         

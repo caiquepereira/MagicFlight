@@ -11,6 +11,7 @@
 
 @interface GamePausedScene : SKScene
 
-- (GamePausedScene*)initWithSize:(CGSize)size andGameScene: (GameScene*) previousGameScene;
+- (GamePausedScene*)initWithSize:(CGSize)size
+                    andGameScene:(GameScene*) previousGameScene;
 
 @end
