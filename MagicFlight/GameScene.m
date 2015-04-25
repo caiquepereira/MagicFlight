@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameOverScene.h"
 #import "GamePausedScene.h"
+#import "GameViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 #define HUD_POSITION 15
@@ -55,9 +56,12 @@
     float increasingEnemySpeed;
     int _powerUpStage;
     int _destroyedEnemies;
+    GameViewController * viewController;
 }
 
 -(id)initWithSize:(CGSize)size {
+    
+    
     if (self = [super initWithSize:size]) {
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
@@ -504,6 +508,8 @@
     
     if(_score > _newHighestScore) {
         [self saveNewHighestScoreInPlist];
+        viewController = [[GameViewController alloc]init];
+        [viewController reportScore:_score];
     }
     
     [self runAction:gameOverAction];
@@ -547,6 +553,7 @@
 }
 
 - (void)saveNewHighestScoreInPlist {
+     
     
     if(dataToSaveInPlist==nil) {
         dataToSaveInPlist = [[NSMutableArray alloc]init];
