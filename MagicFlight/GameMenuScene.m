@@ -64,7 +64,7 @@
 
 - (SKSpriteNode*) makeLogo{
     
-    SKSpriteNode* logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"logo"];
+    SKSpriteNode* logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"LOGO"];
     
     logoNode.name = @"logo";
     
@@ -126,14 +126,14 @@
 
 - (SKSpriteNode*) makeGameCenterButton{
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+    SKSpriteNode* gameCenterNode = [SKSpriteNode spriteNodeWithImageNamed:@"gameCenterButton"];
     
-    menuNode.name = @"gameCenterButton";
+    gameCenterNode.name = @"gameCenterButton";
     
-    [menuNode setScale:0.2];
-    menuNode.position = CGPointMake(self.size.width*4/5,self.size.height/5);
+    [gameCenterNode setScale:0.28];
+    gameCenterNode.position = CGPointMake(self.size.width * 6/7,self.size.height/7);
     
-    return menuNode;
+    return gameCenterNode;
 }
 
 
