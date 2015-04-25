@@ -41,6 +41,9 @@
         
         [self makeScoreLabel];
         
+        [self runAction:[SKAction playSoundFileNamed:@"gameOverMusic.mp3" waitForCompletion:YES]];
+
+        
     }
     return self;
 }
