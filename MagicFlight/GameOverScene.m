@@ -21,8 +21,11 @@
 
 - (instancetype)initWithSize:(CGSize)size
              andHighestScore: (int) highestScore
-                    andScore: (int) matchScore{
+                    andScore: (int) matchScore
+               andBrokeScore: (BOOL) brokeScore{
    
+    _playerBrokeScore=brokeScore;
+    
     if(self = [super initWithSize:size]){
         
         [self setHighestScore:highestScore];
@@ -40,8 +43,9 @@
         [self addChild:menuButton];
         
         [self makeScoreLabel];
-        
     }
+    
+    
     return self;
 }
 
@@ -111,7 +115,7 @@
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
     newHighScoreLabel.fontSize = 30;
-    newHighScoreLabel.text = [self newHighScore] ? [NSString stringWithFormat:@"New HighScore!"] :
+    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"] :
                                                    [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
     
     [self addChild:newHighScoreLabel];
@@ -126,9 +130,5 @@
     [self addChild:scoreLabelNode];
 }
 
-- (BOOL) newHighScore {
-    return [self matchScore] == [self highestScore];
-
-}
-
+\
 @end
