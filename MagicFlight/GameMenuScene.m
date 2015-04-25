@@ -22,11 +22,14 @@
     
     GameMenuSceneViewController *menuViewController;
     
-    BOOL soundEnabled;
+    BOOL playSound;
 }
 
-- (instancetype)initWithSize:(CGSize)size {
+- (instancetype)initWithSize:(CGSize)size
+             andSoundEnabled:(BOOL)soundEnabled{
+    
     if(self = [super initWithSize:size]){
+        playSound = soundEnabled;
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
         [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
@@ -40,12 +43,14 @@
         logo = [self makeLogo];
         [self addChild:logo];
         
-        audioControl = [self makeAudioIconActived];
-        [self addChild:audioControl];
-        
-        soundEnabled = YES;
-        
-        [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        if (playSound){
+            audioControl = [self makeAudioIconActived];
+            [self addChild:audioControl];
+            [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        } else {
+            audioControl = [self makeAudioIconInactive];
+            [self addChild:audioControl];
+        }
         
         gameCenterButton = [self makeGameCenterButton];
         [self addChild:gameCenterButton];
@@ -125,17 +130,13 @@
     
     if ([node.name isEqualToString:@"startButton"]) {
         SKAction *startGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size];
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self stopBackgroundMusic];
             [self.view presentScene:myScene transition: reveal];
         }];
         
         [startButton runAction:startGame];
-    }
-    
-    if ([node.name isEqualToString:@"audioInactive"]) {
-        NSLog(@"Botao clicado");
     }
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
@@ -162,19 +163,19 @@
 }
 
 - (void) soundControl{
-    if(soundEnabled){
+    if(playSound){
         [audioControl removeFromParent];
         audioControl = [self makeAudioIconInactive];
         [self addChild: audioControl];
         [self stopBackgroundMusic];
-        soundEnabled = NO;
+        playSound = NO;
         
     } else {
         [audioControl removeFromParent];
         audioControl = [self makeAudioIconActived];
         [self addChild: audioControl];        
         [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
-        soundEnabled = YES;
+        playSound = YES;
     
     }
 }

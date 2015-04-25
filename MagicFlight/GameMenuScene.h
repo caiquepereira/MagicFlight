@@ -15,4 +15,7 @@
 
 @interface GameMenuScene : SKScene
 
+- (instancetype)initWithSize:(CGSize)size
+             andSoundEnabled:(BOOL)soundEnabled;
+
 @end

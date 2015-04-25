@@ -17,6 +17,6 @@
 - (instancetype)initWithSize:(CGSize)size
                andHighestScore: (int) highestScore
                       andScore: (int) matchScore
-               andBrokeScore: (BOOL) brokeScore;
-
+               andBrokeScore: (BOOL) brokeScore
+             andSoundEnabled: (BOOL) soundEnabled;
 @end

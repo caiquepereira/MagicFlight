@@ -17,7 +17,8 @@
     GameScene* gameScene;
 }
 
-- (instancetype)initWithSize:(CGSize)size andGameScene: (GameScene*) previousGameScene{
+- (instancetype)initWithSize:(CGSize)size
+                andGameScene:(GameScene*) previousGameScene{
     if(self = [super initWithSize:size]){
         gameScene = previousGameScene;
         

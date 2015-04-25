@@ -17,5 +17,4 @@
 -(void)authenticateLocalPlayer;
 -(void)reportScore: (int) scoreValue;
 
-
 @end
