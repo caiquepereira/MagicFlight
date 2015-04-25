@@ -496,7 +496,7 @@
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
         [self stopBackgroundMusic];
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore andScore:_score];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
         [self.view presentScene:gameOver transition: reveal];

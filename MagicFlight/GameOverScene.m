@@ -20,18 +20,26 @@
 }
 
 - (instancetype)initWithSize:(CGSize)size
-             andHighestScore: (int) score{
+             andHighestScore: (int) highestScore
+                    andScore: (int) matchScore{
+   
     if(self = [super initWithSize:size]){
         
-        _scoreLbl=score;
+        [self setHighestScore:highestScore];
+        [self setMatchScore:matchScore];
         
-        
+        SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"windowBackground"];
+        [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
+        backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [self addChild:backgroundImage];
+       
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
         
         menuButton = [self makeMenuButton];
         [self addChild:menuButton];
-        [self addChild: [self makeScoreLabel]];
+        
+        [self makeScoreLabel];
         
     }
     return self;
@@ -88,19 +96,39 @@
     }
 }
 
-- (SKLabelNode*) makeScoreLabel{
+- (void) makeScoreLabel{
     
-    //    SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithText: @""];
+    SKLabelNode* gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
+    gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 250);
+    gameOverLabel.zPosition = 15;
+    gameOverLabel.color = [UIColor whiteColor];
+    gameOverLabel.fontSize = 30;
+    gameOverLabel.text = @"Game Over!";
+    [self addChild:gameOverLabel];
+    
+    SKLabelNode* newHighScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
+    newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+    newHighScoreLabel.zPosition = 15;
+    newHighScoreLabel.color = [UIColor whiteColor];
+    newHighScoreLabel.fontSize = 30;
+    newHighScoreLabel.text = [self newHighScore] ? [NSString stringWithFormat:@"New HighScore!"] :
+                                                   [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
+    
+    [self addChild:newHighScoreLabel];
+    
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    
-    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 150);
     scoreLabelNode.zPosition = 15;
     scoreLabelNode.fontColor = [UIColor whiteColor];
     scoreLabelNode.fontSize = 30;
+    scoreLabelNode.text = [[NSString alloc]initWithFormat:@"HighScore: %d",[self highestScore]];
     
-    scoreLabelNode.text = [[NSString alloc]initWithFormat:@"%d",_scoreLbl];
-    
-    return scoreLabelNode;
+    [self addChild:scoreLabelNode];
+}
+
+- (BOOL) newHighScore {
+    return [self matchScore] == [self highestScore];
+
 }
 
 @end
