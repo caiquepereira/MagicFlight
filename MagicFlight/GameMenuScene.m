@@ -20,7 +20,6 @@
     AVAudioPlayer *musicPlayer;
     SKSpriteNode *gameCenterButton;
     NSString *leaderboardIdentifier;
-    GameScene *gameScene;
     
     GameMenuSceneViewController *menuViewController;
 }
@@ -50,8 +49,6 @@
         
         gameCenterButton = [self makeGameCenterButton];
         [self addChild:gameCenterButton];
-        
-        gameScene = [[GameScene alloc]init];
         
         leaderboardIdentifier=@"Best_Score_Of_The_App";
         
@@ -135,6 +132,10 @@
         }];
         
         [playButton runAction:startGame];
+    }
+    
+    if ([node.name isEqualToString:@"audioInactive"]) {
+        NSLog(@"EU");
     }
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
