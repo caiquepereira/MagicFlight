@@ -63,8 +63,8 @@
     
     menuNode.name = @"menuButton";
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2,menuNode.size.height - 8);
+    [menuNode setScale:0.7];
+    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
     
     return menuNode;
 }
