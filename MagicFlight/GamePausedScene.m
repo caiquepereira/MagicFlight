@@ -44,7 +44,7 @@
     
     playNode.name = @"playButton";
     
-    [playNode setScale:0.2];
+    [playNode setScale:0.7];
     playNode.position = CGPointMake(self.size.width/2,self.size.height/2);
     
     return playNode;
@@ -56,7 +56,7 @@
     
     menuNode.name = @"menuButton";
     
-    [menuNode setScale:0.2];
+    [menuNode setScale:0.7];
     menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
     
     return menuNode;
