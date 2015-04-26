@@ -12,6 +12,8 @@
 
 @interface GameScene : SKScene
 
+@property (nonatomic) BOOL playSounds;
+
 -(int)generateGesturesQuantity;
 
 -(void) pauseBackgroundMusic;

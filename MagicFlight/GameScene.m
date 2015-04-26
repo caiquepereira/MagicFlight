@@ -57,7 +57,6 @@
     int _powerUpStage;
     int _destroyedEnemies;
     BOOL playerBrokeScore;
-    BOOL playSounds;
     GameViewController * viewController;
 }
 
@@ -67,7 +66,7 @@
     
     if (self = [super initWithSize:size]) {
         
-        playSounds = soundEnabled;
+        _playSounds = soundEnabled;
         
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
@@ -142,7 +141,7 @@
         
         [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
         
-        if(playSounds){
+        if(_playSounds){
             [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
         }
     }
@@ -521,7 +520,7 @@
                                                       andHighestScore: _newHighestScore
                                                              andScore: _score
                                                         andBrokeScore: playerBrokeScore
-                                                      andSoundEnabled: playSounds];
+                                                      andSoundEnabled: _playSounds];
         
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
