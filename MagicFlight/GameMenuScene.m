@@ -76,7 +76,7 @@
 
 - (SKSpriteNode *) makeLogo {
     
-    SKSpriteNode *logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"LOGO"];
+    SKSpriteNode *logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"logo"];
     
     logoNode.name = @"logo";
     
@@ -93,7 +93,7 @@
     gameCenterNode.name = @"gameCenterButton";
     
     [gameCenterNode setScale:0.28];
-    gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2, startButton.size.height + 20);
+    gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
     
     return gameCenterNode;
 }

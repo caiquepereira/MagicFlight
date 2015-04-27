@@ -17,7 +17,7 @@
 -(int)generateGesturesQuantity;
 
 -(void) pauseBackgroundMusic;
-
+-(void)stopBackgroundMusic;
 -(void) resumeBackgroundMusic;
 
 -(id)initWithSize:(CGSize)size
