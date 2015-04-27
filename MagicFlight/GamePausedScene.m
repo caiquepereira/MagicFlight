@@ -13,6 +13,7 @@
 @implementation GamePausedScene{
     SKSpriteNode* playButton;
     SKSpriteNode* menuButton;
+    SKSpriteNode* retryButton;
     SKLabelNode* pauseLabel;
     
     GameScene* gameScene;
@@ -28,6 +29,8 @@
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:backgroundImage];
         
+        retryButton = [self makeRetryButton];
+        [self addChild:retryButton];
         
         playButton = [self makePlayButton];
         [self addChild:playButton];
@@ -67,6 +70,18 @@
     return menuNode;
 }
 
+- (SKSpriteNode*) makeRetryButton{
+    
+    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
+    
+    menuNode.name = @"retryButton";
+    
+    [menuNode setScale:0.5];
+    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    
+    return menuNode;
+}
+
 - (SKLabelNode*) makePauseLabel{
     SKLabelNode* pauseLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
@@ -75,7 +90,7 @@
     pauseLabelNode.fontSize = 250;
     
     [pauseLabelNode setScale:0.2];
-    pauseLabelNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 50);
+    pauseLabelNode.position = CGPointMake(self.size.width/2,self.size.height - 150);
     
     return pauseLabelNode;
     
@@ -93,6 +108,18 @@
             [self.view presentScene:myScene transition: reveal];
             
             [gameScene resumeBackgroundMusic];
+        }];
+        
+        [playButton runAction:resumeGame];
+    }
+    
+    if ([node.name isEqualToString:@"retryButton"]) {
+        SKAction * resumeGame = [SKAction runBlock:^{
+            GameScene * myScene = [[GameScene alloc]initWithSize:self.size andSound: gameScene.playSounds];
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            [self.view presentScene:myScene transition: reveal];
+            
+            [gameScene stopBackgroundMusic];
         }];
         
         [playButton runAction:resumeGame];
