@@ -13,6 +13,7 @@
 @implementation GamePausedScene{
     SKSpriteNode* playButton;
     SKSpriteNode* menuButton;
+    SKLabelNode* pauseLabel;
     
     GameScene* gameScene;
 }
@@ -33,6 +34,9 @@
         
         menuButton = [self makeMenuButton];
         [self addChild:menuButton];
+        
+        pauseLabel= [self makePauseLabel];
+        [self addChild:pauseLabel];
         
     }
     
@@ -61,6 +65,20 @@
     menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
     
     return menuNode;
+}
+
+- (SKLabelNode*) makePauseLabel{
+    SKLabelNode* pauseLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
+    
+    pauseLabelNode.name = @"pauseLabel";
+    pauseLabelNode.text = @"Paused!";
+    pauseLabelNode.fontSize = 250;
+    
+    [pauseLabelNode setScale:0.2];
+    pauseLabelNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 50);
+    
+    return pauseLabelNode;
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
