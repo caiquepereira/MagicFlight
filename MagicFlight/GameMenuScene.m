@@ -81,7 +81,7 @@
     logoNode.name = @"logo";
     
     [logoNode setScale:0.5];
-    logoNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 80);
+    logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
     
     return logoNode;
 }
