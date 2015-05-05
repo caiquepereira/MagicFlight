@@ -18,6 +18,9 @@
     SKSpriteNode* menuButton;
     SKLabelNode* scoreLabel;
     AVAudioPlayer *musicPlayer;
+    CGFloat width;
+    CGFloat height;
+    
     BOOL playSounds;
     
 }
@@ -29,6 +32,9 @@
              andSoundEnabled: (BOOL) soundEnabled{
     
     if(self = [super initWithSize:size]){
+        width = self.size.width;
+        height = self.size.height;
+        
         _playerBrokeScore=brokeScore;
         playSounds = soundEnabled;
         
@@ -115,30 +121,72 @@
 - (void) makeScoreLabel{
     
     SKLabelNode* gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+    
     gameOverLabel.zPosition = 15;
     gameOverLabel.color = [UIColor whiteColor];
-    gameOverLabel.fontSize = 30;
     gameOverLabel.text = @"Game Over!";
-    [self addChild:gameOverLabel];
     
     SKLabelNode* newHighScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+    
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
-    newHighScoreLabel.fontSize = 30;
     newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"] :
                                                    [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
     
-    [self addChild:newHighScoreLabel];
-    
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
+    
     scoreLabelNode.zPosition = 15;
     scoreLabelNode.fontColor = [UIColor whiteColor];
-    scoreLabelNode.fontSize = 30;
     scoreLabelNode.text = [[NSString alloc]initWithFormat:@"HighScore: %d",[self highestScore]];
     
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        gameOverLabel.fontSize = 30;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 150);
+        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 110);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        gameOverLabel.fontSize = 30;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        gameOverLabel.fontSize = 30;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        gameOverLabel.fontSize = 30;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        gameOverLabel.fontSize = 60;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 270);
+        newHighScoreLabel.fontSize = 60;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+        scoreLabelNode.fontSize = 60;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 130);
+    }
+    
+    [self addChild:gameOverLabel];
+    [self addChild:newHighScoreLabel];
     [self addChild:scoreLabelNode];
 }
 
