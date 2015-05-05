@@ -157,7 +157,7 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [gameCenterNode setScale:0.28];
-        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 40, startButton.size.height + 20);
     }
     
     return gameCenterNode;
