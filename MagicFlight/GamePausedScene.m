@@ -110,7 +110,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        pauseLabelNode.fontSize = 50;
+        pauseLabelNode.fontSize = 100;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
     }
     //ipad

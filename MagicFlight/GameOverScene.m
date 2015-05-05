@@ -168,11 +168,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        gameOverLabel.fontSize = 30;
+        gameOverLabel.fontSize = 40;
         gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
-        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.fontSize = 40;
         newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
-        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.fontSize = 40;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     }
     //ipad
