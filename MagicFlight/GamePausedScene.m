@@ -11,17 +11,22 @@
 #import "GameScene.h"
 
 @implementation GamePausedScene{
-    SKSpriteNode* playButton;
-    SKSpriteNode* menuButton;
-    SKSpriteNode* retryButton;
-    SKLabelNode* pauseLabel;
+    SKSpriteNode *playButton;
+    SKSpriteNode *menuButton;
+    SKSpriteNode *retryButton;
+    SKLabelNode *pauseLabel;
+    CGFloat width;
+    CGFloat height;
     
-    GameScene* gameScene;
+    GameScene *gameScene;
 }
 
 - (instancetype)initWithSize:(CGSize)size
-                andGameScene:(GameScene*) previousGameScene{
+                andGameScene:(GameScene *) previousGameScene{
     if(self = [super initWithSize:size]){
+        width = self.size.width;
+        height = self.size.height;
+        
         gameScene = previousGameScene;
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"windowBackground"];
@@ -82,18 +87,35 @@
     return menuNode;
 }
 
-- (SKLabelNode*) makePauseLabel{
-    SKLabelNode* pauseLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
+- (SKLabelNode *) makePauseLabel{
+    SKLabelNode *pauseLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
     pauseLabelNode.name = @"pauseLabel";
     pauseLabelNode.text = @"Paused!";
-    pauseLabelNode.fontSize = 250;
+    pauseLabelNode.fontSize = 50;
     
-    [pauseLabelNode setScale:0.2];
-    pauseLabelNode.position = CGPointMake(self.size.width/2,self.size.height - 150);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [pauseLabelNode setScale:1];
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
     
     return pauseLabelNode;
-    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

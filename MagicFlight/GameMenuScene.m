@@ -19,6 +19,8 @@
     AVAudioPlayer *musicPlayer;
     SKSpriteNode *gameCenterButton;
     NSString *leaderboardIdentifier;
+    CGFloat width;
+    CGFloat height;
     
     GameMenuSceneViewController *menuViewController;
     
@@ -29,6 +31,11 @@
              andSoundEnabled:(BOOL)soundEnabled{
     
     if(self = [super initWithSize:size]){
+        width = self.size.width;
+        height = self.size.height;
+        
+//        NSLog(@"%f %f", self.size.width, self.size.height);
+        
         playSound = soundEnabled;
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
@@ -68,8 +75,26 @@
     startNode.name = @"startButton";
     startNode.zPosition = 2;
     
-    [startNode setScale:0.5];
-    startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [startNode setScale:0.4];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 80);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [startNode setScale:0.45];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [startNode setScale:0.5];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [startNode setScale:0.5];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    }
     
     return startNode;
 }
@@ -80,9 +105,27 @@
     
     logoNode.name = @"logo";
     
-    [logoNode setScale:0.5];
-    logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
-    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [logoNode setScale:0.4];
+        logoNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 30);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [logoNode setScale:0.45];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [logoNode setScale:0.5];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [logoNode setScale:0.5];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+    }
+
     return logoNode;
 }
 
@@ -92,8 +135,26 @@
     
     gameCenterNode.name = @"gameCenterButton";
     
-    [gameCenterNode setScale:0.28];
-    gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [gameCenterNode setScale:0.25];
+        gameCenterNode.position = CGPointMake(self.size.width - 45, startButton.size.height + 15);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [gameCenterNode setScale:0.28];
+        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [gameCenterNode setScale:0.28];
+        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [gameCenterNode setScale:0.28];
+        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+    }
     
     return gameCenterNode;
 }
@@ -105,8 +166,26 @@
     audioActiveNode.name = @"audioActive";
     audioActiveNode.zPosition = 2;
     
-    [audioActiveNode setScale:1];
-    audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [audioActiveNode setScale:1];
+        audioActiveNode.position = CGPointMake(startButton.size.width - 115, startButton.size.height + 15);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [audioActiveNode setScale:1];
+        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [audioActiveNode setScale:1];
+        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [audioActiveNode setScale:1];
+        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+    }
     
     return audioActiveNode;
 }
@@ -117,8 +196,26 @@
     
     audioInactiveNode.name = @"audioInactive";
     
-    [audioInactiveNode setScale:1.6];
-    audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [audioInactiveNode setScale:1.6];
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 125, startButton.size.height + 15);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [audioInactiveNode setScale:1.6];
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [audioInactiveNode setScale:1.6];
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [audioInactiveNode setScale:1.6];
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    }
     
     return audioInactiveNode;
 }

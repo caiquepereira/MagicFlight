@@ -63,7 +63,7 @@
     
     retryNode.name = @"retryButton";
     
-    [retryNode setScale:0.5];
+    [retryNode setScale:0.4];
     retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
     
     return retryNode;
@@ -75,7 +75,7 @@
     
     menuNode.name = @"menuButton";
     
-    [menuNode setScale:0.7];
+    [menuNode setScale:0.6];
     menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
     
     return menuNode;
@@ -115,7 +115,7 @@
 - (void) makeScoreLabel{
     
     SKLabelNode* gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 250);
+    gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
     gameOverLabel.zPosition = 15;
     gameOverLabel.color = [UIColor whiteColor];
     gameOverLabel.fontSize = 30;
@@ -123,7 +123,7 @@
     [self addChild:gameOverLabel];
     
     SKLabelNode* newHighScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+    newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
     newHighScoreLabel.fontSize = 30;
@@ -133,7 +133,7 @@
     [self addChild:newHighScoreLabel];
     
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
-    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 150);
+    scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     scoreLabelNode.zPosition = 15;
     scoreLabelNode.fontColor = [UIColor whiteColor];
     scoreLabelNode.fontSize = 30;
