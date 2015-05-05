@@ -34,7 +34,7 @@
         width = self.size.width;
         height = self.size.height;
         
-//        NSLog(@"%f %f", self.size.width, self.size.height);
+        NSLog(@"%f %f", self.size.width, self.size.height);
         
         playSound = soundEnabled;
         
@@ -94,6 +94,10 @@
     else if (width == 414 && height == 736) {
         [startNode setScale:0.5];
         startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    }
+    //ipad 2 and retina
+    else if (width == 768 && height == 1024) {
+        
     }
     
     return startNode;
