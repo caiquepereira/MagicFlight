@@ -15,8 +15,12 @@
 {
     [self authenticateLocalPlayer];
     _leaderboardIdentifier=@"Best_Score_Of_The_App";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(createPost:)
+                                                 name:@"CreatePost"
+                                               object:nil];
 }
-
 
 - (void)viewWillLayoutSubviews
 {
@@ -95,7 +99,7 @@
 }
 
 
--(void)reportScore: (int) scoreValue{
+-(void)reportScore: (int)scoreValue {
     GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:@"Best_Score_Of_The_App"];
     score.value = scoreValue;
     
@@ -107,6 +111,15 @@
     }];
 }
 
-
+-(void)createPost: (NSNotification *)notification {
+    NSDictionary *postData = [notification userInfo];
+    NSString *postText = (NSString *)[postData objectForKey:@"postText"];
+    
+    // build your tweet, facebook, etc...
+    SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [mySLComposerSheet setInitialText:postText];
+    [self presentViewController:mySLComposerSheet animated:YES completion:nil];
+    
+}
 
 @end

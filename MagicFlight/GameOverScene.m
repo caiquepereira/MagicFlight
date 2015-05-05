@@ -57,7 +57,6 @@
         if(soundEnabled){
             [self playBackgroundMusic:@"gameOverMusic" ofType:@"mp3"];
         }
-    
     }
     
     return self;
@@ -112,6 +111,21 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             [self stopBackgroundMusic];
+            
+            
+//          ---------------
+            NSString *postText = [NSString stringWithFormat:@"My high score is: %d pts. Come beat me!", _highestScore];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
+            
+//            if ([SLComposeViewController isAvailableForServiceType:) {
+//                <#statements#>
+//            }
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Message"
+                                                              message:@"Your message was sent."
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
         }];
         
         [menuButton runAction:goMenu];
@@ -203,4 +217,5 @@
     musicPlayer.numberOfLoops = -1;
     [musicPlayer play];
 }
+
 @end
