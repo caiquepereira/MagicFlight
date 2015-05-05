@@ -151,9 +151,9 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         gameOverLabel.fontSize = 30;
-        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 220);
         newHighScoreLabel.fontSize = 30;
-        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 180);
         scoreLabelNode.fontSize = 30;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     }
