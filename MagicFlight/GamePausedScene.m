@@ -101,7 +101,7 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         pauseLabelNode.fontSize = 50;
-        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
     }
     //iphone 6
     else if (width == 375 && height == 667) {

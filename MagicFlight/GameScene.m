@@ -341,7 +341,7 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         mageNode.position = CGPointMake(self.frame.size.width/2, -300);
-        [mageNode setScale:0.4];
+        [mageNode setScale:0.3];
         
         SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 60) duration:4];
         [mageNode runAction:entry];
@@ -465,9 +465,9 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 25, self.frame.size.height/2 + 45);
         powerUpNode.zPosition = HUD_POSITION;
-        [powerUpNode setScale:0.6];
+        [powerUpNode setScale:0.5];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -502,9 +502,9 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 20, self.frame.size.height - 350);
         powerUpBarNode.zPosition = HUD_POSITION;
-        [powerUpBarNode setScale:0.6];
+        [powerUpBarNode setScale:0.4];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -577,7 +577,7 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [cloud setScale:0.4];
+        [cloud setScale:0.3];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -623,7 +623,7 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [enemy setScale:0.5];
+        [enemy setScale:0.35];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -673,7 +673,7 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [gesture setScale:1];
+        [gesture setScale:0.9];
     }
     //iphone 6
     else if (width == 375 && height == 667) {

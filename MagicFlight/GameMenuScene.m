@@ -115,8 +115,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [logoNode setScale:0.45];
-        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+        [logoNode setScale:0.35];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 50);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -151,7 +151,7 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         [gameCenterNode setScale:0.28];
-        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
+        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.width/2 + 15, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -187,7 +187,7 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         [audioActiveNode setScale:1];
-        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+        audioActiveNode.position = CGPointMake(startButton.size.width - 135, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
