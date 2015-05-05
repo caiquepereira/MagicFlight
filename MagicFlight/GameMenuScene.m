@@ -222,7 +222,7 @@
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
         [audioInactiveNode setScale:1.6];
-        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 145, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
