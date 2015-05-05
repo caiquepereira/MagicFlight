@@ -34,8 +34,6 @@
         width = self.size.width;
         height = self.size.height;
         
-        NSLog(@"%f %f", self.size.width, self.size.height);
-        
         playSound = soundEnabled;
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
@@ -95,9 +93,10 @@
         [startNode setScale:0.5];
         startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
     }
-    //ipad 2 and retina
+    //ipad
     else if (width == 768 && height == 1024) {
-        
+        [startNode setScale:0.7];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 150);
     }
     
     return startNode;
@@ -127,6 +126,11 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [logoNode setScale:0.5];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [logoNode setScale:0.8];
         logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
     }
 
@@ -159,6 +163,11 @@
         [gameCenterNode setScale:0.28];
         gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 10, startButton.size.height + 20);
     }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [gameCenterNode setScale:0.45];
+        gameCenterNode.position = CGPointMake(self.size.width - 130, startButton.size.height + 35);
+    }
     
     return gameCenterNode;
 }
@@ -190,6 +199,11 @@
         [audioActiveNode setScale:1];
         audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
     }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [audioActiveNode setScale:1.5];
+        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 40);
+    }
     
     return audioActiveNode;
 }
@@ -219,6 +233,11 @@
     else if (width == 414 && height == 736) {
         [audioInactiveNode setScale:1.6];
         audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [audioInactiveNode setScale:2.1];
+        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 40);
     }
     
     return audioInactiveNode;
