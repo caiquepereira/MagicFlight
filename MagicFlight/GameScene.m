@@ -45,6 +45,8 @@
     CGPoint startPositionInScene;
     AVAudioPlayer *musicPlayer;
     NSArray* mageFlyingFrames;
+    CGFloat width;
+    CGFloat height;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -65,6 +67,8 @@
     
     
     if (self = [super initWithSize:size]) {
+        width = self.size.width;
+        height = self.size.height;
         
         _playSounds = soundEnabled;
         
@@ -301,8 +305,27 @@
     SKSpriteNode *mageNode = [SKSpriteNode spriteNodeWithTexture:temp];
     mageNode.zPosition = HUD_POSITION;
     mageNode.name = @"mage";
-    mageNode.position = CGPointMake(self.frame.size.width/2, -300);
-    [mageNode setScale:0.4];
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+        [mageNode setScale:0.3];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+        [mageNode setScale:0.4];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+        [mageNode setScale:0.4];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+        [mageNode setScale:0.4];
+    }
     
     SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 70) duration:4];
     [mageNode runAction:entry];
@@ -320,11 +343,32 @@
 
 - (SKSpriteNode*) makePauseButton{
     SKSpriteNode* pauseNode = [SKSpriteNode spriteNodeWithImageNamed:@"pauseButton"];
-    
-    pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
-    pauseNode.zPosition = HUD_POSITION;
     pauseNode.name = @"pauseButton";
-    [pauseNode setScale: 0.35];
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 25, self.frame.size.height - 30);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.3];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.35];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.35];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.35];
+    }
     
     return pauseNode;
 }
@@ -332,29 +376,93 @@
 
 - (SKSpriteNode *)makeBackground {
     SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
-    [backgroundNode setScale:2];
-    backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [backgroundNode setScale:2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [backgroundNode setScale:2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [backgroundNode setScale:2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [backgroundNode setScale:2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    
     return backgroundNode;
 }
 
 - (SKSpriteNode *)makePowerUpButton {
     SKSpriteNode *powerUpNode = [SKSpriteNode spriteNodeWithImageNamed:@"powerUpIcon"];
-    
-    powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
-    powerUpNode.zPosition = HUD_POSITION;
-    [powerUpNode setScale:0.6];
     powerUpNode.name = @"powerUpButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 25, self.frame.size.height/2 + 90);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.5];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
     
     return powerUpNode;
 }
 
-- (SKSpriteNode *)makePowerUpBar: (NSString*) imageName{
+- (SKSpriteNode *)makePowerUpBar: (NSString*) imageName {
     SKSpriteNode *powerUpBarNode = [SKSpriteNode spriteNodeWithImageNamed:imageName];
-    powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
-    powerUpBarNode.zPosition = HUD_POSITION;
-    [powerUpBarNode setScale:0.6];
-    return powerUpBarNode;
     
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 20, self.frame.size.height - 350);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.4];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.6];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.6];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.6];
+    }
+    
+    return powerUpBarNode;
 }
 
 - (SKSpriteNode*) makeEdge{
@@ -391,6 +499,7 @@
     SKTextureAtlas *batAtlas = [SKTextureAtlas atlasNamed:@"batImages"];
     
     long numImages = batAtlas.textureNames.count;
+    
     for (int i=1; i <= numImages; i++) {
         NSString *textureName = [NSString stringWithFormat:@"bat%d", i];
         SKTexture *temp = [batAtlas textureNamed:textureName];
@@ -400,7 +509,23 @@
     SKTexture *temp = batFrames[0];
     SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithTexture:temp];
     
-    [enemy setScale:0.5];
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [enemy setScale:0.4];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [enemy setScale:0.5];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [enemy setScale:0.5];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [enemy setScale:0.5];
+    }
+    
     enemy.zPosition = ENEMY_POSITION;
     enemy.name = @"bat";
     
@@ -429,7 +554,24 @@
     
     SKSpriteNode* gesture = [self randomGestureNode: [self generateGesturesQuantity]];
     gesture.position = CGPointMake(gesture.position.x, gesture.position.y + enemySize.size.height + 40);
-    [gesture setScale:1];
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [gesture setScale:0.9];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [gesture setScale:1];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [gesture setScale:1];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [gesture setScale:1];
+    }
+    
     gesture.zPosition = ENEMY_POSITION;
     
     return gesture;
