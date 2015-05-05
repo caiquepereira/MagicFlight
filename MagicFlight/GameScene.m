@@ -426,7 +426,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 90);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 110);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }
