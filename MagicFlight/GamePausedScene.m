@@ -92,27 +92,31 @@
     
     pauseLabelNode.name = @"pauseLabel";
     pauseLabelNode.text = @"Paused!";
-    pauseLabelNode.fontSize = 50;
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [pauseLabelNode setScale:1];
+        pauseLabelNode.fontSize = 50;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.fontSize = 50;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.fontSize = 250;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [pauseLabelNode setScale:0.2];
+        pauseLabelNode.fontSize = 50;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        pauseLabelNode.fontSize = 100;
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
     }
     
     return pauseLabelNode;
