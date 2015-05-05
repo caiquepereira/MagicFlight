@@ -483,7 +483,7 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 190);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }
@@ -528,8 +528,8 @@
     return powerUpBarNode;
 }
 
-- (SKSpriteNode*) makeEdge{
-    SKSpriteNode* edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
+- (SKSpriteNode *) makeEdge {
+    SKSpriteNode *edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -565,7 +565,7 @@
 
 - (void)spawnCloud {
     
-    NSString* imageName = [NSString stringWithFormat:@"cloud%d",arc4random_uniform(2)];
+    NSString *imageName = [NSString stringWithFormat:@"cloud%d",arc4random_uniform(2)];
     
     SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithImageNamed:imageName];
     
