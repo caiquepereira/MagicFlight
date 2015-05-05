@@ -301,7 +301,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        scoreLabelNode.fontSize = 50;
+        scoreLabelNode.fontSize = 70;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
     }
     //ipad
