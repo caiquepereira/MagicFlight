@@ -57,8 +57,31 @@
     
     playNode.name = @"playButton";
     
-    [playNode setScale:0.5];
-    playNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
     
     return playNode;
 }
@@ -69,8 +92,31 @@
     
     menuNode.name = @"menuButton";
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
     
     return menuNode;
 }
@@ -81,8 +127,31 @@
     
     menuNode.name = @"retryButton";
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 110);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+    }
     
     return menuNode;
 }
@@ -105,7 +174,7 @@
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        pauseLabelNode.fontSize = 250;
+        pauseLabelNode.fontSize = 80;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
     }
     //iphone 6 plus
