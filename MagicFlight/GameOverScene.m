@@ -14,15 +14,16 @@
 @implementation GameOverScene
 
 {
-    SKSpriteNode* retryButton;
-    SKSpriteNode* menuButton;
-    SKLabelNode* scoreLabel;
+    SKSpriteNode *retryButton;
+    SKSpriteNode *menuButton;
+    SKSpriteNode *facebookButton;
+    SKSpriteNode *twitterButton;
+    SKLabelNode *scoreLabel;
     AVAudioPlayer *musicPlayer;
     CGFloat width;
     CGFloat height;
     
     BOOL playSounds;
-    
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -31,7 +32,7 @@
                andBrokeScore: (BOOL) brokeScore
              andSoundEnabled: (BOOL) soundEnabled{
     
-    if(self = [super initWithSize:size]){
+    if(self = [super initWithSize:size]) {
         width = self.size.width;
         height = self.size.height;
         
@@ -46,6 +47,12 @@
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:backgroundImage];
        
+        facebookButton = [self makeFacebookButton];
+        [self addChild:facebookButton];
+        
+        twitterButton = [self makeTwiterButton];
+        [self addChild:twitterButton];
+        
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
         
@@ -62,32 +69,148 @@
     return self;
 }
 
-- (SKSpriteNode*) makeRetryButton{
+- (SKSpriteNode *)makeFacebookButton {
     
-    SKSpriteNode* retryNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
+    SKSpriteNode *facebookNode = [SKSpriteNode spriteNodeWithImageNamed:@"facebookButton"];
+
+    facebookNode.name = @"facebookButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [facebookNode setScale:0.2];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [facebookNode setScale:0.2];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [facebookNode setScale:0.2];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 160);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [facebookNode setScale:0.2];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [facebookNode setScale:0.2];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    
+    return facebookNode;
+}
+
+- (SKSpriteNode *)makeTwiterButton {
+    
+    SKSpriteNode *twitterNode = [SKSpriteNode spriteNodeWithImageNamed:@"twitterButton"];
+    
+    twitterNode.name = @"twitterButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [twitterNode setScale:0.2];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [twitterNode setScale:0.2];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [twitterNode setScale:0.2];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [twitterNode setScale:0.2];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [twitterNode setScale:0.2];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
+    
+    return twitterNode;
+}
+
+- (SKSpriteNode *)makeRetryButton {
+    
+    SKSpriteNode *retryNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
     
     retryNode.name = @"retryButton";
     
-    [retryNode setScale:0.4];
-    retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 30);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+    }
     
     return retryNode;
 }
 
-- (SKSpriteNode*) makeMenuButton{
+- (SKSpriteNode *)makeMenuButton{
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"menuButton"];
+    SKSpriteNode *menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"menuButton"];
     
     menuNode.name = @"menuButton";
-    
-    [menuNode setScale:0.6];
-    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 70);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [menuNode setScale:0.2];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
     
     return menuNode;
 }
 
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
@@ -105,30 +228,44 @@
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
-        SKAction * goMenu =
+        SKAction *goMenu =
         [SKAction runBlock:^{
-            GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds];
+            GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             [self stopBackgroundMusic];
-            
-            
-//          ---------------
-            NSString *postText = [NSString stringWithFormat:@"My high score is: %d pts. Come beat me!", _highestScore];
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
-            
-//            if ([SLComposeViewController isAvailableForServiceType:) {
-//                <#statements#>
-//            }
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Message"
-                                                              message:@"Your message was sent."
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
         }];
         
         [menuButton runAction:goMenu];
+    }
+    
+    if ([node.name isEqualToString:@"facebookButton"]) {
+        SKAction *goFacebook =
+        [SKAction runBlock:^{
+            if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+            
+                NSString *postText = [NSString stringWithFormat:@"My high score is: %d pts. Come beat me!", _highestScore];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
+                
+//                [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+//                    
+//                    switch (result) {
+//                        case SLComposeViewControllerResultCancelled:
+//                            NSLog(@"Post Canceled");
+//                            break;
+//                        case SLComposeViewControllerResultDone:
+//                            NSLog(@"Post Sucessful");
+//                            break;
+//                            
+//                        default:
+//                            break;
+//                    }
+//                }];
+            }
+        }];
+        
+        [facebookButton runAction:goFacebook];
     }
 }
 
@@ -173,11 +310,11 @@
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        gameOverLabel.fontSize = 30;
+        gameOverLabel.fontSize = 40;
         gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
-        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.fontSize = 40;
         newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
-        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.fontSize = 40;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     }
     //iphone 6 plus

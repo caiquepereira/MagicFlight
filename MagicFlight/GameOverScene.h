@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <Social/Social.h>
 
 @interface GameOverScene : SKScene
 
