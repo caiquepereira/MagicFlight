@@ -67,13 +67,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(BOOL)prefersStatusBarHidden
+- (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
 
--(void)authenticateLocalPlayer{
+- (void)authenticateLocalPlayer{
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
@@ -104,7 +104,7 @@
 }
 
 
--(void)reportScore: (int)scoreValue {
+- (void)reportScore:(int)scoreValue {
     GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:@"Best_Score_Of_The_App"];
     score.value = scoreValue;
     
@@ -116,7 +116,7 @@
     }];
 }
 
--(void)createPost: (NSNotification *)notification {
+- (void)createPost:(NSNotification *)notification {
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         NSDictionary *postData = [notification userInfo];
@@ -146,7 +146,7 @@
     }
 }
 
--(void)createTwitter: (NSNotification *)notification {
+- (void)createTwitter:(NSNotification *)notification {
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         NSDictionary *postData = [notification userInfo];

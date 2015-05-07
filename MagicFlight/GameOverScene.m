@@ -36,7 +36,7 @@
         width = self.size.width;
         height = self.size.height;
         
-        _playerBrokeScore=brokeScore;
+        _playerBrokeScore = brokeScore;
         playSounds = soundEnabled;
         
         [self setHighestScore:highestScore];
@@ -88,7 +88,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 160);
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -123,7 +123,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 245);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -158,7 +158,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [retryNode setScale:0.2];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 20);
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 40);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -193,7 +193,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 70);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 55);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -239,6 +239,14 @@
     }
     
     if ([node.name isEqualToString:@"facebookButton"]) {
+        
+//        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
+//        [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+//        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+        
         SKAction *goFacebook =
         [SKAction runBlock:^{
                 NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
@@ -262,7 +270,7 @@
     }
 }
 
-- (void) makeScoreLabel{
+- (void)makeScoreLabel{
     
     SKLabelNode* gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
@@ -274,9 +282,8 @@
     
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
-    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"] :
-                                                   [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
-    
+    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"]: [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
+
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
     scoreLabelNode.zPosition = 15;

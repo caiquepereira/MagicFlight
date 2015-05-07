@@ -788,8 +788,6 @@
         [self.view presentScene:gameOver transition: reveal];
     }];
     
-    
-    
     [self runAction:gameOverAction];
 }
 
@@ -820,7 +818,7 @@
 - (void)pauseGame {
     
     SKAction * pauseGame = [SKAction runBlock:^{
-        GamePausedScene * myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
+        GamePausedScene *myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:myScene transition: reveal];
         [self pauseBackgroundMusic];
