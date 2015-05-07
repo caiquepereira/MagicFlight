@@ -70,39 +70,39 @@
     return self;
 }
 
-- (SKSpriteNode*) makePlayButton{
+- (SKSpriteNode*) makeRetryButton{
     
-    SKSpriteNode* playNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+    SKSpriteNode* retryNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
     
-    playNode.name = @"playButton";
+    retryNode.name = @"retryButton";
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [playNode setScale:0.15];
-        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [retryNode setScale:0.15];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [playNode setScale:0.18];
-        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [retryNode setScale:0.18];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [playNode setScale:0.2];
-        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [retryNode setScale:0.2];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [playNode setScale:0.22];
-        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [retryNode setScale:0.22];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [playNode setScale:0.3];
-        playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [retryNode setScale:0.3];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     
-    return playNode;
+    return retryNode;
 }
 
 - (SKSpriteNode*) makeMenuButton{
@@ -140,39 +140,39 @@
     return menuNode;
 }
 
-- (SKSpriteNode*) makeRetryButton{
+- (SKSpriteNode*) makePlayButton{
     
-    SKSpriteNode *menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
+    SKSpriteNode *playNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
     
-    menuNode.name = @"retryButton";
+    playNode.name = @"playButton";
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [menuNode setScale:0.15];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 80);
+        [playNode setScale:0.15];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 80);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [menuNode setScale:0.18];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 92);
+        [playNode setScale:0.18];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 92);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 110);
+        [playNode setScale:0.2];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 110);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [menuNode setScale:0.22];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 120);
+        [playNode setScale:0.22];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 120);
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [menuNode setScale:0.3];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 160);
+        [playNode setScale:0.3];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 160);
     }
     
-    return menuNode;
+    return playNode;
 }
 
 - (SKLabelNode *) makePauseLabel{
