@@ -97,8 +97,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [facebookNode setScale:0.3];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     
     return facebookNode;
@@ -132,8 +132,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [twitterNode setScale:0.3];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     
     return twitterNode;
@@ -167,8 +167,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [retryNode setScale:0.2];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+        [retryNode setScale:0.3];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 50);
     }
     
     return retryNode;
@@ -202,8 +202,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
+        [menuNode setScale:0.3];
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 100);
     }
     
     return menuNode;
@@ -322,11 +322,11 @@
     //ipad
     else if (width == 768 && height == 1024) {
         gameOverLabel.fontSize = 60;
-        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 270);
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 320);
         newHighScoreLabel.fontSize = 60;
-        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 250);
         scoreLabelNode.fontSize = 60;
-        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 130);
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 180);
     }
     
     [self addChild:gameOverLabel];
