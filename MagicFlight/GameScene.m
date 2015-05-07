@@ -774,13 +774,6 @@
             viewController = [[GameViewController alloc]init];
             [viewController reportScore:_score];
             playerBrokeScore=YES;
-            
-            UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
-            [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
-            UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-            UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
         }
         
         [self stopBackgroundMusic];
