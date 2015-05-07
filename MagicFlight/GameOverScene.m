@@ -262,7 +262,7 @@
     }
 }
 
-- (void) makeScoreLabel{
+- (void)makeScoreLabel{
     
     SKLabelNode* gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
