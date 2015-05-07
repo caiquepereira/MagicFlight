@@ -319,7 +319,7 @@
     if ([node.name isEqualToString:@"menuButton"]) {
         if ([node.name isEqualToString:@"menuButton"]) {
             SKAction * goMenu = [SKAction runBlock:^{
-                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled: gameScene.playSounds];
+                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled: playSound];
                 SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
                 [self.view presentScene:myScene transition: reveal];
             }];
