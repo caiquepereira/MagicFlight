@@ -328,7 +328,6 @@
     
     if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]){
         [self soundControl];
-        
     }
     
 }
