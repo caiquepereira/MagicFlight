@@ -746,6 +746,11 @@
             _scoreTemporary+=10;
             _score+=_scoreTemporary;
             _scoreTemporary=0;
+            
+            if(self.playSounds){
+                [mage runAction:[SKAction playSoundFileNamed:@"spell.mp3" waitForCompletion:YES]];
+            }
+            
             [enemy removeFromParent];
             _destroyedEnemies++;
             
