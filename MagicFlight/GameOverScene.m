@@ -36,7 +36,7 @@
         width = self.size.width;
         height = self.size.height;
         
-        _playerBrokeScore=brokeScore;
+        _playerBrokeScore = brokeScore;
         playSounds = soundEnabled;
         
         [self setHighestScore:highestScore];
@@ -239,6 +239,14 @@
     }
     
     if ([node.name isEqualToString:@"facebookButton"]) {
+        
+//        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
+//        [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+//        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
+//        
+//        UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+        
         SKAction *goFacebook =
         [SKAction runBlock:^{
                 NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
@@ -274,9 +282,8 @@
     
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
-    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"] :
-                                                   [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
-    
+    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"]: [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
+
     SKLabelNode* scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"English Towne"];
     
     scoreLabelNode.zPosition = 15;

@@ -22,7 +22,6 @@
 		56D67B591AD6EAF90032CAA3 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B581AD6EAF90032CAA3 /* GameScene.m */; };
 		56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */; };
 		56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */; };
-		56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */; };
 		56D67B721AD6EAF90032CAA3 /* MagicFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */; };
 		56EB6FCA1AF9615A00AAE236 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB6FC91AF9615A00AAE236 /* Social.framework */; };
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
@@ -63,7 +62,6 @@
 		56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		56D67B601AD6EAF90032CAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56D67B6B1AD6EAF90032CAA3 /* MagicFlightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicFlightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D67B701AD6EAF90032CAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicFlightTests.m; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */,
 				56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */,
 				56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */,
-				56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */,
 				56D67B501AD6EAF90032CAA3 /* Supporting Files */,
 			);
 			path = MagicFlight;
@@ -290,7 +287,6 @@
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				29C8CD2A1AEC25F9005FDF9C /* gameOverMusic.mp3 in Resources */,
 				2945BE031AFBE4B00032F9C3 /* spell.mp3 in Resources */,
-				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 				294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */,
 				294354F31AEAC3C30094BAD5 /* batImages.atlas in Resources */,
 				294354F51AEAC3C30094BAD5 /* mageImages.atlas in Resources */,
@@ -339,17 +335,6 @@
 			targetProxy = 56D67B6C1AD6EAF90032CAA3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		56D67B5F1AD6EAF90032CAA3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				56D67B601AD6EAF90032CAA3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		56D67B731AD6EAF90032CAA3 /* Debug */ = {
