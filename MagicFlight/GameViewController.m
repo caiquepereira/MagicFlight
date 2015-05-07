@@ -20,6 +20,11 @@
                                              selector:@selector(createPost:)
                                                  name:@"CreatePost"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(createTwitter:)
+                                                 name:@"CreateTwitter"
+                                               object:nil];
 }
 
 - (void)viewWillLayoutSubviews
@@ -112,13 +117,63 @@
 }
 
 -(void)createPost: (NSNotification *)notification {
-    NSDictionary *postData = [notification userInfo];
-    NSString *postText = (NSString *)[postData objectForKey:@"postText"];
     
-    // build your tweet, facebook, etc...
-    SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-    [mySLComposerSheet setInitialText:postText];
-    [self presentViewController:mySLComposerSheet animated:YES completion:nil];
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        NSDictionary *postData = [notification userInfo];
+        NSString *postText = (NSString *)[postData objectForKey:@"postText"];
+        
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [mySLComposerSheet setInitialText:postText];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"launchScreen"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://www.facebook.com/magicflightapp"]];
+        [self presentViewController:mySLComposerSheet animated:YES completion:nil];
+        
+        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
+            if (result == SLComposeViewControllerResultDone) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+            }
+        };
+        
+        mySLComposerSheet.completionHandler = myBlock;
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can post right now, make sure your device has an internet connection and you have at least one facebook account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
+        [alertView show];
+    }
+}
+
+-(void)createTwitter: (NSNotification *)notification {
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        NSDictionary *postData = [notification userInfo];
+        NSString *postTwitter = (NSString *)[postData objectForKey:@"postTwitter"];
+        
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [mySLComposerSheet setInitialText:postTwitter];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"launchScreen"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://www.facebook.com/magicflightapp"]];
+        [self presentViewController:mySLComposerSheet animated:YES completion:nil];
+        
+        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
+            if (result == SLComposeViewControllerResultDone) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                
+                [alertView show];
+            }
+        };
+        
+        mySLComposerSheet.completionHandler = myBlock;
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can post right now, make sure your device has an internet connection and you have at least one twitter account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
+        [alertView show];
+    }
     
 }
 

@@ -65,7 +65,6 @@
 -(id)initWithSize:(CGSize)size
          andSound:(BOOL)soundEnabled{
     
-    
     if (self = [super initWithSize:size]) {
         width = self.size.width;
         height = self.size.height;
