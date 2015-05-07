@@ -83,7 +83,7 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [playNode setScale:0.2];
+        [playNode setScale:0.18];
         playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //iphone 6
@@ -118,8 +118,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+        [menuNode setScale:0.18];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -153,8 +153,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+        [menuNode setScale:0.18];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 92);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -223,8 +223,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [audioActiveNode setScale:0.2];
-        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        [audioActiveNode setScale:0.18];
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 185);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -258,8 +258,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [audioInactiveNode setScale:0.2];
-        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        [audioInactiveNode setScale:0.18];
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 185);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -298,8 +298,6 @@
             } else {
                 [gameScene stopBackgroundMusic];
             }
-            
-            
         }];
         
         [playButton runAction:resumeGame];

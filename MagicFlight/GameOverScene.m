@@ -82,8 +82,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [facebookNode setScale:0.18];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 110);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -117,8 +117,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [twitterNode setScale:0.18];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 200);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -152,8 +152,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [retryNode setScale:0.2];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+        [retryNode setScale:0.18];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 70);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -183,12 +183,12 @@
     //iphone 4s
     if (width == 320 && height == 480) {
         [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        [menuNode setScale:0.18];
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 20);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -198,12 +198,12 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
     }
     //ipad
     else if (width == 768 && height == 1024) {
         [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
     }
     
     return menuNode;
@@ -294,11 +294,11 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        gameOverLabel.fontSize = 30;
+        gameOverLabel.fontSize = 35;
         gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 220);
-        newHighScoreLabel.fontSize = 30;
+        newHighScoreLabel.fontSize = 35;
         newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 180);
-        scoreLabelNode.fontSize = 30;
+        scoreLabelNode.fontSize = 35;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     }
     //iphone 6
