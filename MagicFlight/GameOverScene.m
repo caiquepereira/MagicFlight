@@ -88,7 +88,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 160);
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -123,7 +123,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 245);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -158,7 +158,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [retryNode setScale:0.2];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 20);
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 40);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
@@ -193,7 +193,7 @@
     //iphone 6
     else if (width == 375 && height == 667) {
         [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 70);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 55);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
