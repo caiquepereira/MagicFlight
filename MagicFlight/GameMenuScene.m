@@ -232,7 +232,7 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [audioInactiveNode setScale:1.6];
-        audioInactiveNode.position = CGPointMake(self.size.width - 350, startButton.position.y);
+        audioInactiveNode.position = CGPointMake(self.size.width - 330, startButton.position.y);
     }
     //ipad
     else if (width == 768 && height == 1024) {
