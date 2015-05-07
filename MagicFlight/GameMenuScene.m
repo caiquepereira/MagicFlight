@@ -90,8 +90,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [startNode setScale:0.5];
-        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+        [startNode setScale:0.2];
+        startNode.position = CGPointMake(self.size.width/2, self.size.height - 650);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -125,8 +125,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [logoNode setScale:0.5];
-        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+        [logoNode setScale:0.55];
+        logoNode.position = CGPointMake(self.size.width/2 + 7, self.size.height/2 - 90);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -160,8 +160,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [gameCenterNode setScale:0.28];
-        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2 + 40, startButton.size.height + 20);
+        [gameCenterNode setScale:0.2];
+        gameCenterNode.position = CGPointMake(self.size.width - 90, startButton.position.y);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -196,8 +196,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [audioActiveNode setScale:1];
-        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width - 330, startButton.position.y);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -232,7 +232,7 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [audioInactiveNode setScale:1.6];
-        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+        audioInactiveNode.position = CGPointMake(self.size.width - 350, startButton.position.y);
     }
     //ipad
     else if (width == 768 && height == 1024) {
