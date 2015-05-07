@@ -77,8 +77,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [facebookNode setScale:0.14];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 80);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -112,8 +112,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [twitterNode setScale:0.14];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -147,8 +147,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [retryNode setScale:0.2];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+        [retryNode setScale:0.14];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 65);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -182,8 +182,8 @@
 
     //iphone 4s
     if (width == 320 && height == 480) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
+        [menuNode setScale:0.14];
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 7);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {

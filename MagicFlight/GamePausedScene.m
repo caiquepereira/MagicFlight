@@ -78,7 +78,7 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [playNode setScale:0.2];
+        [playNode setScale:0.15];
         playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     //iphone 5 e 5s
@@ -113,8 +113,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+        [menuNode setScale:0.15];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -148,8 +148,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+        [menuNode setScale:0.15];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 80);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -218,8 +218,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [audioActiveNode setScale:0.2];
-        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        [audioActiveNode setScale:0.15];
+        audioActiveNode.position = CGPointMake(self.size.width/2, menuButton.position.y - audioActiveNode.size.height);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
@@ -253,8 +253,8 @@
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [audioInactiveNode setScale:0.2];
-        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        [audioInactiveNode setScale:0.15];
+        audioInactiveNode.position = CGPointMake(self.size.width/2, menuButton.position.y - audioInactiveNode.size.height);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
