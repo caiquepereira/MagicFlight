@@ -774,6 +774,13 @@
             viewController = [[GameViewController alloc]init];
             [viewController reportScore:_score];
             playerBrokeScore=YES;
+            
+            UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
+            [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+            UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
         }
         
         [self stopBackgroundMusic];
@@ -787,8 +794,6 @@
         
         [self.view presentScene:gameOver transition: reveal];
     }];
-    
-    
     
     [self runAction:gameOverAction];
 }
@@ -820,7 +825,7 @@
 - (void)pauseGame {
     
     SKAction * pauseGame = [SKAction runBlock:^{
-        GamePausedScene * myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
+        GamePausedScene *myScene = [[GamePausedScene alloc] initWithSize:self.size andGameScene: self];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         [self.view presentScene:myScene transition: reveal];
         [self pauseBackgroundMusic];
