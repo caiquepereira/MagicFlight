@@ -27,9 +27,12 @@
 
 - (instancetype)initWithSize:(CGSize)size
                 andGameScene:(GameScene *) previousGameScene{
+    
     if(self = [super initWithSize:size]){
         width = self.size.width;
         height = self.size.height;
+        
+        playSound = previousGameScene.playSounds;
         
         gameScene = previousGameScene;
         
@@ -53,8 +56,14 @@
         activeSoundButton = [self makeAudioIconActive];
         [self addChild:activeSoundButton];
         
-        inactiveSoundButton = [self makeAudioIconInactive];
-        [self addChild:inactiveSoundButton];
+        if (playSound){
+            audioControl = [self makeAudioIconActive];
+            [self addChild:audioControl];
+//            [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        } else {
+            audioControl = [self makeAudioIconInactive];
+            [self addChild:audioControl];
+        }
         
     }
     
@@ -282,22 +291,29 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
-            [gameScene resumeBackgroundMusic];
+            myScene.playSounds = playSound;
+            
+            if (playSound){
+                [gameScene resumeBackgroundMusic];
+            } else {
+                [gameScene stopBackgroundMusic];
+            }
+            
+            
         }];
         
         [playButton runAction:resumeGame];
     }
     
     if ([node.name isEqualToString:@"retryButton"]) {
-        SKAction * resumeGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc]initWithSize:self.size andSound: gameScene.playSounds];
+        SKAction * retryGame = [SKAction runBlock:^{
+            GameScene * myScene = [[GameScene alloc]initWithSize:self.size andSound: playSound];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
-            [gameScene stopBackgroundMusic];
         }];
         
-        [playButton runAction:resumeGame];
+        [retryButton runAction:retryGame];
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
@@ -312,13 +328,11 @@
         }
     }
     
-    if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
-        SKAction *soundControl = [SKAction runBlock:^{
-            
-        }];
+    if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]){
+        [self soundControl];
         
-        [self runAction:soundControl];
     }
+    
 }
 
 - (void) soundControl{
@@ -330,9 +344,9 @@
         
     } else {
         [audioControl removeFromParent];
+        audioControl = [self makeAudioIconActive];
         [self addChild: audioControl];
         playSound = YES;
-        
     }
 }
 
