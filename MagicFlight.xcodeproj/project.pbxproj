@@ -12,6 +12,7 @@
 		294354F51AEAC3C30094BAD5 /* mageImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 294354F21AEAC3C30094BAD5 /* mageImages.atlas */; };
 		294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */; };
 		294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */; };
+		2945BE031AFBE4B00032F9C3 /* spell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2945BE021AFBE4B00032F9C3 /* spell.mp3 */; };
 		2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 294354F81AEAC4480094BAD5 /* EnglishTowne.ttf */; };
 		29C8CD2A1AEC25F9005FDF9C /* gameOverMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29C8CD291AEC25F9005FDF9C /* gameOverMusic.mp3 */; };
 		56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */; };
@@ -46,6 +47,7 @@
 		294354F81AEAC4480094BAD5 /* EnglishTowne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnglishTowne.ttf; sourceTree = "<group>"; };
 		294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
 		294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		2945BE021AFBE4B00032F9C3 /* spell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spell.mp3; sourceTree = "<group>"; };
 		29C8CD291AEC25F9005FDF9C /* gameOverMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOverMusic.mp3; sourceTree = "<group>"; };
 		56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuScene.h; sourceTree = "<group>"; };
 		56B3D87E1AE1ABBE00DB9715 /* GameMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuScene.m; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		294354F91AEAC48C0094BAD5 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				2945BE021AFBE4B00032F9C3 /* spell.mp3 */,
 				29C8CD291AEC25F9005FDF9C /* gameOverMusic.mp3 */,
 				294354FC1AEAC4C10094BAD5 /* menuMusic.mp3 */,
 				294354FA1AEAC49F0094BAD5 /* gameMusic.mp3 */,
@@ -286,6 +289,7 @@
 				2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				29C8CD2A1AEC25F9005FDF9C /* gameOverMusic.mp3 in Resources */,
+				2945BE031AFBE4B00032F9C3 /* spell.mp3 in Resources */,
 				56D67B611AD6EAF90032CAA3 /* Main.storyboard in Resources */,
 				294354FB1AEAC49F0094BAD5 /* gameMusic.mp3 in Resources */,
 				294354F31AEAC3C30094BAD5 /* batImages.atlas in Resources */,
