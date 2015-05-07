@@ -95,8 +95,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [startNode setScale:0.7];
-        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 150);
+        [startNode setScale:0.3];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 130);
     }
     
     return startNode;
@@ -130,8 +130,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [logoNode setScale:0.8];
-        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 82);
+        [logoNode setScale:0.9];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 110);
     }
 
     return logoNode;
@@ -165,8 +165,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [gameCenterNode setScale:0.45];
-        gameCenterNode.position = CGPointMake(self.size.width - 130, startButton.size.height + 35);
+        [gameCenterNode setScale:0.3];
+        gameCenterNode.position = CGPointMake(self.size.width - 130, startButton.position.y);
     }
     
     return gameCenterNode;
@@ -201,8 +201,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [audioActiveNode setScale:1.5];
-        audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 40);
+        [audioActiveNode setScale:0.3];
+        audioActiveNode.position = CGPointMake(self.size.width - 640, startButton.position.y);
     }
     
     return audioActiveNode;
@@ -236,8 +236,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [audioInactiveNode setScale:2.1];
-        audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 40);
+        [audioInactiveNode setScale:0.3];
+        audioInactiveNode.position = CGPointMake(self.size.width - 640, startButton.position.y);
     }
     
     return audioInactiveNode;

@@ -98,7 +98,7 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [playNode setScale:0.2];
+        [playNode setScale:0.3];
         playNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
     
@@ -133,7 +133,7 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [menuNode setScale:0.2];
+        [menuNode setScale:0.3];
         menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
     }
     
@@ -168,8 +168,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [menuNode setScale:0.2];
-        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 100);
+        [menuNode setScale:0.3];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 160);
     }
     
     return menuNode;
@@ -238,7 +238,7 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [audioActiveNode setScale:0.2];
+        [audioActiveNode setScale:0.3];
         audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
     }
     
@@ -273,7 +273,7 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [audioInactiveNode setScale:0.2];
+        [audioInactiveNode setScale:0.3];
         audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
     }
     
