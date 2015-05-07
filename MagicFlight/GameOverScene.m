@@ -162,7 +162,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [retryNode setScale:0.2];
+        [retryNode setScale:0.22];
         retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
     }
     //ipad
@@ -197,7 +197,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [menuNode setScale:0.2];
+        [menuNode setScale:0.22];
         menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
     }
     //ipad
@@ -312,11 +312,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        gameOverLabel.fontSize = 40;
+        gameOverLabel.fontSize = 50;
         gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
-        newHighScoreLabel.fontSize = 40;
+        newHighScoreLabel.fontSize = 50;
         newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
-        scoreLabelNode.fontSize = 40;
+        scoreLabelNode.fontSize = 50;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
     }
     //ipad
