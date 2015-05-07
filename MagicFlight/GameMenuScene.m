@@ -80,8 +80,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [startNode setScale:0.45];
-        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+        [startNode setScale:0.15];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 65);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -115,8 +115,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [logoNode setScale:0.35];
-        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 50);
+        [logoNode setScale:0.425];
+        logoNode.position = CGPointMake(self.size.width/2 + 5, self.size.height/2 - 69);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -150,8 +150,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [gameCenterNode setScale:0.28];
-        gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.width/2 + 15, startButton.position.y);
+        [gameCenterNode setScale:0.15];
+        gameCenterNode.position = CGPointMake(self.size.width - 70, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -186,8 +186,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [audioActiveNode setScale:1];
-        audioActiveNode.position = CGPointMake(startButton.size.width - 135, startButton.position.y);
+        [audioActiveNode setScale:0.15];
+        audioActiveNode.position = CGPointMake(self.size.width - 250, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -221,8 +221,8 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [audioInactiveNode setScale:1.6];
-        audioInactiveNode.position = CGPointMake(startButton.size.width - 145, startButton.position.y);
+        [audioInactiveNode setScale:0.15];
+        audioInactiveNode.position = CGPointMake(self.size.width - 250, startButton.position.y);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
