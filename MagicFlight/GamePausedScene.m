@@ -14,11 +14,15 @@
     SKSpriteNode *playButton;
     SKSpriteNode *menuButton;
     SKSpriteNode *retryButton;
+    SKSpriteNode *audioControl;
+    SKSpriteNode *activeSoundButton;
+    SKSpriteNode *inactiveSoundButton;
     SKLabelNode *pauseLabel;
     CGFloat width;
     CGFloat height;
     
     GameScene *gameScene;
+    BOOL playSound;
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -45,6 +49,12 @@
         
         pauseLabel= [self makePauseLabel];
         [self addChild:pauseLabel];
+        
+        activeSoundButton = [self makeAudioIconActive];
+        [self addChild:activeSoundButton];
+        
+        inactiveSoundButton = [self makeAudioIconInactive];
+        [self addChild:inactiveSoundButton];
         
     }
     
@@ -88,7 +98,7 @@
 
 - (SKSpriteNode*) makeMenuButton{
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"menuButton"];
+    SKSpriteNode *menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"menuButton"];
     
     menuNode.name = @"menuButton";
     
@@ -123,7 +133,7 @@
 
 - (SKSpriteNode*) makeRetryButton{
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
+    SKSpriteNode *menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"retryButton"];
     
     menuNode.name = @"retryButton";
     
@@ -191,6 +201,76 @@
     return pauseLabelNode;
 }
 
+- (SKSpriteNode *)makeAudioIconActive {
+    
+    SKSpriteNode *audioActiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioActive"];
+    
+    audioActiveNode.name = @"audioActive";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 220);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    
+    return audioActiveNode;
+}
+
+- (SKSpriteNode *)makeAudioIconInactive {
+    
+    SKSpriteNode *audioInactiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioInactive"];
+    
+    audioInactiveNode.name = @"audioInactive";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 220);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+    }
+    
+    return audioInactiveNode;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
@@ -231,7 +311,29 @@
             [menuButton runAction:goMenu];
         }
     }
+    
+    if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
+        SKAction *soundControl = [SKAction runBlock:^{
+            
+        }];
+        
+        [self runAction:soundControl];
+    }
 }
 
+- (void) soundControl{
+    if(playSound){
+        [audioControl removeFromParent];
+        audioControl = [self makeAudioIconInactive];
+        [self addChild: audioControl];
+        playSound = NO;
+        
+    } else {
+        [audioControl removeFromParent];
+        [self addChild: audioControl];
+        playSound = YES;
+        
+    }
+}
 
 @end

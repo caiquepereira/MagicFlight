@@ -209,7 +209,6 @@
     return menuNode;
 }
 
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
@@ -242,30 +241,24 @@
     if ([node.name isEqualToString:@"facebookButton"]) {
         SKAction *goFacebook =
         [SKAction runBlock:^{
-            if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-            
-                NSString *postText = [NSString stringWithFormat:@"My high score is: %d pts. Come beat me!", _highestScore];
+                NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfo];
-                
-//                [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
-//                    
-//                    switch (result) {
-//                        case SLComposeViewControllerResultCancelled:
-//                            NSLog(@"Post Canceled");
-//                            break;
-//                        case SLComposeViewControllerResultDone:
-//                            NSLog(@"Post Sucessful");
-//                            break;
-//                            
-//                        default:
-//                            break;
-//                    }
-//                }];
-            }
+            
         }];
         
         [facebookButton runAction:goFacebook];
+    }
+    
+    if ([node.name isEqualToString:@"twitterButton"]) {
+        SKAction *goTwitter =
+        [SKAction runBlock:^{
+                NSString *postTwitter = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me!", _highestScore];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:postTwitter forKey:@"postTwitter"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self userInfo:userInfo];
+        }];
+        
+        [twitterButton runAction:goTwitter];
     }
 }
 
