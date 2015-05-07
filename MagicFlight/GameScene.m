@@ -270,7 +270,6 @@
     //        edge = [self makeEdge];
     //        [self addChild:edge];
     //    }
-    
     [self updateScore];
     [self checkCollision];
 }
@@ -876,7 +875,7 @@
     [musicPlayer play];
 }
 
--(void) pauseBackgroundMusic{
+- (void) pauseBackgroundMusic{
     [musicPlayer pause];
 }
 
