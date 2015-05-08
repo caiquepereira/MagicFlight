@@ -16,8 +16,8 @@
 {
     SKSpriteNode *retryButton;
     SKSpriteNode *menuButton;
-    SKSpriteNode *facebookButton;
-    SKSpriteNode *twitterButton;
+    //SKSpriteNode *facebookButton;
+    //SKSpriteNode *twitterButton;
     SKLabelNode *scoreLabel;
     AVAudioPlayer *musicPlayer;
     CGFloat width;
@@ -47,12 +47,14 @@
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:backgroundImage];
        
+        /*
         facebookButton = [self makeFacebookButton];
         [self addChild:facebookButton];
         
         twitterButton = [self makeTwiterButton];
         [self addChild:twitterButton];
-        
+        */
+         
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
         
@@ -238,6 +240,7 @@
         [menuButton runAction:goMenu];
     }
     
+    /*
     if ([node.name isEqualToString:@"facebookButton"]) {
         
 //        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
@@ -268,6 +271,7 @@
         
         [twitterButton runAction:goTwitter];
     }
+     */
 }
 
 - (void)makeScoreLabel{
