@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    leaderboardIdentifier=@"Best_Score_Of_The_App";
+    leaderboardIdentifier=@"Best_Score_Of_Magic_Flight";
     
     
     //[self presentViewController:self animated:YES completion:nil];
