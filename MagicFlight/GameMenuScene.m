@@ -104,7 +104,7 @@
 
 - (SKSpriteNode *) makeLogo {
     
-    SKSpriteNode *logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"logo"];
+    SKSpriteNode *logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"LOGO"];
     
     logoNode.name = @"logo";
     
