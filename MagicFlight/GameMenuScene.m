@@ -60,7 +60,7 @@
         gameCenterButton = [self makeGameCenterButton];
         [self addChild:gameCenterButton];
         
-        leaderboardIdentifier=@"Best_Score_Of_The_App";
+        leaderboardIdentifier=@"Best_Score_Of_Magic_Flight";
         
     }
     return self;
@@ -231,7 +231,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [audioInactiveNode setScale:1.6];
+        [audioInactiveNode setScale:0.2];
         audioInactiveNode.position = CGPointMake(self.size.width - 330, startButton.position.y);
     }
     //ipad

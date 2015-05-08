@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [self authenticateLocalPlayer];
-    _leaderboardIdentifier=@"Best_Score_Of_The_App";
+    _leaderboardIdentifier=@"Best_Score_Of_Magic_Flight";
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(createPost:)
@@ -105,7 +105,7 @@
 
 
 - (void)reportScore:(int)scoreValue {
-    GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:@"Best_Score_Of_The_App"];
+    GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:@"Best_Score_Of_Magic_Flight"];
     score.value = scoreValue;
     
     [GKScore reportScores:@[score] withCompletionHandler:^(NSError *error) {
