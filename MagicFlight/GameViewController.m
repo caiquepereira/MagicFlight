@@ -9,7 +9,9 @@
 #import "GameViewController.h"
 #import "GameMenuScene.h"
 
-@implementation GameViewController
+@implementation GameViewController{
+    int timesPlayed;
+}
 
 - (void)viewDidLoad
 {
@@ -38,8 +40,11 @@
 //        skView.showsNodeCount = YES;
         
         // Create and configure the scene.
-        SKScene * scene = [[GameMenuScene alloc]initWithSize:skView.bounds.size
-                                       andSoundEnabled: YES];
+        SKScene * scene = [[GameMenuScene alloc]initWithSize:skView.bounds.size andSoundEnabled:YES andTimesPlayed:timesPlayed];
+        
+
+        
+        
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.

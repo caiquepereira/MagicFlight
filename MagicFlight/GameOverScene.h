@@ -16,8 +16,9 @@
 @property (nonatomic) BOOL playerBrokeScore;
 
 - (instancetype)initWithSize:(CGSize)size
-               andHighestScore: (int) highestScore
-                      andScore: (int) matchScore
+             andHighestScore: (int) highestScore
+                    andScore: (int) matchScore
                andBrokeScore: (BOOL) brokeScore
-             andSoundEnabled: (BOOL) soundEnabled;
+             andSoundEnabled: (BOOL) soundEnabled
+              andTimesPlayed:(int)timesPlayedGame;
 @end
