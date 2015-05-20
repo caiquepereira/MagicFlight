@@ -33,6 +33,7 @@
 		8FD6AE721B0CF93F003B249D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD6AE711B0CF93F003B249D /* Foundation.framework */; };
 		8FD6AE741B0CF953003B249D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD6AE731B0CF953003B249D /* CoreGraphics.framework */; };
 		8FD6AE761B0CF95F003B249D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD6AE751B0CF95F003B249D /* UIKit.framework */; };
+		8FD6AE791B0D0CAD003B249D /* GameTutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD6AE781B0D0CAD003B249D /* GameTutorialScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		8FD6AE711B0CF93F003B249D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8FD6AE731B0CF953003B249D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8FD6AE751B0CF95F003B249D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8FD6AE771B0D0CAD003B249D /* GameTutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTutorialScene.h; sourceTree = "<group>"; };
+		8FD6AE781B0D0CAD003B249D /* GameTutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTutorialScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				56D67B551AD6EAF90032CAA3 /* AppDelegate.m */,
 				56D67B571AD6EAF90032CAA3 /* GameScene.h */,
 				56D67B581AD6EAF90032CAA3 /* GameScene.m */,
+				8FD6AE771B0D0CAD003B249D /* GameTutorialScene.h */,
+				8FD6AE781B0D0CAD003B249D /* GameTutorialScene.m */,
 				56EFFE0F1AE598DC0096411D /* GamePausedScene.h */,
 				56EFFE101AE598DC0096411D /* GamePausedScene.m */,
 				56B3D87D1AE1ABBE00DB9715 /* GameMenuScene.h */,
@@ -333,6 +338,7 @@
 				56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */,
 				56D67B5E1AD6EAF90032CAA3 /* GameViewController.m in Sources */,
 				56D67B561AD6EAF90032CAA3 /* AppDelegate.m in Sources */,
+				8FD6AE791B0D0CAD003B249D /* GameTutorialScene.m in Sources */,
 				56D67B591AD6EAF90032CAA3 /* GameScene.m in Sources */,
 				8FC896511AEAE0C900832C7D /* GameMenuSceneViewController.m in Sources */,
 				56B3D8811AE1ABBE00DB9715 /* GameMenuScene.m in Sources */,
