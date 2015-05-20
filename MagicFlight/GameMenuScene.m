@@ -266,11 +266,13 @@
         
         //iphone 4s
         if (width == 320 && height == 480) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 5 e 5s
         else if (width == 320 && height == 568) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 6
         else if (width == 375 && height == 667) {
@@ -279,11 +281,13 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
 
         SKAction *startGame = [SKAction runBlock:^{
@@ -324,11 +328,13 @@
         
         //iphone 4s
         if (width == 320 && height == 480) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 5 e 5s
         else if (width == 320 && height == 568) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 6
         else if (width == 375 && height == 667) {
@@ -337,11 +343,13 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
 
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
@@ -357,11 +365,13 @@
         
         //iphone 4s
         if (width == 320 && height == 480) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 5 e 5s
         else if (width == 320 && height == 568) {
-            
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
         }
         //iphone 6
         else if (width == 375 && height == 667) {
@@ -370,11 +380,13 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
