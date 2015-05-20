@@ -119,22 +119,20 @@
 - (void)createPost:(NSNotification *)notification {
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        NSDictionary *postData = [notification userInfo];
-        NSString *postText = (NSString *)[postData objectForKey:@"postText"];
+//        NSDictionary *postData = [notification userInfo];
+//        NSString *postText = (NSString *)[postData objectForKey:@"postText"];
         
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:postText];
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"launchScreen"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://www.facebook.com/magicflightapp"]];
+        [mySLComposerSheet addImage:[self getImage]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
-            if (result == SLComposeViewControllerResultDone) {
-                
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                
-                [alertView show];
-            }
+//            if (result == SLComposeViewControllerResultDone) {
+//                
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//                
+//                [alertView show];
+//            }
         };
         
         mySLComposerSheet.completionHandler = myBlock;
@@ -149,22 +147,20 @@
 - (void)createTwitter:(NSNotification *)notification {
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        NSDictionary *postData = [notification userInfo];
-        NSString *postTwitter = (NSString *)[postData objectForKey:@"postTwitter"];
+//        NSDictionary *postData = [notification userInfo];
+//        NSString *postTwitter = (NSString *)[postData objectForKey:@"postTwitter"];
         
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet setInitialText:postTwitter];
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"launchScreen"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"https://www.facebook.com/magicflightapp"]];
+        [mySLComposerSheet addImage:[self getImage]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
-            if (result == SLComposeViewControllerResultDone) {
-                
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                
-                [alertView show];
-            }
+//            if (result == SLComposeViewControllerResultDone) {
+//                
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//                
+//                [alertView show];
+//            }
         };
         
         mySLComposerSheet.completionHandler = myBlock;
@@ -174,6 +170,16 @@
         
         [alertView show];
     }
+}
+
+- (UIImage *)getImage {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *getImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+    
+    UIImage *highScoreScreenShoot = [UIImage imageWithContentsOfFile:getImagePath];
+    
+    return highScoreScreenShoot;
 }
 
 @end
