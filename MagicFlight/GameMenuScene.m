@@ -249,21 +249,106 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"startButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            
+        }
+        
         SKAction *startGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound];
+            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self stopBackgroundMusic];
             [self.view presentScene:myScene transition: reveal];
         }];
         
-        [startButton runAction:startGame];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, startGame]];
+        [startButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            
+        }
+
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
+        [gameCenterButton runAction:sequence];
+        
         menuViewController = [[GameMenuSceneViewController alloc]init];
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:menuViewController
                                                                                                  animated:YES completion:nil];
     }else if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated == NO){
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            
+        }
+        
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
+        [gameCenterButton runAction:sequence];
+        
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
                                                           message:@"You are not logged in Game Center."
                                                          delegate:nil
@@ -277,7 +362,7 @@
         SKAction *soundControl = [SKAction runBlock:^{
             [self soundControl];
         }];
-        
+
         [self runAction:soundControl];
     }
 }

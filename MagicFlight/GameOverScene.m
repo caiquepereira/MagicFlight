@@ -16,12 +16,14 @@
 {
     SKSpriteNode *retryButton;
     SKSpriteNode *menuButton;
-    //SKSpriteNode *facebookButton;
-    //SKSpriteNode *twitterButton;
+    SKSpriteNode *facebookButton;
+    SKSpriteNode *twitterButton;
     SKLabelNode *scoreLabel;
     AVAudioPlayer *musicPlayer;
     CGFloat width;
     CGFloat height;
+    
+    UIImage *highScoreScreenShoot;
     
     BOOL playSounds;
 }
@@ -47,13 +49,11 @@
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:backgroundImage];
        
-        /*
         facebookButton = [self makeFacebookButton];
         [self addChild:facebookButton];
         
         twitterButton = [self makeTwiterButton];
         [self addChild:twitterButton];
-        */
          
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
@@ -217,6 +217,10 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"retryButton"]) {
+//        //animation
+//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        
         SKAction * retry =
         [SKAction runBlock:^{
             GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds];
@@ -225,10 +229,15 @@
             [self stopBackgroundMusic];
         }];
         
+//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, retry]];
         [retryButton runAction:retry];
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
+//        //animation
+//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        
         SKAction *goMenu =
         [SKAction runBlock:^{
             GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds];
@@ -237,41 +246,49 @@
             [self stopBackgroundMusic];
         }];
         
+//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goMenu]];
         [menuButton runAction:goMenu];
     }
     
-    /*
     if ([node.name isEqualToString:@"facebookButton"]) {
+//        //animation
+//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         
-//        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
-//        [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
-//        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        
-//        UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+        [self takeScreenshoot];
+        [self saveImage];
         
         SKAction *goFacebook =
         [SKAction runBlock:^{
-                NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
-                NSDictionary *userInfoOne = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfoOne];
-            
+//                NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
+//                NSDictionary *userInfoOne = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfoOne];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self];
         }];
         
+//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goFacebook]];
         [facebookButton runAction:goFacebook];
     }
     
     if ([node.name isEqualToString:@"twitterButton"]) {
+//        //animation
+//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        
+        [self takeScreenshoot];
+        [self saveImage];
+        
         SKAction *goTwitter =
         [SKAction runBlock:^{
-                NSString *postTwitter = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
-                NSDictionary *userInfoTwo = [NSDictionary dictionaryWithObject:postTwitter forKey:@"postTwitter"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self userInfo:userInfoTwo];
+//                NSString *postTwitter = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
+//                NSDictionary *userInfoTwo = [NSDictionary dictionaryWithObject:postTwitter forKey:@"postTwitter"];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self userInfo:userInfoTwo];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self];
         }];
         
+//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goTwitter]];
         [twitterButton runAction:goTwitter];
     }
-     */
 }
 
 - (void)makeScoreLabel{
@@ -357,6 +374,23 @@
     musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     musicPlayer.numberOfLoops = -1;
     [musicPlayer play];
+}
+
+- (void)takeScreenshoot {
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    highScoreScreenShoot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+
+- (void)saveImage {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+    UIImage *image = highScoreScreenShoot; // imageView is my image from camera
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    [imageData writeToFile:savedImagePath atomically:NO];
 }
 
 @end
