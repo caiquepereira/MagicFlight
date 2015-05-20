@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -17,7 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Initialize the Chartboost library
+    [Chartboost startWithAppId:@"555b797e43150f5ad1494ce8"
+                  appSignature:@"837705218b81ef996ff3e383c99ab9002c707055"
+                      delegate:self];
+    
+    
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

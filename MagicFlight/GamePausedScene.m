@@ -20,6 +20,7 @@
     SKLabelNode *pauseLabel;
     CGFloat width;
     CGFloat height;
+    int timesPlayed;
     
     GameScene *gameScene;
     BOOL playSound;
@@ -305,7 +306,7 @@
     
     if ([node.name isEqualToString:@"retryButton"]) {
         SKAction * retryGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc]initWithSize:self.size andSound: playSound];
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
@@ -317,7 +318,7 @@
     if ([node.name isEqualToString:@"menuButton"]) {
         if ([node.name isEqualToString:@"menuButton"]) {
             SKAction * goMenu = [SKAction runBlock:^{
-                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled: playSound];
+                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSound andTimesPlayed:timesPlayed];
                 SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
                 [self.view presentScene:myScene transition: reveal];
             }];

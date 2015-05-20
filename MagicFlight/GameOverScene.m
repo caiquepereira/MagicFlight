@@ -10,6 +10,7 @@
 #import "GameScene.h"
 #import "GameMenuScene.h"
 #import <AVFoundation/AVFoundation.h>
+#import <Chartboost/Chartboost.h>
 
 @implementation GameOverScene
 
@@ -26,13 +27,18 @@
     UIImage *highScoreScreenShoot;
     
     BOOL playSounds;
+    
+    int timesPlayed;
 }
 
 - (instancetype)initWithSize:(CGSize)size
              andHighestScore: (int) highestScore
                     andScore: (int) matchScore
                andBrokeScore: (BOOL) brokeScore
-             andSoundEnabled: (BOOL) soundEnabled{
+             andSoundEnabled: (BOOL) soundEnabled
+            andTimesPlayed:(int)timesPlayedGame {
+    
+    timesPlayed=timesPlayedGame;
     
     if(self = [super initWithSize:size]) {
         width = self.size.width;
@@ -62,6 +68,11 @@
         [self addChild:menuButton];
         
         [self makeScoreLabel];
+        
+        
+        if(timesPlayed%3==0){
+            [Chartboost showInterstitial:CBLocationHomeScreen];
+        }
         
         if(soundEnabled){
             [self playBackgroundMusic:@"gameOverMusic" ofType:@"mp3"];
@@ -223,7 +234,7 @@
         
         SKAction * retry =
         [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds];
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds andTimesPlayed:timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             [self stopBackgroundMusic];
@@ -240,7 +251,9 @@
         
         SKAction *goMenu =
         [SKAction runBlock:^{
-            GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds];
+            GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds andTimesPlayed:timesPlayed];
+        
+            
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             [self stopBackgroundMusic];

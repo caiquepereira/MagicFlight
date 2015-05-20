@@ -16,6 +16,7 @@
 @interface GameMenuScene : SKScene
 
 - (instancetype)initWithSize:(CGSize)size
-             andSoundEnabled:(BOOL)soundEnabled;
+             andSoundEnabled:(BOOL)soundEnabled
+              andTimesPlayed:(int)timesPlayedGame;
 
 @end

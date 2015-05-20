@@ -60,10 +60,15 @@
     int _destroyedEnemies;
     BOOL playerBrokeScore;
     GameViewController * viewController;
+    int timesPlayed;
 }
 
 -(id)initWithSize:(CGSize)size
-         andSound:(BOOL)soundEnabled{
+         andSound:(BOOL)soundEnabled
+        andTimesPlayed:(int)timesPlayedGame{
+    
+    timesPlayed=timesPlayedGame;
+    timesPlayed++;
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
@@ -781,7 +786,9 @@
                                                       andHighestScore: _newHighestScore
                                                              andScore: _score
                                                         andBrokeScore: playerBrokeScore
-                                                      andSoundEnabled: _playSounds];
+                                                      andSoundEnabled: _playSounds
+                                                       andTimesPlayed:timesPlayed];
+        
         
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         

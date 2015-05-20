@@ -21,6 +21,7 @@
 -(void) resumeBackgroundMusic;
 
 -(id)initWithSize:(CGSize)size
-         andSound:(BOOL)soundEnabled;
+         andSound:(BOOL)soundEnabled
+   andTimesPlayed:(int)timesPlayedGame;
 
 @end

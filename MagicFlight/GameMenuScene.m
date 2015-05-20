@@ -21,6 +21,7 @@
     NSString *leaderboardIdentifier;
     CGFloat width;
     CGFloat height;
+    int timesPlayed;
     
     GameMenuSceneViewController *menuViewController;
     
@@ -28,7 +29,15 @@
 }
 
 - (instancetype)initWithSize:(CGSize)size
-             andSoundEnabled:(BOOL)soundEnabled{
+             andSoundEnabled:(BOOL)soundEnabled
+              andTimesPlayed:(int)timesPlayedGame   {
+    
+    if(timesPlayed==0){
+        timesPlayed=0;
+    }else{
+        timesPlayed=timesPlayedGame;
+    }
+
     
     if(self = [super initWithSize:size]){
         width = self.size.width;
@@ -276,7 +285,7 @@
         }
         
         SKAction *startGame = [SKAction runBlock:^{
-            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound];
+            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self stopBackgroundMusic];
             [self.view presentScene:myScene transition: reveal];
