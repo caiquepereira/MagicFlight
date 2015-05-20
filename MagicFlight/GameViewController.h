@@ -16,7 +16,7 @@
 @property (nonatomic) BOOL gameCenterEnabled;
 @property (nonatomic) NSString* leaderboardIdentifier;
 
--(void)authenticateLocalPlayer;
--(void)reportScore: (int) scoreValue;
+- (void)authenticateLocalPlayer;
+- (void)reportScore: (int) scoreValue;
 
 @end
