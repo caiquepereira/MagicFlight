@@ -142,6 +142,8 @@
         
         [alertView show];
     }
+    
+    [self removeImage];
 }
 
 - (void)createTwitter:(NSNotification *)notification {
@@ -170,6 +172,8 @@
         
         [alertView show];
     }
+    
+    [self removeImage];
 }
 
 - (UIImage *)getImage {
@@ -180,6 +184,15 @@
     UIImage *highScoreScreenShoot = [UIImage imageWithContentsOfFile:getImagePath];
     
     return highScoreScreenShoot;
+}
+
+- (void)removeImage {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *getImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+    
+    [[NSFileManager defaultManager]removeItemAtPath:getImagePath error:nil];
+    
 }
 
 @end
