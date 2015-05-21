@@ -312,9 +312,7 @@
                 NSLog(@"Primeira vez que o app eh rodado na vida");
             }
             
-            
-            
-           
+
         }];
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, startGame]];
