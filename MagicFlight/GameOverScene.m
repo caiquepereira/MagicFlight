@@ -228,11 +228,37 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"retryButton"]) {
-//        //animation
-//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
-//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
         
-        SKAction * retry =
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.12 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.14 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
+        SKAction *retry =
         [SKAction runBlock:^{
             GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds andTimesPlayed:timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
@@ -240,14 +266,40 @@
             [self stopBackgroundMusic];
         }];
         
-//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, retry]];
-        [retryButton runAction:retry];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, retry]];
+        [retryButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
-//        //animation
-//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
-//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.12 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.14 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
         
         SKAction *goMenu =
         [SKAction runBlock:^{
@@ -259,14 +311,40 @@
             [self stopBackgroundMusic];
         }];
         
-//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goMenu]];
-        [menuButton runAction:goMenu];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goMenu]];
+        [menuButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"facebookButton"]) {
-//        //animation
-//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
-//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.12 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.14 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
         
         [self takeScreenshoot];
         [self saveImage];
@@ -279,14 +357,40 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self];
         }];
         
-//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goFacebook]];
-        [facebookButton runAction:goFacebook];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goFacebook]];
+        [facebookButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"twitterButton"]) {
-//        //animation
-//        SKAction *scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
-//        SKAction *scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.12 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.14 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
         
         [self takeScreenshoot];
         [self saveImage];
@@ -299,8 +403,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self];
         }];
         
-//        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goTwitter]];
-        [twitterButton runAction:goTwitter];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goTwitter]];
+        [twitterButton runAction:sequence];
     }
 }
 

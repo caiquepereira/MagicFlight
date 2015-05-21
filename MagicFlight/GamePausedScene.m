@@ -240,7 +240,7 @@
     //ipad
     else if (width == 768 && height == 1024) {
         [audioActiveNode setScale:0.3];
-        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        audioActiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 325);
     }
     
     return audioActiveNode;
@@ -275,7 +275,7 @@
     //ipad
     else if (width == 768 && height == 1024) {
         [audioInactiveNode setScale:0.3];
-        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
+        audioInactiveNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 325);
     }
     
     return audioInactiveNode;
@@ -287,6 +287,36 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"playButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
         SKAction * resumeGame = [SKAction runBlock:^{
             GameScene * myScene = gameScene;
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
@@ -301,10 +331,41 @@
             }
         }];
         
-        [playButton runAction:resumeGame];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, resumeGame]];
+        [playButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"retryButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
         SKAction * retryGame = [SKAction runBlock:^{
             GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
@@ -312,10 +373,41 @@
             
         }];
         
-        [retryButton runAction:retryGame];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, retryGame]];
+        [retryButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
         if ([node.name isEqualToString:@"menuButton"]) {
             SKAction * goMenu = [SKAction runBlock:^{
                 GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSound andTimesPlayed:timesPlayed];
@@ -323,7 +415,8 @@
                 [self.view presentScene:myScene transition: reveal];
             }];
             
-            [menuButton runAction:goMenu];
+            SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goMenu]];
+            [menuButton runAction:sequence];
         }
     }
     
