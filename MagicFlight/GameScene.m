@@ -65,10 +65,12 @@
 
 -(id)initWithSize:(CGSize)size
          andSound:(BOOL)soundEnabled
-        andTimesPlayed:(int)timesPlayedGame{
+        andTimesPlayed:(int)timesPlayedGame {
     
     timesPlayed=timesPlayedGame;
     timesPlayed++;
+    
+    [self creatingLine];
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
@@ -173,6 +175,14 @@
     [self attack: @"swipeUp"];
 }
 
+- (void)creatingLine {
+    lineNode = [SKShapeNode node];
+    lineNode.path = pathToDraw;
+    lineNode.strokeColor = [SKColor orangeColor];
+    lineNode.lineWidth = 10;
+    lineNode.zPosition = HUD_POSITION;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch* touch = [touches anyObject];
@@ -262,12 +272,6 @@
     pathToDraw = CGPathCreateMutable();
     CGPathMoveToPoint(pathToDraw, NULL, startPositionInScene.x, startPositionInScene.y);
     
-    lineNode = [SKShapeNode node];
-    lineNode.path = pathToDraw;
-    lineNode.strokeColor = [SKColor orangeColor];
-    lineNode.lineWidth = 10;
-    lineNode.zPosition = HUD_POSITION;
-    
     [self addChild:lineNode];
 }
 
@@ -285,7 +289,8 @@
     CGPoint currentTouchPosition = [touch locationInNode:self];
     
     [lineNode removeFromParent];
-    CGPathRelease(pathToDraw);
+//    CGPathRelease(pathToDraw);
+    CGPathCloseSubpath(pathToDraw);
     
     if (fabs(startPositionInScene.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN_H &&
         fabs(startPositionInScene.y - currentTouchPosition.y) <= VERT_SWIPE_DRAG_MAX_H) {
