@@ -7,6 +7,7 @@
 //
 
 #import "GameTutorialScene.h"
+#import <UIKit/UIKit.h>
 
 @implementation GameTutorialScene{
     CGFloat width;
@@ -15,6 +16,8 @@
 
     
 }
+
+
 
 
 -(instancetype)initWithSize:(CGSize)size{
@@ -28,11 +31,17 @@
         
     }
     
+
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(metodoTAl)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    
+    
     return self;
 }
 
 - (SKSpriteNode *)makeBackground {
-    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"tutorialpagina1"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -51,17 +60,24 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [backgroundNode setScale:2];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [backgroundNode setScale:0.34];
+        //backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        backgroundNode.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [backgroundNode setScale:2.2];
+        [backgroundNode setScale:1.0];
         backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
+    
+
     
     return backgroundNode;
 }
 
+
+-(void)metodoTAl{
+    NSLog(@"Swipe deu certo");
+}
 
 @end
