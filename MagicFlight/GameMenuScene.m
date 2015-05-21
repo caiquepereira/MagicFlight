@@ -308,13 +308,9 @@
                 SKTransition *reveal2 = [SKTransition flipHorizontalWithDuration:0.5];
                 [self.view presentScene:tutorialScene transition: reveal2];
 
-                
-                NSLog(@"Primeira vez que o app eh rodado na vida");
             }
             
-            
-            
-           
+
         }];
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, startGame]];
