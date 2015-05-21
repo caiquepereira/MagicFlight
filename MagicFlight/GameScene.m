@@ -181,20 +181,82 @@
     SKNode* node = [self nodeAtPoint:startPositionInScene];
     
     if ([node.name isEqualToString:@"pauseButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
+        }
+        
         SKAction *pauseGame = [SKAction runBlock:^{
             [self pauseGame];
         }];
         
-        [pauseButton runAction:pauseGame];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, pauseGame]];
+        [pauseButton runAction:sequence];
     }
     
     if ([node.name isEqualToString:@"powerUpButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        
         SKAction *usePowerUp = [SKAction runBlock:^{
             [self attack:@"destroyAll"];
             
         }];
         
-        [powerUpButton runAction:usePowerUp];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, usePowerUp]];
+        [powerUpButton runAction:sequence];
     }
     
     pathToDraw = CGPathCreateMutable();
