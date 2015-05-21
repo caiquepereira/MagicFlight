@@ -141,16 +141,24 @@
 			name = Music;
 			sourceTree = "<group>";
 		};
+		468773211B0EA08400D81D67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FC896521AEAE24700832C7D /* GameKit.framework */,
+				56EB6FC91AF9615A00AAE236 /* Social.framework */,
+				8FD6AE6D1B0CF911003B249D /* Chartboost.framework */,
+				8FD6AE6F1B0CF933003B249D /* StoreKit.framework */,
+				8FD6AE711B0CF93F003B249D /* Foundation.framework */,
+				8FD6AE731B0CF953003B249D /* CoreGraphics.framework */,
+				8FD6AE751B0CF95F003B249D /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		56D67B441AD6EAF90032CAA3 = {
 			isa = PBXGroup;
 			children = (
-				8FD6AE751B0CF95F003B249D /* UIKit.framework */,
-				8FD6AE731B0CF953003B249D /* CoreGraphics.framework */,
-				8FD6AE711B0CF93F003B249D /* Foundation.framework */,
-				8FD6AE6F1B0CF933003B249D /* StoreKit.framework */,
-				8FD6AE6D1B0CF911003B249D /* Chartboost.framework */,
-				56EB6FC91AF9615A00AAE236 /* Social.framework */,
-				8FC896521AEAE24700832C7D /* GameKit.framework */,
+				468773211B0EA08400D81D67 /* Frameworks */,
 				294354F61AEAC4070094BAD5 /* Resources */,
 				56D67B4F1AD6EAF90032CAA3 /* MagicFlight */,
 				56D67B6E1AD6EAF90032CAA3 /* MagicFlightTests */,
