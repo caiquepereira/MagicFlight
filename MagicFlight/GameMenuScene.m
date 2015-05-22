@@ -293,22 +293,22 @@
         SKAction *startGame = [SKAction runBlock:^{
             
             
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) { // app already launched
+//            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) { // app already launched
             
                 GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
                 SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
                 [self stopBackgroundMusic];
                 [self.view presentScene:myScene transition: reveal];
                 
-            } else {
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-                [[NSUserDefaults standardUserDefaults] synchronize]; // This is the first launch ever
-                
-                GameTutorialScene *tutorialScene = [[GameTutorialScene alloc] initWithSize:self.size];
-                SKTransition *reveal2 = [SKTransition flipHorizontalWithDuration:0.5];
-                [self.view presentScene:tutorialScene transition: reveal2];
-
-            }
+//            } else {
+//                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+//                [[NSUserDefaults standardUserDefaults] synchronize]; // This is the first launch ever
+//                
+//                GameTutorialScene *tutorialScene = [[GameTutorialScene alloc] initWithSize:self.size];
+//                SKTransition *reveal2 = [SKTransition flipHorizontalWithDuration:0.5];
+//                [self.view presentScene:tutorialScene transition: reveal2];
+//
+//            }
             
 
         }];
