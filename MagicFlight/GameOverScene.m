@@ -105,8 +105,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [facebookNode setScale:0.2];
-        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [facebookNode setScale:0.22];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -140,8 +140,8 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [twitterNode setScale:0.22];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -176,7 +176,7 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [retryNode setScale:0.22];
-        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2);
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 50);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -211,7 +211,7 @@
     //iphone 6 plus
     else if (width == 414 && height == 736) {
         [menuNode setScale:0.22];
-        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - retryButton.size.height - 8);
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 60);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -337,8 +337,8 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
         //ipad
         else if (width == 768 && height == 1024) {
@@ -383,8 +383,8 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
         //ipad
         else if (width == 768 && height == 1024) {
