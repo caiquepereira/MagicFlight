@@ -70,7 +70,7 @@
     timesPlayed=timesPlayedGame;
     timesPlayed++;
     
-    [self creatingLine];
+    
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
@@ -188,6 +188,13 @@
     UITouch* touch = [touches anyObject];
     startPositionInScene = [touch locationInNode:self];
     
+    pathToDraw = CGPathCreateMutable();
+    CGPathMoveToPoint(pathToDraw, NULL, startPositionInScene.x, startPositionInScene.y);
+    
+    [self creatingLine];
+    
+    [self addChild:lineNode];
+    
     SKNode* node = [self nodeAtPoint:startPositionInScene];
     
     if ([node.name isEqualToString:@"pauseButton"]) {
@@ -268,11 +275,6 @@
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, usePowerUp]];
         [powerUpButton runAction:sequence];
     }
-    
-    pathToDraw = CGPathCreateMutable();
-    CGPathMoveToPoint(pathToDraw, NULL, startPositionInScene.x, startPositionInScene.y);
-    
-    [self addChild:lineNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -289,7 +291,6 @@
     CGPoint currentTouchPosition = [touch locationInNode:self];
     
     [lineNode removeFromParent];
-//    CGPathRelease(pathToDraw);
     CGPathCloseSubpath(pathToDraw);
     
     if (fabs(startPositionInScene.x - currentTouchPosition.x) >= HORIZ_SWIPE_DRAG_MIN_H &&
