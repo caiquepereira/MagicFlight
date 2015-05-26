@@ -304,7 +304,7 @@
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
                 [[NSUserDefaults standardUserDefaults] synchronize]; // This is the first launch ever
                 
-                GameTutorialScene *tutorialScene = [[GameTutorialScene alloc] initWithSize:self.size];
+                GameTutorialScene *tutorialScene = [[GameTutorialScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
                 SKTransition *reveal2 = [SKTransition flipHorizontalWithDuration:0.5];
                 [self.view presentScene:tutorialScene transition: reveal2];
 

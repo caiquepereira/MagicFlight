@@ -10,6 +10,6 @@
 
 @interface GameTutorialScene : SKScene
 
--(instancetype)initWithSize:(CGSize)size;
+-(instancetype)initWithSize:(CGSize)size andSound:(BOOL)soundEnabled andTimesPlayed:(int)timesPlayedGame;
 
 @end
