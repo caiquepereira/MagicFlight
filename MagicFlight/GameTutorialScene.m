@@ -7,18 +7,32 @@
 //
 
 #import "GameTutorialScene.h"
+#import "GameScene.h"
+
 
 @implementation GameTutorialScene{
     CGFloat width;
     CGFloat height;
     SKSpriteNode *tutorialPage;
+    SKSpriteNode *nextButton;
+    SKSpriteNode *backButton;
+    SKSpriteNode *playButton;
     NSString * Devicelanguage;
+    SKLabelNode *label1Page1;
+    SKLabelNode *label2Page1;
+    SKLabelNode *label1Page2;
+    SKLabelNode *label2Page2;
+    SKLabelNode *label3Page2;
+
+    BOOL playSound;
+    int timesPlayed;
+    
 }
 
 
 
 
--(instancetype)initWithSize:(CGSize)size{
+-(instancetype)initWithSize:(CGSize)size andSound:(BOOL)soundEnabled andTimesPlayed:(int)timesPlayedGame{
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
@@ -26,7 +40,31 @@
         
         tutorialPage = [self makePage1];
         [self addChild:tutorialPage];
-    
+        
+        nextButton = [self makeNextButton];
+        [self addChild:nextButton];
+        
+        backButton = [self makeBackButton];
+
+        playButton = [self makePlayButton];
+
+        
+        label1Page1= [self makeLabel1Page1];
+        [self addChild:label1Page1];
+        
+        label2Page1= [self makeLabel2Page1];
+        [self addChild:label2Page1];
+        
+        label1Page2= [self makeLabel1Page2];
+        
+        label2Page2= [self makeLabel2Page2];
+        
+        label3Page2= [self makeLabel3Page2];
+        
+        
+        playSound=soundEnabled;
+        timesPlayed=timesPlayedGame;
+        
         [self verifyDeviceLanguage];
         [self writeOnScreen]; //metodo de exemplo que verifica lingua do dispositivo
     }
@@ -65,6 +103,295 @@
 
     return page1;
 }
+
+
+- (SKSpriteNode *)makeNextButton {
+    SKSpriteNode *nextNode = [SKSpriteNode spriteNodeWithImageNamed:@"nextButton"];
+    nextNode.name=@"nextButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [nextNode setScale:2];
+        nextNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [nextNode setScale:2];
+        nextNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [nextNode setScale:0.15];
+        nextNode.position = CGPointMake(3*self.frame.size.width/4, self.frame.size.height/15);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [nextNode setScale:0.34];
+        nextNode.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [nextNode setScale:1.0];
+        nextNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    
+    
+    return nextNode;
+}
+
+- (SKLabelNode *) makeLabel1Page1{
+    SKLabelNode *explanationNode = [SKLabelNode labelNodeWithFontNamed:@"Times New Roman"];
+    
+    explanationNode.name = @"explanation1";
+    explanationNode.text = @"Swipe in the right directions";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        explanationNode.fontSize = 30;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
+    }
+    
+    return explanationNode;
+}
+
+
+- (SKLabelNode *) makeLabel2Page1{
+    SKLabelNode *explanationNode = [SKLabelNode labelNodeWithFontNamed:@"Times New Roman"];
+    
+    explanationNode.name = @"explanation2";
+    explanationNode.text = @"to defeat the enemies.";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        explanationNode.fontSize = 30;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
+    }
+    
+    return explanationNode;
+}
+
+
+- (SKLabelNode *) makeLabel1Page2{
+    SKLabelNode *explanationNode = [SKLabelNode labelNodeWithFontNamed:@"Times New Roman"];
+    
+    explanationNode.name = @"label1page2";
+    explanationNode.text = @"When the bar gets filled,";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        explanationNode.fontSize = 30;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
+    }
+    
+    return explanationNode;
+}
+
+-(SKLabelNode *) makeLabel2Page2{
+    SKLabelNode *explanationNode = [SKLabelNode labelNodeWithFontNamed:@"Times New Roman"];
+    
+    explanationNode.name = @"label2page2";
+    explanationNode.text = @"click the power-up button to";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        explanationNode.fontSize = 30;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
+    }
+    
+    return explanationNode;
+}
+
+-(SKLabelNode *) makeLabel3Page2{
+    SKLabelNode *explanationNode = [SKLabelNode labelNodeWithFontNamed:@"Times New Roman"];
+    
+    explanationNode.name = @"label3page2";
+    explanationNode.text = @"defeat all enemies.";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 60);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 100);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        explanationNode.fontSize = 30;
+        explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 100;
+        explanationNode.position = CGPointMake(self.size.width/2, self.size.height - 200);
+    }
+    
+    return explanationNode;
+}
+
+
+
+
+
+- (SKSpriteNode *)makeBackButton {
+    SKSpriteNode *backNode = [SKSpriteNode spriteNodeWithImageNamed:@"backButton"];
+    backNode.name=@"backButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [backNode setScale:2];
+        backNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [backNode setScale:2];
+        backNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [backNode setScale:0.15];
+        backNode.position = CGPointMake(self.frame.size.width/4, self.frame.size.height/15);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [backNode setScale:0.2];
+        backNode.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [backNode setScale:1.0];
+        backNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    
+    
+    return backNode;
+}
+
+
+- (SKSpriteNode*) makePlayButton{
+    
+    SKSpriteNode *playNode = [SKSpriteNode spriteNodeWithImageNamed:@"playButton"];
+    
+    playNode.name = @"playButton";
+    
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [playNode setScale:0.15];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 80);
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [playNode setScale:0.18];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 92);
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [playNode setScale:0.15];
+        playNode.position = CGPointMake(3*self.frame.size.width/4, self.frame.size.height/15);
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [playNode setScale:0.22];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 120);
+    }
+    //ipad
+    else if (width == 768 && height == 1024) {
+        [playNode setScale:0.3];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 160);
+    }
+    
+    return playNode;
+}
+
+
+
 
 
 - (void)didMoveToView:(SKView *)view
@@ -128,6 +455,170 @@
     }else{
         NSLog(@"escrever em inglês");
     }
+}
+
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *node = [self nodeAtPoint:location];
+    
+    if ([node.name isEqualToString:@"nextButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
+        SKAction * resumeGame = [SKAction runBlock:^{
+            [tutorialPage removeFromParent];
+            [nextButton removeFromParent];
+            [label1Page1 removeFromParent];
+            [label2Page1 removeFromParent];
+            tutorialPage = [self makePage2];
+            [self addChild: tutorialPage];
+            [self addChild:backButton];
+            [self addChild:label1Page2];
+            [self addChild:label2Page2];
+            [self addChild:label3Page2];
+            [self addChild:playButton];
+        
+        }];
+        
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, resumeGame]];
+        [nextButton runAction:sequence];
+    }
+    
+    
+    if ([node.name isEqualToString:@"backButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
+        SKAction * resumeGame = [SKAction runBlock:^{
+            [tutorialPage removeFromParent];
+            [backButton removeFromParent];
+            [label1Page2 removeFromParent];
+            [label2Page2 removeFromParent];
+            [label3Page2 removeFromParent];
+            [playButton removeFromParent];
+            tutorialPage = [self makePage1];
+            [self addChild: tutorialPage];
+            [self addChild: nextButton];
+            [self addChild:label1Page1];
+            [self addChild:label2Page1];
+            
+        }];
+        
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, resumeGame]];
+        [backButton runAction:sequence];
+    }
+
+    
+    if ([node.name isEqualToString:@"playButton"]) {
+        //animation
+        SKAction *scaleFirst;
+        SKAction *scaleEnd;
+        
+        //iphone 4s
+        if (width == 320 && height == 480) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 5 e 5s
+        else if (width == 320 && height == 568) {
+            scaleFirst = [SKAction scaleTo:0.16 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.18 duration:0.1];
+        }
+        //iphone 6
+        else if (width == 375 && height == 667) {
+            scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+        }
+        //iphone 6 plus
+        else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //ipad
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        
+        SKAction * resumeGame = [SKAction runBlock:^{
+            [tutorialPage removeFromParent];
+            [backButton removeFromParent];
+            [label1Page2 removeFromParent];
+            [label2Page2 removeFromParent];
+            [label3Page2 removeFromParent];
+            [playButton removeFromParent];
+            
+            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            [self.view presentScene:myScene transition: reveal];
+            
+            
+        }];
+        
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, resumeGame]];
+        [playButton runAction:sequence];
+    }
+
+    
+    
+    
 }
 
 
