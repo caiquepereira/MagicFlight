@@ -34,7 +34,7 @@
 }
 
 - (SKSpriteNode *)makePage1 {
-    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"tutorialpagina1"];
+    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial1"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -85,7 +85,7 @@
 
 
 - (SKSpriteNode *)makePage2 {
-    SKSpriteNode *pagina2Node = [SKSpriteNode spriteNodeWithImageNamed:@"tutorialpagina2"];
+    SKSpriteNode *pagina2Node = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial2"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
