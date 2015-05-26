@@ -193,7 +193,7 @@
     
     [self creatingLine];
     
-    [self addChild:lineNode];
+    
     
     SKNode* node = [self nodeAtPoint:startPositionInScene];
     
@@ -201,7 +201,7 @@
         //animation
         SKAction *scaleFirst;
         SKAction *scaleEnd;
-        
+        NSLog(@"ENtrei");
         //iphone 4s
         if (width == 320 && height == 480) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
@@ -275,6 +275,8 @@
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, usePowerUp]];
         [powerUpButton runAction:sequence];
     }
+    
+    [self addChild:lineNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
