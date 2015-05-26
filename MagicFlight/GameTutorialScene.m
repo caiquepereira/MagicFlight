@@ -34,36 +34,36 @@
 }
 
 - (SKSpriteNode *)makePage1 {
-    SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial1"];
+    SKSpriteNode *page1 = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial1"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [backgroundNode setScale:2];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page1 setScale:2];
+        page1.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [backgroundNode setScale:2];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page1 setScale:2];
+        page1.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [backgroundNode setScale:2];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page1 setScale:0.32];
+        page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [backgroundNode setScale:0.34];
-        backgroundNode.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
+        [page1 setScale:0.34];
+        page1.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [backgroundNode setScale:1.0];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page1 setScale:1.0];
+        page1.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
     
 
-    return backgroundNode;
+    return page1;
 }
 
 
@@ -85,35 +85,36 @@
 
 
 - (SKSpriteNode *)makePage2 {
-    SKSpriteNode *pagina2Node = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial2"];
+    SKSpriteNode *page2 = [SKSpriteNode spriteNodeWithImageNamed:@"tutorial2"];
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [pagina2Node setScale:2];
-        pagina2Node.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page2 setScale:2];
+        page2.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [pagina2Node setScale:2];
-        pagina2Node.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page2 setScale:2];
+        page2.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [pagina2Node setScale:2];
-        pagina2Node.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page2 setScale:0.32];
+        page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [pagina2Node setScale:0.34];
-        pagina2Node.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
+        [page2 setScale:0.2];
+        page2.position = CGPointMake(self.frame.size.width-205, self.frame.size.height-360);
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [pagina2Node setScale:1.0];
-        pagina2Node.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [page2 setScale:1.0];
+        page2.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
 
-    return pagina2Node;
+    return page2;
 }
 
 -(void)verifyDeviceLanguage{
