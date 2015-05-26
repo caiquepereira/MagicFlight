@@ -201,7 +201,6 @@
         //animation
         SKAction *scaleFirst;
         SKAction *scaleEnd;
-        NSLog(@"ENtrei");
         //iphone 4s
         if (width == 320 && height == 480) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
