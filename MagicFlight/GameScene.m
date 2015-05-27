@@ -27,14 +27,14 @@
 #define VERT_SWIPE_DRAG_MAX_V   15
 
 @implementation GameScene {
-    NSString *particlePath;
-    SKEmitterNode *particleNode;
+//    NSString *particlePath;
+//    SKEmitterNode *particleNode;
     CGMutablePathRef pathToDraw;
     SKSpriteNode *mage;
     SKSpriteNode *background;
     SKSpriteNode *powerUpButton;
     SKSpriteNode *powerUpBar;
-    SKSpriteNode *edge;
+//    SKSpriteNode *edge;
     SKShapeNode *lineNode;
     SKLabelNode *scoreLabel;
     NSMutableArray *dataToSaveInPlist;
@@ -77,8 +77,8 @@
         
         _playSounds = soundEnabled;
         
-        particlePath = [[NSBundle mainBundle] pathForResource:@"GestureParticle" ofType:@"sks"];
-        particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
+//        particlePath = [[NSBundle mainBundle] pathForResource:@"GestureParticle" ofType:@"sks"];
+//        particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
         
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
@@ -223,8 +223,8 @@
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
         }
         
         SKAction *pauseGame = [SKAction runBlock:^{
@@ -276,7 +276,7 @@
     }
     
     [self addChild:lineNode];
-    [self addChild:particleNode];
+//    [self addChild:particleNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -286,8 +286,8 @@
     CGPathAddLineToPoint(pathToDraw, NULL, currentTouchPosition.x, currentTouchPosition.y);
     lineNode.path = pathToDraw;
     
-    particleNode.position = currentTouchPosition;
-    particleNode.particleBirthRate = 100;
+//    particleNode.position = currentTouchPosition;
+//    particleNode.particleBirthRate = 100;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -335,7 +335,7 @@
     }
     
     startPositionInScene = CGPointZero;
-    [particleNode removeFromParent];
+//    [particleNode removeFromParent];
     
 }
 
@@ -605,40 +605,40 @@
     return powerUpBarNode;
 }
 
-- (SKSpriteNode *) makeEdge {
-    SKSpriteNode *edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
-    
-    //iphone 4s
-    if (width == 320 && height == 480) {
-        [edgeNode setScale:1];
-        edgeNode.position = CGPointMake(30, self.size.height+200);
-    }
-    //iphone 5 e 5s
-    else if (width == 320 && height == 568) {
-        [edgeNode setScale:1];
-        edgeNode.position = CGPointMake(30, self.size.height+200);
-    }
-    //iphone 6
-    else if (width == 375 && height == 667) {
-        [edgeNode setScale:1];
-        edgeNode.position = CGPointMake(30, self.size.height+200);
-    }
-    //iphone 6 plus
-    else if (width == 414 && height == 736) {
-        [edgeNode setScale:1];
-        edgeNode.position = CGPointMake(30, self.size.height+200);
-    }
-    //ipad
-    else if (width == 768 && height == 1024) {
-        [edgeNode setScale:2];
-        edgeNode.position = CGPointMake(30, self.size.height+200);
-    }
-    
-    SKAction *move = [SKAction moveToY: -200 duration:6];
-    [edgeNode runAction:move];
-    
-    return edgeNode;
-}
+//- (SKSpriteNode *) makeEdge {
+//    SKSpriteNode *edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
+//    
+//    //iphone 4s
+//    if (width == 320 && height == 480) {
+//        [edgeNode setScale:1];
+//        edgeNode.position = CGPointMake(30, self.size.height+200);
+//    }
+//    //iphone 5 e 5s
+//    else if (width == 320 && height == 568) {
+//        [edgeNode setScale:1];
+//        edgeNode.position = CGPointMake(30, self.size.height+200);
+//    }
+//    //iphone 6
+//    else if (width == 375 && height == 667) {
+//        [edgeNode setScale:1];
+//        edgeNode.position = CGPointMake(30, self.size.height+200);
+//    }
+//    //iphone 6 plus
+//    else if (width == 414 && height == 736) {
+//        [edgeNode setScale:1];
+//        edgeNode.position = CGPointMake(30, self.size.height+200);
+//    }
+//    //ipad
+//    else if (width == 768 && height == 1024) {
+//        [edgeNode setScale:2];
+//        edgeNode.position = CGPointMake(30, self.size.height+200);
+//    }
+//    
+//    SKAction *move = [SKAction moveToY: -200 duration:6];
+//    [edgeNode runAction:move];
+//    
+//    return edgeNode;
+//}
 
 - (void)spawnCloud {
     

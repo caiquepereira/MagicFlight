@@ -292,15 +292,15 @@
 
         SKAction *startGame = [SKAction runBlock:^{
             
-//            
-//            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) { // app already launched
             
-//                GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
-//                SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-//                [self stopBackgroundMusic];
-//                [self.view presentScene:myScene transition: reveal];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) { // app already launched
             
-//            } else {
+                GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
+                SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+                [self stopBackgroundMusic];
+                [self.view presentScene:myScene transition: reveal];
+            
+            } else {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
                 [[NSUserDefaults standardUserDefaults] synchronize]; // This is the first launch ever
                 
@@ -309,7 +309,7 @@
                 [self stopBackgroundMusic];
                 [self.view presentScene:tutorialScene transition: reveal2];
 
-//            }
+            }
             
 
         }];
