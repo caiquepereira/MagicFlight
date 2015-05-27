@@ -42,9 +42,6 @@
         // Create and configure the scene.
         SKScene * scene = [[GameMenuScene alloc]initWithSize:skView.bounds.size andSoundEnabled:YES andTimesPlayed:timesPlayed];
         
-
-        
-        
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.

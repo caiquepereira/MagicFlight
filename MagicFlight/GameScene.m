@@ -27,8 +27,8 @@
 #define VERT_SWIPE_DRAG_MAX_V   15
 
 @implementation GameScene {
-//    NSString *particlePath;
-//    SKEmitterNode *particleNode;
+    NSString *particlePath;
+    SKEmitterNode *particleNode;
     CGMutablePathRef pathToDraw;
     SKSpriteNode *mage;
     SKSpriteNode *background;
@@ -70,15 +70,15 @@
     
     timesPlayed=timesPlayedGame;
     timesPlayed++;
-
-//    particlePath = [[NSBundle mainBundle] pathForResource:@"GameScene" ofType:@"sks"];
-//    particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
         height = self.size.height;
         
         _playSounds = soundEnabled;
+        
+        particlePath = [[NSBundle mainBundle] pathForResource:@"GestureParticle" ofType:@"sks"];
+        particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
         
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
@@ -195,8 +195,6 @@
     
     [self creatingLine];
     
-    
-    
     SKNode* node = [self nodeAtPoint:startPositionInScene];
     
     if ([node.name isEqualToString:@"pauseButton"]) {
@@ -278,7 +276,7 @@
     }
     
     [self addChild:lineNode];
-//    [self addChild:particleNode];
+    [self addChild:particleNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -288,7 +286,8 @@
     CGPathAddLineToPoint(pathToDraw, NULL, currentTouchPosition.x, currentTouchPosition.y);
     lineNode.path = pathToDraw;
     
-//    particleNode.position = currentTouchPosition;
+    particleNode.position = currentTouchPosition;
+    particleNode.particleBirthRate = 100;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -336,6 +335,8 @@
     }
     
     startPositionInScene = CGPointZero;
+    [particleNode removeFromParent];
+    
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {

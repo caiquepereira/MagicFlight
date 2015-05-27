@@ -25,6 +25,8 @@
 		56D67B721AD6EAF90032CAA3 /* MagicFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */; };
 		56E16E071AFC0FD400B2F2D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E16E061AFC0FD400B2F2D0 /* Main.storyboard */; };
 		56EB6FCA1AF9615A00AAE236 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB6FC91AF9615A00AAE236 /* Social.framework */; };
+		56EE8C971B162DB300910752 /* GestureParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 56EE8C951B162DB300910752 /* GestureParticle.sks */; };
+		56EE8C981B162DB300910752 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 56EE8C961B162DB300910752 /* spark.png */; };
 		56EFFE111AE598DC0096411D /* GamePausedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EFFE101AE598DC0096411D /* GamePausedScene.m */; };
 		8FC896511AEAE0C900832C7D /* GameMenuSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC896501AEAE0C900832C7D /* GameMenuSceneViewController.m */; };
 		8FC896531AEAE24700832C7D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FC896521AEAE24700832C7D /* GameKit.framework */; };
@@ -74,6 +76,8 @@
 		56D67B711AD6EAF90032CAA3 /* MagicFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagicFlightTests.m; sourceTree = "<group>"; };
 		56E16E061AFC0FD400B2F2D0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		56EB6FC91AF9615A00AAE236 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		56EE8C951B162DB300910752 /* GestureParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GestureParticle.sks; sourceTree = "<group>"; };
+		56EE8C961B162DB300910752 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		56EFFE0F1AE598DC0096411D /* GamePausedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePausedScene.h; sourceTree = "<group>"; };
 		56EFFE101AE598DC0096411D /* GamePausedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausedScene.m; sourceTree = "<group>"; };
 		8FC8964F1AEAE0C900832C7D /* GameMenuSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuSceneViewController.h; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				56B3D87F1AE1ABBE00DB9715 /* GameOverScene.h */,
 				56B3D8801AE1ABBE00DB9715 /* GameOverScene.m */,
 				56D67B5A1AD6EAF90032CAA3 /* GameScene.sks */,
+				56EE8C951B162DB300910752 /* GestureParticle.sks */,
+				56EE8C961B162DB300910752 /* spark.png */,
 				56E16E061AFC0FD400B2F2D0 /* Main.storyboard */,
 				56D67B5C1AD6EAF90032CAA3 /* GameViewController.h */,
 				56D67B5D1AD6EAF90032CAA3 /* GameViewController.m */,
@@ -318,9 +324,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				294354FD1AEAC4C10094BAD5 /* menuMusic.mp3 in Resources */,
+				56EE8C981B162DB300910752 /* spark.png in Resources */,
 				56E16E071AFC0FD400B2F2D0 /* Main.storyboard in Resources */,
 				294354F41AEAC3C30094BAD5 /* Images.xcassets in Resources */,
 				2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */,
+				56EE8C971B162DB300910752 /* GestureParticle.sks in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
 				29C8CD2A1AEC25F9005FDF9C /* gameOverMusic.mp3 in Resources */,
 				2945BE031AFBE4B00032F9C3 /* spell.mp3 in Resources */,
