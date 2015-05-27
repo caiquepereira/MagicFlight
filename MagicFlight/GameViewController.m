@@ -131,19 +131,19 @@
         [mySLComposerSheet addImage:[self getImage]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
-        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
+//        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
 //            if (result == SLComposeViewControllerResultDone) {
 //                
 //                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 //                
 //                [alertView show];
 //            }
-        };
-        
-        mySLComposerSheet.completionHandler = myBlock;
+//        };
+//        
+//        mySLComposerSheet.completionHandler = myBlock;
     }
     else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can post right now, make sure your device has an internet connection and you have at least one facebook account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can't post right now, make sure your device has an internet connection and you have at least one facebook account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
         [alertView show];
     }
@@ -161,19 +161,19 @@
         [mySLComposerSheet addImage:[self getImage]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
-        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
+//        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
 //            if (result == SLComposeViewControllerResultDone) {
 //                
 //                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
 //                
 //                [alertView show];
 //            }
-        };
-        
-        mySLComposerSheet.completionHandler = myBlock;
+//        };
+//        
+//        mySLComposerSheet.completionHandler = myBlock;
     }
     else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can post right now, make sure your device has an internet connection and you have at least one twitter account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can't post right now, make sure your device has an internet connection and you have at least one twitter account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
         [alertView show];
     }
