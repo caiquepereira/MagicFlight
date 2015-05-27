@@ -101,7 +101,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [page1 setScale:1.0];
+        page1=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial1iPad"];
+        [page1 setScale:0.55];
         page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
     
@@ -135,7 +136,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [page2 setScale:1.0];
+        page2=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial2iPad"];
+        [page2 setScale:0.55];
         page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
     
@@ -170,8 +172,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [nextNode setScale:1.0];
-        nextNode.position = CGPointMake(3*self.frame.size.width/4, self.frame.size.height/15);
+        [nextNode setScale:0.17];
+        nextNode.position = CGPointMake(18*self.frame.size.width/20, self.frame.size.height/15);
     }
     
     
@@ -206,8 +208,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        explanationNode.fontSize = 100;
-        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+20);
     }
     
     return explanationNode;
@@ -242,8 +244,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        explanationNode.fontSize = 100;
-        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100);
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+20);
     }
     
     return explanationNode;
@@ -279,8 +281,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        explanationNode.fontSize = 100;
-        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+30);
     }
     
     return explanationNode;
@@ -315,8 +317,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        explanationNode.fontSize = 100;
-        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100);
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+30);
     }
     
     return explanationNode;
@@ -351,8 +353,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        explanationNode.fontSize = 100;
-        explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100);
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100+30);
     }
     
     return explanationNode;
@@ -388,8 +390,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [backNode setScale:1.0];
-        backNode.position = CGPointMake(self.frame.size.width/4, self.frame.size.height/15);
+        [backNode setScale:0.17];
+        backNode.position = CGPointMake(2*self.frame.size.width/20, self.frame.size.height/15);
     }
     
     
@@ -425,8 +427,8 @@
     }
     //ipad
     else if (width == 768 && height == 1024) {
-        [playNode setScale:0.3];
-        playNode.position = CGPointMake(3*self.frame.size.width/4, self.frame.size.height/15);
+        [playNode setScale:0.17];
+        playNode.position = CGPointMake(18*self.frame.size.width/20, self.frame.size.height/15);
     }
     
     return playNode;
@@ -485,8 +487,8 @@
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
@@ -537,8 +539,8 @@
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
@@ -588,8 +590,8 @@
         }
         //ipad
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
