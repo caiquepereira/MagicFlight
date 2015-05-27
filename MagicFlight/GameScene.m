@@ -27,7 +27,8 @@
 #define VERT_SWIPE_DRAG_MAX_V   15
 
 @implementation GameScene {
-    
+//    NSString *particlePath;
+//    SKEmitterNode *particleNode;
     CGMutablePathRef pathToDraw;
     SKSpriteNode *mage;
     SKSpriteNode *background;
@@ -69,8 +70,9 @@
     
     timesPlayed=timesPlayedGame;
     timesPlayed++;
-    
-    
+
+//    particlePath = [[NSBundle mainBundle] pathForResource:@"GameScene" ofType:@"sks"];
+//    particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
     
     if (self = [super initWithSize:size]) {
         width = self.size.width;
@@ -276,6 +278,7 @@
     }
     
     [self addChild:lineNode];
+//    [self addChild:particleNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -285,6 +288,7 @@
     CGPathAddLineToPoint(pathToDraw, NULL, currentTouchPosition.x, currentTouchPosition.y);
     lineNode.path = pathToDraw;
     
+//    particleNode.position = currentTouchPosition;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
