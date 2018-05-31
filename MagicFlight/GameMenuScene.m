@@ -12,19 +12,24 @@
 #import "GameScene.h"
 #import "GameMenuSceneViewController.h"
 
-@implementation GameMenuScene
-{
-    SKSpriteNode* playButton;
-    SKSpriteNode* logo;
+@implementation GameMenuScene {
+    SKSpriteNode *startButton;
+    SKSpriteNode *logo;
+    SKSpriteNode *audioControl;
     AVAudioPlayer *musicPlayer;
-    SKSpriteNode* gameCenterButton;
+    SKSpriteNode *gameCenterButton;
     NSString *leaderboardIdentifier;
     
     GameMenuSceneViewController *menuViewController;
+    
+    BOOL playSound;
 }
 
-- (instancetype)initWithSize:(CGSize)size{
+- (instancetype)initWithSize:(CGSize)size
+             andSoundEnabled:(BOOL)soundEnabled{
+    
     if(self = [super initWithSize:size]){
+        playSound = soundEnabled;
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
         [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
@@ -32,17 +37,23 @@
         
         [self addChild:backgroundImage];
         
-        playButton = [self makeMenuButton];
-        [self addChild:playButton];
+        startButton = [self makeStartButton];
+        [self addChild:startButton];
         
         logo = [self makeLogo];
         [self addChild:logo];
         
-        [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        if (playSound){
+            audioControl = [self makeAudioIconActived];
+            [self addChild:audioControl];
+            [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        } else {
+            audioControl = [self makeAudioIconInactive];
+            [self addChild:audioControl];
+        }
         
         gameCenterButton = [self makeGameCenterButton];
         [self addChild:gameCenterButton];
-        
         
         leaderboardIdentifier=@"Best_Score_Of_The_App";
         
@@ -50,47 +61,83 @@
     return self;
 }
 
-- (SKSpriteNode*) makeMenuButton{
+- (SKSpriteNode *) makeStartButton {
     
-    SKSpriteNode* menuNode = [SKSpriteNode spriteNodeWithImageNamed:@"startButton"];
+    SKSpriteNode *startNode = [SKSpriteNode spriteNodeWithImageNamed:@"startButton"];
     
-    menuNode.name = @"startButton";
+    startNode.name = @"startButton";
+    startNode.zPosition = 2;
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
+    [startNode setScale:0.5];
+    startNode.position = CGPointMake(self.size.width/2, logo.position.y + 100);
     
-    return menuNode;
+    return startNode;
 }
 
-- (SKSpriteNode*) makeLogo{
+- (SKSpriteNode *) makeLogo {
     
-    SKSpriteNode* logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"LOGO"];
+    SKSpriteNode *logoNode = [SKSpriteNode spriteNodeWithImageNamed:@"LOGO"];
     
     logoNode.name = @"logo";
     
     [logoNode setScale:0.5];
-    logoNode.position = CGPointMake(self.size.width/2,self.size.height/2 - 80);
+    logoNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 80);
     
     return logoNode;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (SKSpriteNode *) makeGameCenterButton {
+    
+    SKSpriteNode *gameCenterNode = [SKSpriteNode spriteNodeWithImageNamed:@"gameCenterButton"];
+    
+    gameCenterNode.name = @"gameCenterButton";
+    
+    [gameCenterNode setScale:0.28];
+    gameCenterNode.position = CGPointMake(startButton.size.width + logo.size.height/2, startButton.size.height + 20);
+    
+    return gameCenterNode;
+}
+
+- (SKSpriteNode *) makeAudioIconActived {
+    
+    SKSpriteNode *audioActiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioActive"];
+    
+    audioActiveNode.name = @"audioActive";
+    audioActiveNode.zPosition = 2;
+    
+    [audioActiveNode setScale:1];
+    audioActiveNode.position = CGPointMake(startButton.size.width - 140, startButton.size.height + 20);
+    
+    return audioActiveNode;
+}
+
+- (SKSpriteNode *) makeAudioIconInactive {
+    
+    SKSpriteNode *audioInactiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioInactive"];
+    
+    audioInactiveNode.name = @"audioInactive";
+    
+    [audioInactiveNode setScale:1.6];
+    audioInactiveNode.position = CGPointMake(startButton.size.width - 150, startButton.size.height + 20);
+    
+    return audioInactiveNode;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"startButton"]) {
-        SKAction * startGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size];
+        SKAction *startGame = [SKAction runBlock:^{
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self stopBackgroundMusic];
             [self.view presentScene:myScene transition: reveal];
         }];
         
-        [playButton runAction:startGame];
+        [startButton runAction:startGame];
     }
-    
-    
     
     if ([node.name isEqualToString:@"gameCenterButton"] && [GKLocalPlayer localPlayer].authenticated) {
         menuViewController = [[GameMenuSceneViewController alloc]init];
@@ -105,16 +152,39 @@
         
         [message show];
     }
+    
+    if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
+        SKAction *soundControl = [SKAction runBlock:^{
+            [self soundControl];
+        }];
+        
+        [self runAction:soundControl];
+    }
+}
 
+- (void) soundControl{
+    if(playSound){
+        [audioControl removeFromParent];
+        audioControl = [self makeAudioIconInactive];
+        [self addChild: audioControl];
+        [self stopBackgroundMusic];
+        playSound = NO;
+        
+    } else {
+        [audioControl removeFromParent];
+        audioControl = [self makeAudioIconActived];
+        [self addChild: audioControl];        
+        [self playBackgroundMusic:@"menuMusic" ofType:@"mp3"];
+        playSound = YES;
     
-    
+    }
 }
 
 -(void)stopBackgroundMusic {
     [musicPlayer stop];
 }
 
--(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *) type {
+-(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *)type {
     if ([musicPlayer isPlaying]) {
         return;
     }
@@ -123,20 +193,5 @@
     musicPlayer.numberOfLoops = -1;
     [musicPlayer play];
 }
-
-- (SKSpriteNode*) makeGameCenterButton{
-    
-    SKSpriteNode* gameCenterNode = [SKSpriteNode spriteNodeWithImageNamed:@"gameCenterButton"];
-    
-    gameCenterNode.name = @"gameCenterButton";
-    
-    [gameCenterNode setScale:0.28];
-    gameCenterNode.position = CGPointMake(self.size.width * 6/7,self.size.height/7);
-    
-    return gameCenterNode;
-}
-
-
-
 
 @end

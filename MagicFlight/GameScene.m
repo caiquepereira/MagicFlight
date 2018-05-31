@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameOverScene.h"
 #import "GamePausedScene.h"
+#import "GameViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 #define HUD_POSITION 15
@@ -55,16 +56,24 @@
     float increasingEnemySpeed;
     int _powerUpStage;
     int _destroyedEnemies;
+    BOOL playerBrokeScore;
+    BOOL playSounds;
+    GameViewController * viewController;
 }
 
--(id)initWithSize:(CGSize)size {
+-(id)initWithSize:(CGSize)size
+         andSound:(BOOL)soundEnabled{
+    
+    
     if (self = [super initWithSize:size]) {
+        
+        playSounds = soundEnabled;
+        
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
                         @"swipeUp",
                         @"swipeDown", nil];
         
-        //colocar o fundo do gameplay aqui (arte)
         self.backgroundColor = [SKColor whiteColor];
         self.view.ignoresSiblingOrder = YES;
         
@@ -133,7 +142,9 @@
         
         [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[increaseEnemyQuantity, increaseEnemy]]]];
         
-        [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
+        if(playSounds){
+            [self playBackgroundMusic:@"gameMusic" ofType:@"mp3"];
+        }
     }
     
     return self;
@@ -495,16 +506,29 @@
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
+        playerBrokeScore=NO;
+        
+        if(_score > _newHighestScore) {
+            _newHighestScore=_score;
+            [self saveNewHighestScoreInPlist];
+            viewController = [[GameViewController alloc]init];
+            [viewController reportScore:_score];
+            playerBrokeScore=YES;
+        }
+        
         [self stopBackgroundMusic];
-        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize:self.size andHighestScore: _newHighestScore andScore:_score];
+        GameOverScene* gameOver = [[GameOverScene alloc] initWithSize: self.size
+                                                      andHighestScore: _newHighestScore
+                                                             andScore: _score
+                                                        andBrokeScore: playerBrokeScore
+                                                      andSoundEnabled: playSounds];
+        
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
         [self.view presentScene:gameOver transition: reveal];
     }];
     
-    if(_score > _newHighestScore) {
-        [self saveNewHighestScoreInPlist];
-    }
+    
     
     [self runAction:gameOverAction];
 }
@@ -547,6 +571,7 @@
 }
 
 - (void)saveNewHighestScoreInPlist {
+     
     
     if(dataToSaveInPlist==nil) {
         dataToSaveInPlist = [[NSMutableArray alloc]init];
@@ -555,7 +580,7 @@
         [dataToSaveInPlist removeAllObjects];
     }
     
-    _newHighestScore=_score;
+    
     [dataToSaveInPlist addObject: [NSString stringWithFormat:@"%d", _newHighestScore]];
     
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.plist"];

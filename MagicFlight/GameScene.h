@@ -18,4 +18,7 @@
 
 -(void) resumeBackgroundMusic;
 
+-(id)initWithSize:(CGSize)size
+         andSound:(BOOL)soundEnabled;
+
 @end

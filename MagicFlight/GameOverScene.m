@@ -9,6 +9,7 @@
 #import "GameOverScene.h"
 #import "GameScene.h"
 #import "GameMenuScene.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation GameOverScene
 
@@ -16,14 +17,20 @@
     SKSpriteNode* retryButton;
     SKSpriteNode* menuButton;
     SKLabelNode* scoreLabel;
+    AVAudioPlayer *musicPlayer;
+    BOOL playSounds;
     
 }
 
 - (instancetype)initWithSize:(CGSize)size
              andHighestScore: (int) highestScore
-                    andScore: (int) matchScore{
-   
+                    andScore: (int) matchScore
+               andBrokeScore: (BOOL) brokeScore
+             andSoundEnabled: (BOOL) soundEnabled{
+    
     if(self = [super initWithSize:size]){
+        _playerBrokeScore=brokeScore;
+        playSounds = soundEnabled;
         
         [self setHighestScore:highestScore];
         [self setMatchScore:matchScore];
@@ -41,10 +48,12 @@
         
         [self makeScoreLabel];
         
-        [self runAction:[SKAction playSoundFileNamed:@"gameOverMusic.mp3" waitForCompletion:YES]];
-
-        
+        if(soundEnabled){
+            [self playBackgroundMusic:@"gameOverMusic" ofType:@"mp3"];
+        }
+    
     }
+    
     return self;
 }
 
@@ -66,8 +75,8 @@
     
     menuNode.name = @"menuButton";
     
-    [menuNode setScale:0.5];
-    menuNode.position = CGPointMake(self.size.width/2,menuNode.size.height - 40);
+    [menuNode setScale:0.7];
+    menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - retryButton.size.height - 8);
     
     return menuNode;
 }
@@ -80,20 +89,24 @@
     
     if ([node.name isEqualToString:@"retryButton"]) {
         SKAction * retry =
-        [SKAction runBlock:^{ GameScene * myScene =
-            [[GameScene alloc] initWithSize:self.size];
+        [SKAction runBlock:^{
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            [self.view presentScene:myScene transition: reveal]; }];
+            [self.view presentScene:myScene transition: reveal];
+            [self stopBackgroundMusic];
+        }];
         
         [retryButton runAction:retry];
     }
     
     if ([node.name isEqualToString:@"menuButton"]) {
         SKAction * goMenu =
-        [SKAction runBlock:^{ GameMenuScene * myScene =
-            [[GameMenuScene alloc] initWithSize:self.size];
+        [SKAction runBlock:^{
+            GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            [self.view presentScene:myScene transition: reveal]; }];
+            [self.view presentScene:myScene transition: reveal];
+            [self stopBackgroundMusic];
+        }];
         
         [menuButton runAction:goMenu];
     }
@@ -114,7 +127,7 @@
     newHighScoreLabel.zPosition = 15;
     newHighScoreLabel.color = [UIColor whiteColor];
     newHighScoreLabel.fontSize = 30;
-    newHighScoreLabel.text = [self newHighScore] ? [NSString stringWithFormat:@"New HighScore!"] :
+    newHighScoreLabel.text = _playerBrokeScore ? [NSString stringWithFormat:@"New HighScore!"] :
                                                    [NSString stringWithFormat:@"Your Score: %d",[self matchScore]];
     
     [self addChild:newHighScoreLabel];
@@ -129,9 +142,17 @@
     [self addChild:scoreLabelNode];
 }
 
-- (BOOL) newHighScore {
-    return [self matchScore] == [self highestScore];
-
+-(void)stopBackgroundMusic {
+    [musicPlayer stop];
 }
 
+-(void)playBackgroundMusic: (NSString *)fileName ofType:(NSString *) type {
+    if ([musicPlayer isPlaying]) {
+        return;
+    }
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:type]];
+    musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    musicPlayer.numberOfLoops = -1;
+    [musicPlayer play];
+}
 @end
