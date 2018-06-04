@@ -512,7 +512,7 @@
     }
     //iphone x
     else if (width == 375 && height == 812) {
-        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 50);
         pauseNode.zPosition = HUD_POSITION;
         [pauseNode setScale: 0.35];
     }

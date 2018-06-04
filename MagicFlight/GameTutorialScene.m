@@ -593,7 +593,7 @@
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
         //iphone X
-        else if (width == 1125 && height == 2436) {
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
@@ -649,7 +649,7 @@
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
         //iphone X
-        else if (width == 1125 && height == 2436) {
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
@@ -660,12 +660,27 @@
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
-            [self->tutorialPage removeFromParent];
-            [self->backButton removeFromParent];
-            [self->label1Page2 removeFromParent];
-            [self->label2Page2 removeFromParent];
-            [self->label3Page2 removeFromParent];
-            [self->playButton removeFromParent];
+            if(self->tutorialPage){
+                [self->tutorialPage removeFromParent];
+            }
+            if(self->backButton){
+                [self->backButton removeFromParent];
+            }
+            if(self->label1Page2){
+                [self->label1Page2 removeFromParent];
+            }
+            if(self->label2Page2){
+                [self->label2Page2 removeFromParent];
+            }
+            if(self->label3Page2){
+                [self->label3Page2 removeFromParent];
+            }
+            if(self->playButton){
+                [self->playButton removeFromParent];
+            }
+            
+            SKAction *animation = [SKAction sequence:@[scaleFirst, scaleEnd]];
+            [self->playButton runAction:animation];
             
             GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:self->playSound andTimesPlayed:self->timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
@@ -674,7 +689,7 @@
 
         }];
         
-        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, resumeGame]];
+        SKAction *sequence = [SKAction sequence:@[resumeGame]];
         [playButton runAction:sequence];
     }
 
