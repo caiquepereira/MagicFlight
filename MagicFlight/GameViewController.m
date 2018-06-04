@@ -75,7 +75,7 @@
         }
         else{
             if ([GKLocalPlayer localPlayer].authenticated) {
-                _gameCenterEnabled = YES;
+                self->_gameCenterEnabled = YES;
                 
                 // Get the default leaderboard identifier.
                 [[GKLocalPlayer localPlayer] loadDefaultLeaderboardIdentifierWithCompletionHandler:^(NSString *leaderboardIdentifier, NSError *error) {
@@ -84,13 +84,13 @@
                         NSLog(@"%@", [error localizedDescription]);
                     }
                     else{
-                        _leaderboardIdentifier = leaderboardIdentifier;
+                        self->_leaderboardIdentifier = leaderboardIdentifier;
                     }
                 }];
             }
             
             else{
-                _gameCenterEnabled = NO;
+                self->_gameCenterEnabled = NO;
             }
         }
     };

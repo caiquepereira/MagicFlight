@@ -260,7 +260,7 @@
         
         SKAction *retry =
         [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSounds andTimesPlayed:timesPlayed];
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:self->playSounds andTimesPlayed:self->timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             [self stopBackgroundMusic];
@@ -303,7 +303,7 @@
         
         SKAction *goMenu =
         [SKAction runBlock:^{
-            GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSounds andTimesPlayed:timesPlayed];
+            GameMenuScene *myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:self->playSounds andTimesPlayed:self->timesPlayed];
         
             
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];

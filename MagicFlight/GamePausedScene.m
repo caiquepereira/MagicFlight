@@ -318,16 +318,16 @@
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
-            GameScene * myScene = gameScene;
+            GameScene * myScene = self->gameScene;
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
-            myScene.playSounds = playSound;
+            myScene.playSounds = self->playSound;
             
-            if (playSound){
-                [gameScene resumeBackgroundMusic];
+            if (self->playSound){
+                [self->gameScene resumeBackgroundMusic];
             } else {
-                [gameScene stopBackgroundMusic];
+                [self->gameScene stopBackgroundMusic];
             }
         }];
         
@@ -367,7 +367,7 @@
         }
         
         SKAction * retryGame = [SKAction runBlock:^{
-            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
+            GameScene * myScene = [[GameScene alloc] initWithSize:self.size andSound:self->playSound andTimesPlayed:self->timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
@@ -410,7 +410,7 @@
         
         if ([node.name isEqualToString:@"menuButton"]) {
             SKAction * goMenu = [SKAction runBlock:^{
-                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:playSound andTimesPlayed:timesPlayed];
+                GameMenuScene * myScene = [[GameMenuScene alloc] initWithSize:self.size andSoundEnabled:self->playSound andTimesPlayed:self->timesPlayed];
                 SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
                 [self.view presentScene:myScene transition: reveal];
             }];

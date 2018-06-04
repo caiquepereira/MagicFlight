@@ -140,12 +140,12 @@
         SKAction *increaseEnemy = [SKAction runBlock:^{
             
             [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[waitEnemy, spawnEnemy]]]];
-            if (spawnEnemiesQuatity > 0 && increasingEnemySpeed > 1) {
-                spawnEnemiesQuatity -= 0.02;
-                increasingEnemySpeed -= 0.1;
+            if (self->spawnEnemiesQuatity > 0 && self->increasingEnemySpeed > 1) {
+                self->spawnEnemiesQuatity -= 0.02;
+                self->increasingEnemySpeed -= 0.1;
             }
             
-            if (auxiliarIncrementGestureNumberInEnemy%12 == 0)
+            if (self->auxiliarIncrementGestureNumberInEnemy%12 == 0)
             {
                 [self increaseGesturesQuantity];
             }
@@ -791,7 +791,7 @@
                            usingBlock: ^(SKNode *node, BOOL *stop) {
                                SKSpriteNode *enemy = (SKSpriteNode *) node;
                                
-                               if (CGRectIntersectsRect(enemy.frame, mage.frame)) {
+                               if (CGRectIntersectsRect(enemy.frame, self->mage.frame)) {
                                    [self gameOver];
                                }
                            }];
@@ -845,23 +845,23 @@
 
 - (void)gameOver {
     SKAction *gameOverAction = [SKAction runBlock:^{
-        playerBrokeScore=NO;
+        self->playerBrokeScore=NO;
         
-        if(_score > _newHighestScore) {
-            _newHighestScore=_score;
+        if(self->_score > self->_newHighestScore) {
+            self->_newHighestScore=self->_score;
             [self saveNewHighestScoreInPlist];
-            viewController = [[GameViewController alloc]init];
-            [viewController reportScore:_score];
-            playerBrokeScore=YES;
+            self->viewController = [[GameViewController alloc]init];
+            [self->viewController reportScore:self->_score];
+            self->playerBrokeScore=YES;
         }
         
         [self stopBackgroundMusic];
         GameOverScene* gameOver = [[GameOverScene alloc] initWithSize: self.size
-                                                      andHighestScore: _newHighestScore
-                                                             andScore: _score
-                                                        andBrokeScore: playerBrokeScore
-                                                      andSoundEnabled: _playSounds
-                                                       andTimesPlayed:timesPlayed];
+                                                      andHighestScore: self->_newHighestScore
+                                                             andScore: self->_score
+                                                        andBrokeScore: self->playerBrokeScore
+                                                      andSoundEnabled: self->_playSounds
+                                                       andTimesPlayed:self->timesPlayed];
         
         
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];

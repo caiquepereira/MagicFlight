@@ -492,17 +492,17 @@
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
-            [tutorialPage removeFromParent];
-            [nextButton removeFromParent];
-            [label1Page1 removeFromParent];
-            [label2Page1 removeFromParent];
-            tutorialPage = [self makePage2];
-            [self addChild: tutorialPage];
-            [self addChild:backButton];
-            [self addChild:label1Page2];
-            [self addChild:label2Page2];
-            [self addChild:label3Page2];
-            [self addChild:playButton];
+            [self->tutorialPage removeFromParent];
+            [self->nextButton removeFromParent];
+            [self->label1Page1 removeFromParent];
+            [self->label2Page1 removeFromParent];
+            self->tutorialPage = [self makePage2];
+            [self addChild: self->tutorialPage];
+            [self addChild:self->backButton];
+            [self addChild:self->label1Page2];
+            [self addChild:self->label2Page2];
+            [self addChild:self->label3Page2];
+            [self addChild:self->playButton];
         
         }];
         
@@ -544,17 +544,17 @@
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
-            [tutorialPage removeFromParent];
-            [backButton removeFromParent];
-            [label1Page2 removeFromParent];
-            [label2Page2 removeFromParent];
-            [label3Page2 removeFromParent];
-            [playButton removeFromParent];
-            tutorialPage = [self makePage1];
-            [self addChild: tutorialPage];
-            [self addChild: nextButton];
-            [self addChild:label1Page1];
-            [self addChild:label2Page1];
+            [self->tutorialPage removeFromParent];
+            [self->backButton removeFromParent];
+            [self->label1Page2 removeFromParent];
+            [self->label2Page2 removeFromParent];
+            [self->label3Page2 removeFromParent];
+            [self->playButton removeFromParent];
+            self->tutorialPage = [self makePage1];
+            [self addChild: self->tutorialPage];
+            [self addChild: self->nextButton];
+            [self addChild:self->label1Page1];
+            [self addChild:self->label2Page1];
             
         }];
         
@@ -595,14 +595,14 @@
         }
         
         SKAction * resumeGame = [SKAction runBlock:^{
-            [tutorialPage removeFromParent];
-            [backButton removeFromParent];
-            [label1Page2 removeFromParent];
-            [label2Page2 removeFromParent];
-            [label3Page2 removeFromParent];
-            [playButton removeFromParent];
+            [self->tutorialPage removeFromParent];
+            [self->backButton removeFromParent];
+            [self->label1Page2 removeFromParent];
+            [self->label2Page2 removeFromParent];
+            [self->label3Page2 removeFromParent];
+            [self->playButton removeFromParent];
             
-            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPlayed];
+            GameScene *myScene = [[GameScene alloc] initWithSize:self.size andSound:self->playSound andTimesPlayed:self->timesPlayed];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             [self.view presentScene:myScene transition: reveal];
             
