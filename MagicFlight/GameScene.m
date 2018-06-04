@@ -221,6 +221,11 @@
             scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
         }
+        //iphone x
+        else if (width == 375 && height == 812) {
+            scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
@@ -257,6 +262,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
         }
@@ -381,6 +391,11 @@
         scoreLabelNode.fontSize = 70;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        scoreLabelNode.fontSize = 70;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         scoreLabelNode.fontSize = 120;
@@ -439,6 +454,14 @@
         SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 60) duration:4];
         [mageNode runAction:entry];
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -300);
+        [mageNode setScale:0.4];
+        
+        SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 90) duration:4];
+        [mageNode runAction:entry];
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         mageNode.position = CGPointMake(self.frame.size.width/2, -200);
@@ -487,6 +510,12 @@
         pauseNode.zPosition = HUD_POSITION;
         [pauseNode setScale: 0.35];
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 30);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.35];
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         pauseNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height - 40);
@@ -518,6 +547,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [backgroundNode setScale:2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [backgroundNode setScale:2];
         backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
@@ -558,6 +592,12 @@
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 110);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
@@ -591,6 +631,12 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.6];
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 400);
         powerUpBarNode.zPosition = HUD_POSITION;
         [powerUpBarNode setScale:0.6];
@@ -664,6 +710,10 @@
     else if (width == 414 && height == 736) {
         [cloud setScale:0.4];
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [cloud setScale:0.4];
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [cloud setScale:0.6];
@@ -708,6 +758,10 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [enemy setScale:0.5];
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [enemy setScale:0.5];
     }
     //ipad
@@ -758,6 +812,10 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [gesture setScale:1];
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [gesture setScale:1];
     }
     //ipad
