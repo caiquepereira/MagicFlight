@@ -108,6 +108,11 @@
         [facebookNode setScale:0.22];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [facebookNode setScale:0.22];
+        facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [facebookNode setScale:0.3];
@@ -140,6 +145,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [twitterNode setScale:0.22];
+        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [twitterNode setScale:0.22];
         twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
@@ -178,6 +188,11 @@
         [retryNode setScale:0.22];
         retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 50);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [retryNode setScale:0.22];
+        retryNode.position = CGPointMake(self.size.width/2,self.size.height/2 + 50);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [retryNode setScale:0.3];
@@ -210,6 +225,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [menuNode setScale:0.22];
+        menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 60);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [menuNode setScale:0.22];
         menuNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 60);
     }
@@ -249,6 +269,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
@@ -292,6 +317,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
@@ -340,6 +370,11 @@
             scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
+        //iphone x
+        else if (width == 375 && height == 812) {
+            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
@@ -383,6 +418,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
@@ -457,6 +497,16 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        gameOverLabel.fontSize = 50;
+        gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
+        newHighScoreLabel.fontSize = 50;
+        newHighScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 190);
+        scoreLabelNode.fontSize = 50;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 140);
+    }
+    
+    //iphone x
+    else if (width == 375 && height == 812) {
         gameOverLabel.fontSize = 50;
         gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 240);
         newHighScoreLabel.fontSize = 50;
