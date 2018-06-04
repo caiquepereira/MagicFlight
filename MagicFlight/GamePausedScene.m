@@ -97,6 +97,11 @@
         [retryNode setScale:0.22];
         retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [retryNode setScale:0.22];
+        retryNode.position = CGPointMake(self.size.width/2, self.size.height/2);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [retryNode setScale:0.3];
@@ -129,6 +134,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [menuNode setScale:0.22];
+        menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [menuNode setScale:0.22];
         menuNode.position = CGPointMake(self.size.width/2,self.size.height/2 - playButton.size.height - 8);
     }
@@ -167,6 +177,11 @@
         [playNode setScale:0.22];
         playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 120);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [playNode setScale:0.22];
+        playNode.position = CGPointMake(self.size.width/2,self.size.height/2 + playButton.size.height + 120);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [playNode setScale:0.3];
@@ -199,6 +214,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        pauseLabelNode.fontSize = 100;
+        pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         pauseLabelNode.fontSize = 100;
         pauseLabelNode.position = CGPointMake(self.size.width/2, self.size.height - 150);
     }
@@ -237,6 +257,11 @@
         [audioActiveNode setScale:0.22];
         audioActiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 240);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [audioActiveNode setScale:0.22];
+        audioActiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 240);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [audioActiveNode setScale:0.3];
@@ -269,6 +294,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [audioInactiveNode setScale:0.22];
+        audioInactiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 240);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
         [audioInactiveNode setScale:0.22];
         audioInactiveNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 240);
     }
@@ -308,6 +338,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
@@ -360,6 +395,11 @@
             scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
+        //iphone x
+        else if (width == 375 && height == 812) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
@@ -399,6 +439,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.20 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
         }
