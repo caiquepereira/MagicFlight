@@ -537,6 +537,11 @@
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
+        //iphone X
+        else if (width == 1125 && height == 2436) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
@@ -585,6 +590,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //iphone X
+        else if (width == 1125 && height == 2436) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }

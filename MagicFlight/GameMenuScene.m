@@ -104,6 +104,11 @@
         [startNode setScale:0.2];
         startNode.position = CGPointMake(self.size.width/2, self.size.height - 650);
     }
+    //iphone X
+    else if (width == 375 && height == 812) {
+        [startNode setScale:0.2];
+        startNode.position = CGPointMake(self.size.width/2, self.size.height - 720);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [startNode setScale:0.3];
@@ -136,6 +141,11 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
+        [logoNode setScale:0.55];
+        logoNode.position = CGPointMake(self.size.width/2 + 7, self.size.height/2 - 90);
+    }
+    //iphone X
+    else if (width == 375 && height == 812) {
         [logoNode setScale:0.55];
         logoNode.position = CGPointMake(self.size.width/2 + 7, self.size.height/2 - 90);
     }
@@ -174,6 +184,11 @@
         [gameCenterNode setScale:0.2];
         gameCenterNode.position = CGPointMake(self.size.width - 90, startButton.position.y);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [gameCenterNode setScale:0.2];
+        gameCenterNode.position = CGPointMake(self.size.width/4, self.size.height - 720);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [gameCenterNode setScale:0.3];
@@ -210,6 +225,11 @@
         [audioActiveNode setScale:0.2];
         audioActiveNode.position = CGPointMake(self.size.width - 330, startButton.position.y);
     }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [audioActiveNode setScale:0.2];
+        audioActiveNode.position = CGPointMake(self.size.width/4*3, self.size.height - 720);
+    }
     //ipad
     else if (width == 768 && height == 1024) {
         [audioActiveNode setScale:0.3];
@@ -244,6 +264,11 @@
     else if (width == 414 && height == 736) {
         [audioInactiveNode setScale:0.2];
         audioInactiveNode.position = CGPointMake(self.size.width - 330, startButton.position.y);
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [audioInactiveNode setScale:0.2];
+        audioInactiveNode.position = CGPointMake(self.size.width/4*3, self.size.height - 720);
     }
     //ipad
     else if (width == 768 && height == 1024) {
@@ -281,6 +306,11 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
+        //iphone x
+        else if (width == 375 && height == 812) {
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
@@ -343,6 +373,11 @@
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
+        //iphone x
+        else if (width == 375 && height == 812) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
@@ -380,6 +415,11 @@
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
+        //iphone x
+        else if (width == 375 && height == 812) {
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+        }
         //ipad
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
@@ -401,8 +441,15 @@
     if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
         SKAction *soundControl = [SKAction runBlock:^{
             [self soundControl];
+            
+            SKAction *scaleFirst;
+            SKAction *scaleEnd;
+            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
+            [self->audioControl runAction:sequence];
         }];
-
+        
         [self runAction:soundControl];
     }
 }
