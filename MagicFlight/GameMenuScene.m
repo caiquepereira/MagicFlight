@@ -420,7 +420,12 @@
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
+        else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 10.5
         else if (width == 768 && height == 1024) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
