@@ -226,8 +226,18 @@
             scaleFirst = [SKAction scaleTo:0.33 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.35 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.48 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.5 duration:0.1];
         }
@@ -270,8 +280,18 @@
             scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.58 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
         }
@@ -396,8 +416,18 @@
         scoreLabelNode.fontSize = 70;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 200);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        scoreLabelNode.fontSize = 120;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 300);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        scoreLabelNode.fontSize = 120;
+        scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 300);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         scoreLabelNode.fontSize = 120;
         scoreLabelNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 300);
     }
@@ -462,8 +492,24 @@
         SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 90) duration:4];
         [mageNode runAction:entry];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -200);
+        [mageNode setScale:0.6];
+        
+        SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 90) duration:4];
+        [mageNode runAction:entry];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        mageNode.position = CGPointMake(self.frame.size.width/2, -200);
+        [mageNode setScale:0.6];
+        
+        SKAction *entry = [SKAction moveTo: CGPointMake(self.frame.size.width/2, 90) duration:4];
+        [mageNode runAction:entry];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         mageNode.position = CGPointMake(self.frame.size.width/2, -200);
         [mageNode setScale:0.6];
         
@@ -516,8 +562,20 @@
         pauseNode.zPosition = HUD_POSITION;
         [pauseNode setScale: 0.35];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height - 40);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.5];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        pauseNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height - 40);
+        pauseNode.zPosition = HUD_POSITION;
+        [pauseNode setScale: 0.5];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         pauseNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height - 40);
         pauseNode.zPosition = HUD_POSITION;
         [pauseNode setScale: 0.5];
@@ -555,8 +613,18 @@
         [backgroundNode setScale:2];
         backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [backgroundNode setScale:2.2];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [backgroundNode setScale:2.3];
+        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [backgroundNode setScale:2.2];
         backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
     }
@@ -598,8 +666,20 @@
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
+        powerUpNode.zPosition = HUD_POSITION;
+        [powerUpNode setScale:0.6];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
@@ -641,8 +721,20 @@
         powerUpBarNode.zPosition = HUD_POSITION;
         [powerUpBarNode setScale:0.6];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 500);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.8];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 500);
+        powerUpBarNode.zPosition = HUD_POSITION;
+        [powerUpBarNode setScale:0.8];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         powerUpBarNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height - 500);
         powerUpBarNode.zPosition = HUD_POSITION;
         [powerUpBarNode setScale:0.8];
@@ -714,8 +806,16 @@
     else if (width == 375 && height == 812) {
         [cloud setScale:0.4];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [cloud setScale:0.6];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [cloud setScale:0.6];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [cloud setScale:0.6];
     }
     
@@ -764,8 +864,16 @@
     else if (width == 375 && height == 812) {
         [enemy setScale:0.5];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [enemy setScale:0.65];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [enemy setScale:0.65];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [enemy setScale:0.65];
     }
     
@@ -818,8 +926,16 @@
     else if (width == 375 && height == 812) {
         [gesture setScale:1];
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [gesture setScale:1];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [gesture setScale:1];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [gesture setScale:1];
     }
     

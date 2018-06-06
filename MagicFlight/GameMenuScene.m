@@ -109,8 +109,18 @@
         [startNode setScale:0.2];
         startNode.position = CGPointMake(self.size.width/2, self.size.height - 720);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [startNode setScale:0.3];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 130);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [startNode setScale:0.3];
+        startNode.position = CGPointMake(self.size.width/2, logo.position.y + 130);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [startNode setScale:0.3];
         startNode.position = CGPointMake(self.size.width/2, logo.position.y + 130);
     }
@@ -149,8 +159,18 @@
         [logoNode setScale:0.55];
         logoNode.position = CGPointMake(self.size.width/2 + 7, self.size.height/2 - 90);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        [logoNode setScale:0.9];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 110);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [logoNode setScale:0.9];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 110);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         [logoNode setScale:0.9];
         logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 110);
     }
@@ -189,10 +209,20 @@
         [gameCenterNode setScale:0.2];
         gameCenterNode.position = CGPointMake(self.size.width/4, self.size.height - 720);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [gameCenterNode setScale:0.3];
-        gameCenterNode.position = CGPointMake(self.size.width - 130, startButton.position.y);
+        gameCenterNode.position = CGPointMake(self.size.width/4, startButton.position.y);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [gameCenterNode setScale:0.3];
+        gameCenterNode.position = CGPointMake(self.size.width/4, startButton.position.y);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [gameCenterNode setScale:0.3];
+        gameCenterNode.position = CGPointMake(self.size.width/4, startButton.position.y);
     }
     
     return gameCenterNode;
@@ -230,10 +260,20 @@
         [audioActiveNode setScale:0.2];
         audioActiveNode.position = CGPointMake(self.size.width/4*3, self.size.height - 720);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [audioActiveNode setScale:0.3];
-        audioActiveNode.position = CGPointMake(self.size.width - 640, startButton.position.y);
+        audioActiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [audioActiveNode setScale:0.3];
+        audioActiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [audioActiveNode setScale:0.3];
+        audioActiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
     }
     
     return audioActiveNode;
@@ -270,10 +310,20 @@
         [audioInactiveNode setScale:0.2];
         audioInactiveNode.position = CGPointMake(self.size.width/4*3, self.size.height - 720);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [audioInactiveNode setScale:0.3];
-        audioInactiveNode.position = CGPointMake(self.size.width - 640, startButton.position.y);
+        audioInactiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [audioInactiveNode setScale:0.3];
+        audioInactiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [audioInactiveNode setScale:0.3];
+        audioInactiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
     }
     
     return audioInactiveNode;
@@ -314,8 +364,18 @@
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
@@ -378,8 +438,18 @@
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
@@ -426,7 +496,12 @@
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
         //ipad 10.5
-        else if (width == 768 && height == 1024) {
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 834 && height == 1112) {
             scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
@@ -446,7 +521,6 @@
     if ([node.name isEqualToString:@"audioActive"] || [node.name isEqualToString:@"audioInactive"]) {
         SKAction *soundControl = [SKAction runBlock:^{
             [self soundControl];
-            
             SKAction *scaleFirst;
             SKAction *scaleEnd;
             scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
