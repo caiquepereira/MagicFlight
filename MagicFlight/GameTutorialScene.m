@@ -104,10 +104,22 @@
         [page1 setScale:0.40];
         page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         page1=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial1iPad"];
         [page1 setScale:0.55];
+        page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        page1=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial1iPad"];
+        [page1 setScale:0.65];
+        page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        page1=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial1iPad"];
+        [page1 setScale:0.7];
         page1.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
     
@@ -144,10 +156,22 @@
         [page2 setScale:0.40];
         page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         page2=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial2iPad"];
         [page2 setScale:0.55];
+        page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        page2=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial2iPad"];
+        [page2 setScale:0.65];
+        page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        page2=[SKSpriteNode spriteNodeWithImageNamed:@"tutorial2iPad"];
+        [page2 setScale:0.7];
         page2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     }
     
@@ -185,10 +209,20 @@
         [nextNode setScale:0.17];
         nextNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [nextNode setScale:0.17];
         nextNode.position = CGPointMake(18*self.frame.size.width/20, self.frame.size.height/15);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [nextNode setScale:0.17];
+        nextNode.position = CGPointMake(93*self.frame.size.width/100, self.frame.size.height/15);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [nextNode setScale:0.17];
+        nextNode.position = CGPointMake(93*self.frame.size.width/100, self.frame.size.height/15);
     }
     
     
@@ -226,8 +260,18 @@
         explanationNode.fontSize = 30;
         explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+20);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+20);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         explanationNode.fontSize = 50;
         explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+20);
     }
@@ -267,8 +311,18 @@
         explanationNode.fontSize = 35;
         explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100-20);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+20);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+20);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
         explanationNode.fontSize = 50;
         explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+20);
     }
@@ -309,10 +363,20 @@
         explanationNode.fontSize = 30;
         explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         explanationNode.fontSize = 50;
         explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+30);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+45);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 90*self.size.height/100+45);
     }
     
     return explanationNode;
@@ -350,10 +414,20 @@
         explanationNode.fontSize = 30;
         explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         explanationNode.fontSize = 50;
         explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+30);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+45);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 85*self.size.height/100+45);
     }
     
     return explanationNode;
@@ -391,10 +465,20 @@
         explanationNode.fontSize = 30;
         explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         explanationNode.fontSize = 50;
         explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100+30);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100+45);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        explanationNode.fontSize = 50;
+        explanationNode.position = CGPointMake(self.size.width/2, 80*self.size.height/100+45);
     }
     
     return explanationNode;
@@ -433,10 +517,20 @@
         [backNode setScale:0.17];
         backNode.position = CGPointMake(2*self.frame.size.width/10, self.frame.size.height/15*2);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [backNode setScale:0.17];
         backNode.position = CGPointMake(2*self.frame.size.width/20, self.frame.size.height/15);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [backNode setScale:0.17];
+        backNode.position = CGPointMake(7*self.frame.size.width/100, self.frame.size.height/15);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [backNode setScale:0.17];
+        backNode.position = CGPointMake(7*self.frame.size.width/100, self.frame.size.height/15);
     }
     
     
@@ -475,10 +569,20 @@
         [playNode setScale:0.17];
         playNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2);
     }
-    //ipad
+    //ipad 9.7
     else if (width == 768 && height == 1024) {
         [playNode setScale:0.17];
         playNode.position = CGPointMake(18*self.frame.size.width/20, self.frame.size.height/15);
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [playNode setScale:0.17];
+        playNode.position = CGPointMake(93*self.frame.size.width/100, self.frame.size.height/15);
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [playNode setScale:0.17];
+        playNode.position = CGPointMake(93*self.frame.size.width/100, self.frame.size.height/15);
     }
     
     return playNode;
@@ -540,8 +644,18 @@
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
@@ -597,8 +711,18 @@
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
@@ -653,8 +777,18 @@
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
-        //ipad
+        //ipad 9.7
         else if (width == 768 && height == 1024) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 10.5
+        else if (width == 834 && height == 1112) {
+            scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+        }
+        //ipad 12.9
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.19 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
         }
