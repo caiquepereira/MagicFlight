@@ -625,8 +625,8 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [backgroundNode setScale:2.2];
-        backgroundNode.position = CGPointMake(self.frame.size.width, self.frame.size.height);
+        [backgroundNode setScale:2.5];
+        backgroundNode.position = CGPointMake(self.frame.size.width-300, self.frame.size.height);
     }
     
     return backgroundNode;

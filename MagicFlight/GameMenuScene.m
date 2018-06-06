@@ -121,7 +121,7 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [startNode setScale:0.3];
+        [startNode setScale:0.4];
         startNode.position = CGPointMake(self.size.width/2, logo.position.y + 130);
     }
     
@@ -171,8 +171,8 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [logoNode setScale:0.9];
-        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 110);
+        [logoNode setScale:1.1];
+        logoNode.position = CGPointMake(self.size.width/2 + 6, self.size.height/2 - 130);
     }
 
     return logoNode;
@@ -221,7 +221,7 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [gameCenterNode setScale:0.3];
+        [gameCenterNode setScale:0.4];
         gameCenterNode.position = CGPointMake(self.size.width/4, startButton.position.y);
     }
     
@@ -272,7 +272,7 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [audioActiveNode setScale:0.3];
+        [audioActiveNode setScale:0.4];
         audioActiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
     }
     
@@ -322,7 +322,7 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [audioInactiveNode setScale:0.3];
+        [audioInactiveNode setScale:0.4];
         audioInactiveNode.position = CGPointMake(self.size.width/4*3, startButton.position.y);
     }
     
@@ -376,8 +376,8 @@
         }
         //ipad 12.9
         else if (width == 1024 && height == 1366) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
         }
 
         SKAction *startGame = [SKAction runBlock:^{
@@ -450,8 +450,8 @@
         }
         //ipad 12.9
         else if (width == 1024 && height == 1366) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
         }
 
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
@@ -502,8 +502,8 @@
         }
         //ipad 12.9
         else if (width == 834 && height == 1112) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
         }
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
