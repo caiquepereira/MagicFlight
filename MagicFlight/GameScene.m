@@ -662,7 +662,7 @@
     }
     //iphone x
     else if (width == 375 && height == 812) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 110);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 30, self.frame.size.height/2 + 150);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }

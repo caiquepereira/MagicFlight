@@ -8,6 +8,8 @@
 
 #import "GameViewController.h"
 #import "GameMenuScene.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @implementation GameViewController{
     int timesPlayed;
@@ -20,12 +22,12 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(createPost:)
-                                                 name:@"CreatePost"
+                                                 name:@"createPost"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(createTwitter:)
-                                                 name:@"CreateTwitter"
+                                             selector:@selector(createShare:)
+                                                 name:@"createShare"
                                                object:nil];
 }
 
@@ -109,75 +111,56 @@
     }];
 }
 
+
 - (void)createPost:(NSNotification *)notification {
+
+    UIImage *imageToShare = [self getImage];
+    NSArray *objectsToShare = @[imageToShare];
+
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
     
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-//        NSDictionary *postData = [notification userInfo];
-//        NSString *postText = (NSString *)[postData objectForKey:@"postText"];
-        
-        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet addImage:[self getImage]];
-        [self presentViewController:mySLComposerSheet animated:YES completion:nil];
-        
-//        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
-//            if (result == SLComposeViewControllerResultDone) {
-//                
-//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//                
-//                [alertView show];
-//            }
-//        };
-//        
-//        mySLComposerSheet.completionHandler = myBlock;
-    }
-    else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can't post right now, make sure your device has an internet connection and you have at least one facebook account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        
-        [alertView show];
-    }
+    NSArray *excludeActivities = @[UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
     
-    [self removeImage];
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+
 }
 
-- (void)createTwitter:(NSNotification *)notification {
+- (void)createShare:(NSNotification *)notification {
     
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-//        NSDictionary *postData = [notification userInfo];
-//        NSString *postTwitter = (NSString *)[postData objectForKey:@"postTwitter"];
-        
-        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet addImage:[self getImage]];
-        [self presentViewController:mySLComposerSheet animated:YES completion:nil];
-        
-//        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
-//            if (result == SLComposeViewControllerResultDone) {
-//                
-//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"POST" message:@"You post was sent sucessfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//                
-//                [alertView show];
-//            }
-//        };
-//        
-//        mySLComposerSheet.completionHandler = myBlock;
-    }
-    else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"You can't post right now, make sure your device has an internet connection and you have at least one twitter account setup." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        
-        [alertView show];
-    }
+    NSString *textToShare = @"Have you played Magic Flight? Check it out!";
+    NSURL *myWebsite = [NSURL URLWithString:@"https://itunes.apple.com/br/app/magic-flight/id993253138?l=en&mt=8"];
+    NSArray *objectsToShare = @[textToShare,myWebsite];
     
-    [self removeImage];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+    
+    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+                                   UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
-- (UIImage *)getImage {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *getImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
-    
-    UIImage *highScoreScreenShoot = [UIImage imageWithContentsOfFile:getImagePath];
-    
-    return highScoreScreenShoot;
+- (UIImage *) getImage {
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 1);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return viewImage;
 }
+
+
 
 - (void)removeImage {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

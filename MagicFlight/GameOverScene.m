@@ -17,8 +17,8 @@
 {
     SKSpriteNode *retryButton;
     SKSpriteNode *menuButton;
-    SKSpriteNode *facebookButton;
-    SKSpriteNode *twitterButton;
+    SKSpriteNode *saveScorePhotoButton;
+    SKSpriteNode *shareButton;
     SKLabelNode *scoreLabel;
     AVAudioPlayer *musicPlayer;
     CGFloat width;
@@ -55,11 +55,11 @@
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:backgroundImage];
        
-        facebookButton = [self makeFacebookButton];
-        [self addChild:facebookButton];
+        saveScorePhotoButton = [self makeScorePhotoButton];
+        [self addChild:saveScorePhotoButton];
         
-        twitterButton = [self makeTwiterButton];
-        [self addChild:twitterButton];
+        shareButton = [self makeTwiterButton];
+        [self addChild:shareButton];
          
         retryButton = [self makeRetryButton];
         [self addChild:retryButton];
@@ -82,11 +82,11 @@
     return self;
 }
 
-- (SKSpriteNode *)makeFacebookButton {
+- (SKSpriteNode *)makeScorePhotoButton {
     
-    SKSpriteNode *facebookNode = [SKSpriteNode spriteNodeWithImageNamed:@"facebookButton"];
+    SKSpriteNode *facebookNode = [SKSpriteNode spriteNodeWithImageNamed:@"scorePhotoButton"];
 
-    facebookNode.name = @"facebookButton";
+    facebookNode.name = @"saveScorePhoto";
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -110,7 +110,7 @@
     }
     //iphone x
     else if (width == 375 && height == 812) {
-        [facebookNode setScale:0.22];
+        [facebookNode setScale:0.645];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
     }
     //ipad 9.7
@@ -134,52 +134,52 @@
 
 - (SKSpriteNode *)makeTwiterButton {
     
-    SKSpriteNode *twitterNode = [SKSpriteNode spriteNodeWithImageNamed:@"twitterButton"];
+    SKSpriteNode *shareNode = [SKSpriteNode spriteNodeWithImageNamed:@"share"];
     
-    twitterNode.name = @"twitterButton";
+    shareNode.name = @"shareButton";
     
     //iphone 4s
     if (width == 320 && height == 480) {
-        [twitterNode setScale:0.14];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
+        [shareNode setScale:0.14];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [twitterNode setScale:0.18];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 200);
+        [shareNode setScale:0.18];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 200);
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [twitterNode setScale:0.2];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 245);
+        [shareNode setScale:0.2];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 245);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [twitterNode setScale:0.22];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
+        [shareNode setScale:0.22];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
     //iphone x
     else if (width == 375 && height == 812) {
-        [twitterNode setScale:0.22];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
+        [shareNode setScale:0.645];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [twitterNode setScale:0.3];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
+        [shareNode setScale:0.3];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [twitterNode setScale:0.3];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
+        [shareNode setScale:0.3];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [twitterNode setScale:0.3];
-        twitterNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
+        [shareNode setScale:0.3];
+        shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     
-    return twitterNode;
+    return shareNode;
 }
 
 - (SKSpriteNode *)makeRetryButton {
@@ -405,7 +405,7 @@
         [menuButton runAction:sequence];
     }
     
-    if ([node.name isEqualToString:@"facebookButton"]) {
+    if ([node.name isEqualToString:@"scorePhotoButton"]) {
         //animation
         SKAction *scaleFirst;
         SKAction *scaleEnd;
@@ -456,17 +456,14 @@
         
         SKAction *goFacebook =
         [SKAction runBlock:^{
-//                NSString *postText = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
-//                NSDictionary *userInfoOne = [NSDictionary dictionaryWithObject:postText forKey:@"postText"];
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self userInfo:userInfoOne];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self];
         }];
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goFacebook]];
-        [facebookButton runAction:sequence];
+        [saveScorePhotoButton runAction:sequence];
     }
     
-    if ([node.name isEqualToString:@"twitterButton"]) {
+    if ([node.name isEqualToString:@"share"]) {
         //animation
         SKAction *scaleFirst;
         SKAction *scaleEnd;
@@ -515,16 +512,13 @@
         [self takeScreenshoot];
         [self saveImage];
         
-        SKAction *goTwitter =
+        SKAction *goShare =
         [SKAction runBlock:^{
-//                NSString *postTwitter = [NSString stringWithFormat:@"My high score in Magic Flight is: %d pts. Come beat me! Like us:", _highestScore];
-//                NSDictionary *userInfoTwo = [NSDictionary dictionaryWithObject:postTwitter forKey:@"postTwitter"];
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self userInfo:userInfoTwo];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateTwitter" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateShare" object:self];
         }];
         
-        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goTwitter]];
-        [twitterButton runAction:sequence];
+        SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goShare]];
+        [shareButton runAction:sequence];
     }
 }
 
