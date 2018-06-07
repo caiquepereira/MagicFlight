@@ -8,8 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameMenuScene.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKShareKit/FBSDKShareKit.h>
+
 
 @implementation GameViewController{
     int timesPlayed;

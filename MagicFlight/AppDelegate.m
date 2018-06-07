@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
 @interface AppDelegate ()
@@ -20,10 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
-    [FBSDKAppEvents activateApp];
-    
     // Initialize the Chartboost library
     [Chartboost startWithAppId:@"555b797e43150f5ad1494ce8"
                   appSignature:@"837705218b81ef996ff3e383c99ab9002c707055"
@@ -32,19 +27,6 @@
     
     return YES;
     
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    
-    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                                  openURL:url
-                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
-                    ];
-    // Add any custom logic here.
-    return handled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

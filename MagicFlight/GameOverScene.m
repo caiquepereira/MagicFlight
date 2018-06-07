@@ -86,7 +86,7 @@
     
     SKSpriteNode *facebookNode = [SKSpriteNode spriteNodeWithImageNamed:@"scorePhotoButton"];
 
-    facebookNode.name = @"saveScorePhoto";
+    facebookNode.name = @"scorePhotoButton";
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -134,7 +134,7 @@
 
 - (SKSpriteNode *)makeTwiterButton {
     
-    SKSpriteNode *shareNode = [SKSpriteNode spriteNodeWithImageNamed:@"share"];
+    SKSpriteNode *shareNode = [SKSpriteNode spriteNodeWithImageNamed:@"shareButton"];
     
     shareNode.name = @"shareButton";
     
@@ -432,8 +432,8 @@
         }
         //iphone x
         else if (width == 375 && height == 812) {
-            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.645 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.625 duration:0.1];
         }
         //ipad 9.7
         else if (width == 768 && height == 1024) {
@@ -451,19 +451,16 @@
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
         
-        [self takeScreenshoot];
-        [self saveImage];
-        
         SKAction *goFacebook =
         [SKAction runBlock:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreatePost" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"createPost" object:self];
         }];
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goFacebook]];
         [saveScorePhotoButton runAction:sequence];
     }
     
-    if ([node.name isEqualToString:@"share"]) {
+    if ([node.name isEqualToString:@"shareButton"]) {
         //animation
         SKAction *scaleFirst;
         SKAction *scaleEnd;
@@ -490,8 +487,8 @@
         }
         //iphone x
         else if (width == 375 && height == 812) {
-            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.645 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.625 duration:0.1];
         }
         //ipad 9.7
         else if (width == 768 && height == 1024) {
@@ -514,7 +511,7 @@
         
         SKAction *goShare =
         [SKAction runBlock:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"CreateShare" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"createShare" object:self];
         }];
         
         SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd, goShare]];
