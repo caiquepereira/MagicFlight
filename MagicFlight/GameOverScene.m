@@ -105,7 +105,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [facebookNode setScale:0.52];
+        [facebookNode setScale:0.62];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
     }
     //iphone x
@@ -155,7 +155,7 @@
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [shareNode setScale:0.52];
+        [shareNode setScale:0.62];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
     //iphone x
@@ -427,8 +427,8 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.62 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.60 duration:0.1];
         }
         //iphone x
         else if (width == 375 && height == 812) {
@@ -482,8 +482,8 @@
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
-            scaleFirst = [SKAction scaleTo:0.2 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.22 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.62 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.6 duration:0.1];
         }
         //iphone x
         else if (width == 375 && height == 812) {
