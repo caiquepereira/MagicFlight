@@ -207,7 +207,7 @@
     //iphone x
     else if (width == 375 && height == 812) {
         [nextNode setScale:0.17];
-        nextNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2);
+        nextNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2-20);
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
@@ -515,7 +515,7 @@
     //iphone x
     else if (width == 375 && height == 812) {
         [backNode setScale:0.17];
-        backNode.position = CGPointMake(2*self.frame.size.width/10, self.frame.size.height/15*2);
+        backNode.position = CGPointMake(2*self.frame.size.width/10, self.frame.size.height/15*2-20);
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
@@ -567,7 +567,7 @@
     //iphone x
     else if (width == 375 && height == 812) {
         [playNode setScale:0.17];
-        playNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2);
+        playNode.position = CGPointMake(8*self.frame.size.width/10, self.frame.size.height/15*2-20);
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
@@ -587,26 +587,6 @@
     
     return playNode;
 }
-
-
-
-
-
-//Verifica linguagem do dispositivo e exemplo de como escrever em PT-BR
-
-//-(void)verifyDeviceLanguage{
-//
-//    Devicelanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
-//}
-//
-//-(void)writeOnScreen{
-//    if([Devicelanguage isEqualToString:@"pt"]){
-//        //NSLog(@"escrever em português");
-//    }else{
-//        //NSLog(@"escrever em inglês");
-//    }
-//}
-
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

@@ -49,6 +49,12 @@
         
         SKSpriteNode *backgroundImage = [SKSpriteNode spriteNodeWithImageNamed:@"startScreen"];
         [backgroundImage setSize:CGSizeMake(self.size.width, self.size.height)];
+        
+        //iPhone X
+        if (width == 375 && height == 812) {
+            [backgroundImage setSize:CGSizeMake(self.size.width+190, self.size.height)];
+        }
+        
         backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         
         [self addChild:backgroundImage];
@@ -530,7 +536,7 @@
                 scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
             }
             //iphone 5 e 5s
-            else if (self->width == 320 && height == 568) {
+            else if (self->width == 320 && self->height == 568) {
                 scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
                 scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
             }
