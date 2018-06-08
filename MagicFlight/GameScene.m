@@ -674,13 +674,13 @@
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 33, self.frame.size.height/2 + 260);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 40, self.frame.size.height/2 + 220);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 33, self.frame.size.height/2 + 260);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }

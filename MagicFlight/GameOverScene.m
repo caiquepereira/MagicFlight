@@ -120,12 +120,12 @@
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [facebookNode setScale:0.645];
+        [facebookNode setScale:0.9];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [facebookNode setScale:0.645];
+        [facebookNode setScale:0.9];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     
@@ -170,12 +170,12 @@
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [shareNode setScale:0.645];
+        [shareNode setScale:0.9];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [shareNode setScale:0.3];
+        [shareNode setScale:0.9];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     

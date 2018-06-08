@@ -148,6 +148,8 @@
     
     activityVC.excludedActivityTypes = excludeActivities;
     
+    
+    
     [self presentViewController:activityVC animated:YES completion:nil];
 }
 

@@ -18,6 +18,30 @@
 	<string>1.2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+    <key>CFBundleURLTypes</key>
+g  <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+           <array>
+              <string>fb{your-app-id}</string>
+          </array>
+       </dict>
+   </array>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+   <key>FacebookAppID</key>
+   <string>1852006711560020</string>
+   <key>FacebookDisplayName</key>
+  <string>Magic Flight</string>
+  <key>LSApplicationCategoryType</key>
+  <string></string>
+ <key>LSApplicationQueriesSchemes</key>
+ <array>
+<string>fbapi</string>
+<string>fb-messenger-share-api</string>
+<string>fbauth2</string>
+<string>fbshareextension</string>
+</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
