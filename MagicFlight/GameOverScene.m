@@ -115,7 +115,7 @@
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [facebookNode setScale:0.645];
+        [facebookNode setScale:0.9];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     //ipad 10.5
@@ -165,7 +165,7 @@
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [shareNode setScale:0.645];
+        [shareNode setScale:0.9];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 10.5
@@ -437,18 +437,18 @@
         }
         //ipad 9.7
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         //ipad 10.5
         else if (width == 834 && height == 1112) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         //ipad 12.9
         else if (width == 1024 && height == 1366) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         
         SKAction *goFacebook =
@@ -492,18 +492,18 @@
         }
         //ipad 9.7
         else if (width == 768 && height == 1024) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         //ipad 10.5
         else if (width == 834 && height == 1112) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         //ipad 12.9
         else if (width == 1024 && height == 1366) {
-            scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.9 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.88 duration:0.1];
         }
         
         [self takeScreenshoot];
