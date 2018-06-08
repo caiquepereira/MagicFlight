@@ -100,12 +100,12 @@
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [facebookNode setScale:0.2];
+        [facebookNode setScale:0.57];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 150);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [facebookNode setScale:0.22];
+        [facebookNode setScale:0.52];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 170);
     }
     //iphone x
@@ -115,17 +115,17 @@
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [facebookNode setScale:0.3];
+        [facebookNode setScale:0.645];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [facebookNode setScale:0.3];
+        [facebookNode setScale:0.645];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [facebookNode setScale:0.3];
+        [facebookNode setScale:0.645];
         facebookNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 250);
     }
     
@@ -150,12 +150,12 @@
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [shareNode setScale:0.2];
+        [shareNode setScale:0.57];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 245);
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [shareNode setScale:0.22];
+        [shareNode setScale:0.52];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 280);
     }
     //iphone x
@@ -165,12 +165,12 @@
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [shareNode setScale:0.3];
+        [shareNode setScale:0.645];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [shareNode setScale:0.3];
+        [shareNode setScale:0.645];
         shareNode.position = CGPointMake(self.size.width/2, self.size.height/2 - 400);
     }
     //ipad 12.9
@@ -422,8 +422,8 @@
         }
         //iphone 6
         else if (width == 375 && height == 667) {
-            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.57 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.55 duration:0.1];
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
@@ -477,8 +477,8 @@
         }
         //iphone 6
         else if (width == 375 && height == 667) {
-            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            scaleFirst = [SKAction scaleTo:0.57 duration:0.1];
+            scaleEnd = [SKAction scaleTo:0.55 duration:0.1];
         }
         //iphone 6 plus
         else if (width == 414 && height == 736) {
