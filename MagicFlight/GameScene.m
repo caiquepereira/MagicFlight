@@ -644,9 +644,9 @@
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 25, self.frame.size.height/2 + 45);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 25, self.frame.size.height/2 + 35);
         powerUpNode.zPosition = HUD_POSITION;
-        [powerUpNode setScale:0.5];
+        [powerUpNode setScale:0.4];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
@@ -743,40 +743,6 @@
     return powerUpBarNode;
 }
 
-//- (SKSpriteNode *) makeEdge {
-//    SKSpriteNode *edgeNode = [SKSpriteNode spriteNodeWithImageNamed:@"edge"];
-//    
-//    //iphone 4s
-//    if (width == 320 && height == 480) {
-//        [edgeNode setScale:1];
-//        edgeNode.position = CGPointMake(30, self.size.height+200);
-//    }
-//    //iphone 5 e 5s
-//    else if (width == 320 && height == 568) {
-//        [edgeNode setScale:1];
-//        edgeNode.position = CGPointMake(30, self.size.height+200);
-//    }
-//    //iphone 6
-//    else if (width == 375 && height == 667) {
-//        [edgeNode setScale:1];
-//        edgeNode.position = CGPointMake(30, self.size.height+200);
-//    }
-//    //iphone 6 plus
-//    else if (width == 414 && height == 736) {
-//        [edgeNode setScale:1];
-//        edgeNode.position = CGPointMake(30, self.size.height+200);
-//    }
-//    //ipad
-//    else if (width == 768 && height == 1024) {
-//        [edgeNode setScale:2];
-//        edgeNode.position = CGPointMake(30, self.size.height+200);
-//    }
-//    
-//    SKAction *move = [SKAction moveToY: -200 duration:6];
-//    [edgeNode runAction:move];
-//    
-//    return edgeNode;
-//}
 
 - (void)spawnCloud {
     

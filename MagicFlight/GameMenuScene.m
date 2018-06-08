@@ -233,7 +233,7 @@
     SKSpriteNode *audioActiveNode = [SKSpriteNode spriteNodeWithImageNamed:@"audioActive"];
     
     audioActiveNode.name = @"audioActive";
-    audioActiveNode.zPosition = 2;
+    //audioActiveNode.zPosition = 2;
     
     //iphone 4s
     if (width == 320 && height == 480) {
@@ -523,8 +523,49 @@
             [self soundControl];
             SKAction *scaleFirst;
             SKAction *scaleEnd;
-            scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
-            scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            
+            //iphone 4s
+            if (self->width == 320 && self->height == 480) {
+                scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+            }
+            //iphone 5 e 5s
+            else if (self->width == 320 && height == 568) {
+                scaleFirst = [SKAction scaleTo:0.13 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.15 duration:0.1];
+            }
+            //iphone 6
+            else if (self->width == 375 && self->height == 667) {
+                scaleFirst = [SKAction scaleTo:0.15 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.17 duration:0.1];
+            }
+            //iphone 6 plus
+            else if (self->width == 414 && self->height == 736) {
+                scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            }
+            //iphone x
+            else if (self->width == 375 && self->height == 812) {
+                scaleFirst = [SKAction scaleTo:0.18 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.2 duration:0.1];
+            }
+            //ipad 9.7
+            else if (self->width == 768 && self->height == 1024) {
+                scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            }
+            //ipad 10.5
+            else if (self->width == 834 && self->height == 1112) {
+                scaleFirst = [SKAction scaleTo:0.28 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
+            }
+            //ipad 12.9
+            
+            else if (self->width == 834 && self->height == 1112) {
+                scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
+                scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
+            }
+            
             SKAction *sequence = [SKAction sequence:@[scaleFirst, scaleEnd]];
             [self->audioControl runAction:sequence];
         }];
