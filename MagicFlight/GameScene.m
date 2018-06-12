@@ -680,7 +680,7 @@
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        powerUpNode.position = CGPointMake(self.frame.size.width - 33, self.frame.size.height/2 + 260);
+        powerUpNode.position = CGPointMake(self.frame.size.width - 33, self.frame.size.height/2 + 380);
         powerUpNode.zPosition = HUD_POSITION;
         [powerUpNode setScale:0.6];
     }

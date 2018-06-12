@@ -126,6 +126,10 @@
     
     activityVC.excludedActivityTypes = excludeActivities;
     
+    activityVC.popoverPresentationController.sourceView = self.view;
+    activityVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionRight;
+
+    
     [self presentViewController:activityVC animated:YES completion:nil];
 
 }
@@ -147,10 +151,16 @@
                                    UIActivityTypePostToVimeo];
     
     activityVC.excludedActivityTypes = excludeActivities;
-    
-    
+
+    activityVC.popoverPresentationController.sourceView = self.view;
+    activityVC.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionRight;
+
     
     [self presentViewController:activityVC animated:YES completion:nil];
+    
+
+    
+    
 }
 
 - (UIImage *) getImage {

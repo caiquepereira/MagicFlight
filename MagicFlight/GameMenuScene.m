@@ -507,7 +507,7 @@
             scaleEnd = [SKAction scaleTo:0.3 duration:0.1];
         }
         //ipad 12.9
-        else if (width == 834 && height == 1112) {
+        else if (width == 1024 && height == 1366) {
             scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
             scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
         }
@@ -567,7 +567,7 @@
             }
             //ipad 12.9
             
-            else if (self->width == 834 && self->height == 1112) {
+            else if (self->width == 1024 && self->height == 1366) {
                 scaleFirst = [SKAction scaleTo:0.38 duration:0.1];
                 scaleEnd = [SKAction scaleTo:0.4 duration:0.1];
             }
