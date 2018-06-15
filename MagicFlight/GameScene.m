@@ -895,19 +895,19 @@
 
     //iphone 4s
     if (width == 320 && height == 480) {
-        [portal setScale:0.35];
+        [portal setScale:0.2];
     }
     //iphone 5 e 5s
     else if (width == 320 && height == 568) {
-        [portal setScale:0.35];
+        [portal setScale:0.25];
     }
     //iphone 6
     else if (width == 375 && height == 667) {
-        [portal setScale:0.5];
+        [portal setScale:0.28];
     }
     //iphone 6 plus
     else if (width == 414 && height == 736) {
-        [portal setScale:0.5];
+        [portal setScale:0.3];
     }
     //iphone x
     else if (width == 375 && height == 812) {
@@ -915,15 +915,15 @@
     }
     //ipad 9.7
     else if (width == 768 && height == 1024) {
-        [portal setScale:0.65];
+        [portal setScale:0.4];
     }
     //ipad 10.5
     else if (width == 834 && height == 1112) {
-        [portal setScale:0.65];
+        [portal setScale:0.4];
     }
     //ipad 12.9
     else if (width == 1024 && height == 1366) {
-        [portal setScale:0.65];
+        [portal setScale:0.45];
     }
     
     portal.zPosition = PORTAL_POSITION;
