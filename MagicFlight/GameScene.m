@@ -28,14 +28,12 @@
 #define VERT_SWIPE_DRAG_MAX_V   15
 
 @implementation GameScene {
-//    NSString *particlePath;
-//    SKEmitterNode *particleNode;
+
     CGMutablePathRef pathToDraw;
     SKSpriteNode *mage;
     SKSpriteNode *background;
     SKSpriteNode *powerUpButton;
     SKSpriteNode *powerUpBar;
-//    SKSpriteNode *edge;
     SKShapeNode *lineNode;
     SKLabelNode *scoreLabel;
     NSMutableArray *dataToSaveInPlist;
@@ -78,10 +76,7 @@
         height = self.size.height;
         
         _playSounds = soundEnabled;
-        
-//        particlePath = [[NSBundle mainBundle] pathForResource:@"GestureParticle" ofType:@"sks"];
-//        particleNode = [NSKeyedUnarchiver unarchiveObjectWithFile:particlePath];
-        
+
         gestureNames = [NSArray arrayWithObjects:@"swipeToRight",
                         @"swipeToLeft",
                         @"swipeUp",
@@ -118,9 +113,6 @@
         
         powerUpBar = [self makePowerUpBar: @"powerUp0"];
         [self addChild:powerUpBar];
-        
-        //        edge = [self makeEdge];
-        //        [self addChild:edge];
         
         [self.view setMultipleTouchEnabled:NO];
         
@@ -308,7 +300,6 @@
     }
     
     [self addChild:lineNode];
-//    [self addChild:particleNode];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -317,9 +308,7 @@
     
     CGPathAddLineToPoint(pathToDraw, NULL, currentTouchPosition.x, currentTouchPosition.y);
     lineNode.path = pathToDraw;
-    
-//    particleNode.position = currentTouchPosition;
-//    particleNode.particleBirthRate = 100;
+
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -386,10 +375,6 @@
 
 - (void)update:(NSTimeInterval)currentTime {
     
-    //    if(edge.position.y < self.size.height - edge.size.height){
-    //        edge = [self makeEdge];
-    //        [self addChild:edge];
-    //    }
     [self updateScore];
     [self checkCollision];
 }
@@ -754,7 +739,6 @@
     return powerUpBarNode;
 }
 
-
 - (void)spawnCloud {
     
     NSString *imageName = [NSString stringWithFormat:@"cloud%d",arc4random_uniform(2)];
@@ -930,13 +914,10 @@
     portal.name = @"portal";
     
     CGPoint position = CGPointMake(enemy.position.x, enemy.position.y);
-    
     portal.position = position;
     
     SKAction *move = [SKAction moveTo: enemy.position duration:1];
     [portal runAction:[SKAction repeatActionForever:move]];
-    
-    
     [portal runAction:[SKAction repeatActionForever:
                       [SKAction animateWithTextures:portalFrames
                                        timePerFrame:0.1
@@ -944,16 +925,17 @@
                                             restore:YES]] withKey:@"flyingInPlaceBat"];
     
     [self addChild:portal];
+    [self removePortal:portal];
+}
 
+- (void)removePortal: (SKSpriteNode *)portal {
     SKAction *wait = [SKAction waitForDuration:0.1];
     SKAction *removePortal = [SKAction runBlock:^{
- 
+        
         [portal removeFromParent];
     }];
     SKAction *sequence = [SKAction sequence:@[wait, removePortal]];
     [self runAction:sequence];
-    
-    
 }
 
 - (SKSpriteNode *)makeGesture: (CGRect)enemySize {
@@ -1062,15 +1044,7 @@
             }
             
             [self spawnPortal:enemy];
-//            [enemy removeFromParent];
-            
-            SKAction *wait = [SKAction waitForDuration:0.1];
-            SKAction *removeEnemy = [SKAction runBlock:^{
-                
-                [enemy removeFromParent];
-            }];
-            SKAction *sequence = [SKAction sequence:@[wait, removeEnemy]];
-            [self runAction:sequence];
+            [self removeEnemy:enemy];
             
             _destroyedEnemies++;
             
@@ -1082,6 +1056,16 @@
             }
         }
     }
+}
+
+- (void)removeEnemy: (SKSpriteNode *)enemy {
+    SKAction *wait = [SKAction waitForDuration:0.1];
+    SKAction *removeEnemy = [SKAction runBlock:^{
+        
+        [enemy removeFromParent];
+    }];
+    SKAction *sequence = [SKAction sequence:@[wait, removeEnemy]];
+    [self runAction:sequence];
 }
 
 - (void)gameOver {
