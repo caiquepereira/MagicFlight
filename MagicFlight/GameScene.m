@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #define HUD_POSITION 15
+#define PORTAL_POSITION 7
 #define ENEMY_POSITION 10
 #define CLOUDS_POSITION 5
 #define BACKGROUND_POSITION 0
@@ -48,6 +49,7 @@
     NSArray* mageFlyingFrames;
     CGFloat width;
     CGFloat height;
+    CGPoint lineMiddle;
     int auxiliarIncrement;
     int auxiliarIncrementGestureNumberInEnemy;
     int _score;
@@ -333,6 +335,8 @@
         // If touch appears to be a swipe
         if (startPositionInScene.x < currentTouchPosition.x) {
             [self rightSwipe];
+            lineMiddle.x=startPositionInScene.x-currentTouchPosition.x;
+            lineMiddle.y=currentTouchPosition.y-startPositionInScene.y;
         }
     }
     
@@ -343,6 +347,8 @@
         // If touch appears to be a swipe
         if (startPositionInScene.x > currentTouchPosition.x) {
             [self leftSwipe];
+            lineMiddle.x=currentTouchPosition.x-startPositionInScene.x;
+            lineMiddle.y=startPositionInScene.y-currentTouchPosition.y;
         }
     }
     
@@ -352,6 +358,9 @@
         
         if (startPositionInScene.y < currentTouchPosition.y) {
             [self upSwipe];
+            lineMiddle.x=currentTouchPosition.x;
+            lineMiddle.y=startPositionInScene.y-currentTouchPosition.y;
+            
         }
     }
     
@@ -361,6 +370,8 @@
         // If touch appears to be a swipe
         if (startPositionInScene.y > currentTouchPosition.y) {
             [self downSwipe];
+            lineMiddle.x=currentTouchPosition.x;
+            lineMiddle.y=currentTouchPosition.y-startPositionInScene.y;
         }
     }
     
@@ -867,6 +878,84 @@
     auxiliarIncrement++;
 }
 
+- (void)spawnPortal: (SKSpriteNode *)enemy {
+    NSMutableArray *portalFrames = [NSMutableArray array];
+    SKTextureAtlas *portalAtlas = [SKTextureAtlas atlasNamed:@"portalImages"];
+    
+    long numImages = portalAtlas.textureNames.count;
+    
+    for (int i=1; i <= numImages; i++) {
+        NSString *textureName = [NSString stringWithFormat:@"portal%d", i];
+        SKTexture *temp = [portalAtlas textureNamed:textureName];
+        [portalFrames addObject:temp];
+    }
+    
+    SKTexture *temp = portalFrames[0];
+    SKSpriteNode *portal = [SKSpriteNode spriteNodeWithTexture:temp];
+
+    //iphone 4s
+    if (width == 320 && height == 480) {
+        [portal setScale:0.35];
+    }
+    //iphone 5 e 5s
+    else if (width == 320 && height == 568) {
+        [portal setScale:0.35];
+    }
+    //iphone 6
+    else if (width == 375 && height == 667) {
+        [portal setScale:0.5];
+    }
+    //iphone 6 plus
+    else if (width == 414 && height == 736) {
+        [portal setScale:0.5];
+    }
+    //iphone x
+    else if (width == 375 && height == 812) {
+        [portal setScale:0.3];
+    }
+    //ipad 9.7
+    else if (width == 768 && height == 1024) {
+        [portal setScale:0.65];
+    }
+    //ipad 10.5
+    else if (width == 834 && height == 1112) {
+        [portal setScale:0.65];
+    }
+    //ipad 12.9
+    else if (width == 1024 && height == 1366) {
+        [portal setScale:0.65];
+    }
+    
+    portal.zPosition = PORTAL_POSITION;
+    portal.name = @"portal";
+    
+    CGPoint position = CGPointMake(enemy.position.x, enemy.position.y);
+    
+    portal.position = position;
+    
+    SKAction *move = [SKAction moveTo: enemy.position duration:1];
+    [portal runAction:[SKAction repeatActionForever:move]];
+    
+    
+    [portal runAction:[SKAction repeatActionForever:
+                      [SKAction animateWithTextures:portalFrames
+                                       timePerFrame:0.1
+                                             resize:NO
+                                            restore:YES]] withKey:@"flyingInPlaceBat"];
+    
+    [self addChild:portal];
+
+    SKAction *wait = [SKAction waitForDuration:0.1];
+    SKAction *removePortal = [SKAction runBlock:^{
+ 
+        [portal removeFromParent];
+    }];
+    SKAction *sequence = [SKAction sequence:@[wait, removePortal]];
+    [self runAction:sequence];
+    
+    
+}
+
 - (SKSpriteNode *)makeGesture: (CGRect)enemySize {
     
     SKSpriteNode* gesture = [self randomGestureNode: [self generateGesturesQuantity]];
@@ -930,8 +1019,11 @@
     [self enumerateChildNodesWithName:@"bat"
                            usingBlock: ^(SKNode *node, BOOL *stop) {
                                SKSpriteNode *enemy = (SKSpriteNode *) node;
+            
+
+                               CGRect frame = CGRectMake(self->mage.frame.origin.x, self->mage.frame.origin.y, self->mage.frame.size.width, self->mage.frame.size.height*0.8);
                                
-                               if (CGRectIntersectsRect(enemy.frame, self->mage.frame)) {
+                               if (CGRectIntersectsRect(enemy.frame, frame)) {
                                    [self gameOver];
                                }
                            }];
@@ -958,7 +1050,6 @@
             
         } else {
             [enemy removeChildrenInArray:[enemy objectForKeyedSubscript:gestureType]];
-            
         }
         
         if ([[enemy children]count] == 0) {
@@ -970,7 +1061,17 @@
                 [mage runAction:[SKAction playSoundFileNamed:@"spell.mp3" waitForCompletion:YES]];
             }
             
-            [enemy removeFromParent];
+            [self spawnPortal:enemy];
+//            [enemy removeFromParent];
+            
+            SKAction *wait = [SKAction waitForDuration:0.1];
+            SKAction *removeEnemy = [SKAction runBlock:^{
+                
+                [enemy removeFromParent];
+            }];
+            SKAction *sequence = [SKAction sequence:@[wait, removeEnemy]];
+            [self runAction:sequence];
+            
             _destroyedEnemies++;
             
             if(_destroyedEnemies >= ENEMY_NUMBER_TO_POWER_UP && _powerUpStage < POWERUP_STAGE_MAX){

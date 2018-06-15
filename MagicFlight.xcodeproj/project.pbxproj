@@ -35,6 +35,7 @@
 		8FD6AE741B0CF953003B249D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD6AE731B0CF953003B249D /* CoreGraphics.framework */; };
 		8FD6AE761B0CF95F003B249D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD6AE751B0CF95F003B249D /* UIKit.framework */; };
 		8FD6AE791B0D0CAD003B249D /* GameTutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD6AE781B0D0CAD003B249D /* GameTutorialScene.m */; };
+		B934361520D2AB1600B5DA96 /* portalImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B934361420D2AB1600B5DA96 /* portalImages.atlas */; };
 		B9387FAD20C57EAD00F70F6F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9387FAC20C57EAD00F70F6F /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		8FD6AE751B0CF95F003B249D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8FD6AE771B0D0CAD003B249D /* GameTutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTutorialScene.h; sourceTree = "<group>"; };
 		8FD6AE781B0D0CAD003B249D /* GameTutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTutorialScene.m; sourceTree = "<group>"; };
+		B934361420D2AB1600B5DA96 /* portalImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = portalImages.atlas; sourceTree = "<group>"; };
 		B9387FAC20C57EAD00F70F6F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				294354F91AEAC48C0094BAD5 /* Music */,
+				B934361420D2AB1600B5DA96 /* portalImages.atlas */,
 				294354F01AEAC3C30094BAD5 /* batImages.atlas */,
 				294354F11AEAC3C30094BAD5 /* Images.xcassets */,
 				294354F21AEAC3C30094BAD5 /* mageImages.atlas */,
@@ -327,6 +330,7 @@
 				56E16E071AFC0FD400B2F2D0 /* Main.storyboard in Resources */,
 				294354F41AEAC3C30094BAD5 /* Images.xcassets in Resources */,
 				B9387FAD20C57EAD00F70F6F /* Launch Screen.storyboard in Resources */,
+				B934361520D2AB1600B5DA96 /* portalImages.atlas in Resources */,
 				2987D8121AEAEB2B00DEE369 /* EnglishTowne.ttf in Resources */,
 				56EE8C971B162DB300910752 /* GestureParticle.sks in Resources */,
 				56D67B5B1AD6EAF90032CAA3 /* GameScene.sks in Resources */,
